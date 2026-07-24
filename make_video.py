@@ -403,7 +403,7 @@ def build_endcap():
          f"[0:v]scale={W}:{H},setsar=1,fade=t=in:st=0:d=0.3,format=yuv420p[v];"
          f"[1:a]afade=t=out:st={max(0, dur - 0.5):.3f}:d=0.5[a]",
          "-map", "[v]", "-map", "[a]", "-t", f"{dur:.3f}",
-         "-c:v", "libx264", "-preset", "medium", "-crf", "20",
+         "-c:v", "libx264", "-preset", "medium", "-crf", "24", "-maxrate", "6M", "-bufsize", "12M",
          "-pix_fmt", "yuv420p", "-r", str(FPS),
          "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-ac", "2", seg],
         check=True, capture_output=True)
@@ -426,7 +426,7 @@ def append_endcap(out_path):
         if r.returncode != 0 or duration(merged) <= duration(out_path):
             subprocess.run(
                 ["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", listfile,
-                 "-c:v", "libx264", "-preset", "medium", "-crf", "20",
+                 "-c:v", "libx264", "-preset", "medium", "-crf", "24", "-maxrate", "6M", "-bufsize", "12M",
                  "-pix_fmt", "yuv420p", "-r", str(FPS),
                  "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-ac", "2",
                  "-movflags", "+faststart", merged],
@@ -592,7 +592,7 @@ def build_video(item, content, seq, bg_pool):
     cmd += [
         "-filter_complex", filter_complex,
         "-map", "[vout]", "-map", "[aout]",
-        "-c:v", "libx264", "-preset", "medium", "-crf", "20",
+        "-c:v", "libx264", "-preset", "medium", "-crf", "24", "-maxrate", "6M", "-bufsize", "12M",
         "-pix_fmt", "yuv420p", "-r", str(FPS),
         "-c:a", "aac", "-b:a", "192k",
         "-movflags", "+faststart",

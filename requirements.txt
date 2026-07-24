@@ -19,6 +19,9 @@ google-auth==2.55.1
 google-auth-oauthlib==1.4.0
 
 # --- AI scripting (Anthropic) ---
-# Not present in the scanning env; pin to your installed version, e.g.:
-#   pip install "anthropic>=0.40" && pip freeze | grep anthropic
-anthropic
+# Powers the optional AI scripting path (ai_brain.py). Not currently installed,
+# so that path falls back to the local script_composer until you:
+#   pip install "anthropic>=0.40,<1.0"
+# Lower bound guarantees the Messages API (client.messages.create); upper bound
+# guards against a breaking 1.0 major silently breaking ai_brain.py.
+anthropic>=0.40,<1.0
