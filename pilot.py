@@ -182,7 +182,12 @@ def prepare():
     # 3. write one script in that theme, then make the video
     try:
         import ai_brain
-        if ai_brain.has_ai():
+        # Only use the AI path when the channel explicitly opts in (ai_scripts).
+        # Otherwise the curated per-channel bank (script_composer) is used, which
+        # writes to THIS channel's content.json so make_video can find the id.
+        # ai_brain currently writes to the top-level content.json, so enabling it
+        # without that fix caused "Script id ai### not found" and failed builds.
+        if load(CONFIG, {}).get("ai_scripts") and ai_brain.has_ai():
             s = ai_brain.write_scripts(1)
             item = ai_brain.append_scripts(s)[0] if s else sc.compose(1, prefer=theme)[0]
         else:
@@ -256,7 +261,7 @@ def prepare_next():
         theme, _ = choose_theme()
         try:
             import ai_brain
-            if ai_brain.has_ai():
+            if load(CONFIG, {}).get("ai_scripts") and ai_brain.has_ai():
                 s = ai_brain.write_scripts(1)
                 item = ai_brain.append_scripts(s)[0] if s else sc.compose(1, prefer=theme)[0]
             else:
