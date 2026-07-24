@@ -1,0 +1,119 @@
+#!/usr/bin/env python3
+"""
+netcfg.py — decides whether internet traffic goes DIRECT or through a proxy,
+and can figure it out by itself.
+
+config.json:
+  "proxy":      "http://172.31.2.3:8080"   # your college proxy address
+  "proxy_mode": "auto" | "on" | "off"       # auto = detect the network for you
+
+AUTO detection: the college proxy lives on a private campus IP that is only
+reachable when you're actually on the college network. So we just try to reach
+it — if the proxy answers, you're on college → use it; if not, you're on your
+hotspot/home → go direct. Result is cached briefly so we don't probe constantly.
+
+Everything routes through netcfg so the whole app agrees:
+  - urllib tools (YouTube API) use netcfg.opener() — obeys our decision and
+    ignores the macOS system proxy either way.
+  - edge-tts voice is handed netcfg.proxy_url().
+  - Ollama is ALWAYS direct (handled in ai_brain) — localhost never proxied.
+"""
+
+import json
+import os
+import socket
+import time
+import urllib.request
+from urllib.parse import urlparse
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+CONFIG = os.path.join(HERE, "config.json")
+
+LOCAL = "localhost,127.0.0.1,::1,0.0.0.0"
+_CACHE = {"t": 0.0, "v": None}       # memoized auto-detect result
+_CACHE_TTL = 15                      # seconds — short so switching networks is picked up
+
+
+def _cfg():
+    try:
+        return json.load(open(CONFIG))
+    except Exception:
+        return {}
+
+
+def _mode(cfg):
+    # explicit proxy_mode wins; fall back to the old use_proxy bool
+    if "proxy_mode" in cfg:
+        return cfg["proxy_mode"]
+    return "on" if cfg.get("use_proxy") else "off"
+
+
+def _reachable(addr, timeout=2):
+    """True if we can open a TCP connection to the proxy host:port."""
+    try:
+        p = urlparse(addr)
+        host, port = p.hostname, p.port or 80
+        socket.create_connection((host, port), timeout=timeout).close()
+        return True
+    except Exception:
+        return False
+
+
+def resolve():
+    """Return the proxy URL to use right now, or '' for a direct connection."""
+    cfg = _cfg()
+    mode = _mode(cfg)
+    addr = (cfg.get("proxy") or "").strip()
+    if mode == "off" or not addr:
+        return "" if mode != "on" else addr
+    if mode == "on":
+        return addr
+    # auto: reachable proxy => on campus; unreachable => hotspot/home
+    now = time.time()
+    if _CACHE["v"] is not None and now - _CACHE["t"] < _CACHE_TTL:
+        return _CACHE["v"]
+    result = addr if _reachable(addr) else ""
+    _CACHE.update(t=now, v=result)
+    return result
+
+
+def detected():
+    """Human summary for the UI, e.g. 'Auto → college proxy (172.31.2.3:8080)'."""
+    cfg = _cfg()
+    mode = _mode(cfg)
+    px = resolve()
+    if mode == "on":
+        return f"Forced ON → proxy {px}" if px else "Forced ON (no address set)"
+    if mode == "off":
+        return "Forced OFF → direct connection"
+    return (f"Auto → college proxy detected ({px})" if px
+            else "Auto → direct connection (personal / hotspot)")
+
+
+def proxy_url():
+    return resolve()
+
+
+def opener():
+    """A urllib opener that uses our resolved proxy (or forces DIRECT), ignoring
+    whatever the macOS system proxy happens to be set to."""
+    px = resolve()
+    handler = urllib.request.ProxyHandler({"http": px, "https": px} if px else {})
+    return urllib.request.build_opener(handler)
+
+
+def proxy_env():
+    """Env additions so child processes route the same way (localhost excluded)."""
+    px = resolve()
+    if not px:
+        return {}
+    return {"HTTP_PROXY": px, "HTTPS_PROXY": px, "http_proxy": px, "https_proxy": px,
+            "NO_PROXY": LOCAL, "no_proxy": LOCAL}
+
+
+def apply():
+    os.environ.update(proxy_env())
+
+
+if __name__ == "__main__":
+    print(detected())

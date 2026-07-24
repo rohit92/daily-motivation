@@ -1,0 +1,49 @@
+# ============================================================
+#  SECRETS — never commit these
+# ============================================================
+# Google OAuth client (real credentials)
+client_secret.json
+# per-channel OAuth tokens
+**/yt_token.json
+# API keys stored as file fallbacks
+assets/youtube_api_key.txt
+assets/anthropic_api_key.txt
+*.pem
+.env
+.env.*
+!.env.example
+
+# ============================================================
+#  Generated media & per-run output  (regenerable, large)
+# ============================================================
+channels/*/output/
+channels/*/long_form/
+# edge-tts / piper voice output
+assets/voices/
+# make_music.py output
+assets/music/
+*.mp4
+*.mov
+*.mkv
+*.mp3
+*.wav
+# ...but keep small brand assets even if they are audio/img
+!assets/brand/**
+backups/
+.work/
+
+# ============================================================
+#  Python
+# ============================================================
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# ============================================================
+#  OS / editor
+# ============================================================
+.DS_Store

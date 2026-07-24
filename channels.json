@@ -1,0 +1,52 @@
+{
+  "channels": [
+    {
+      "slug": "motivation",
+      "name": "Mindset Refuel",
+      "handle": "@mindsetrefuel",
+      "niche": "motivation",
+      "category_label": "MINDSET REFUEL",
+      "voice": "en-IN-PrabhatNeural",
+      "brand_color": [
+        240,
+        190,
+        70
+      ],
+      "active": true,
+      "id": "UCcoV2hwXrCivIRT-eJaRUng",
+      "post_time_ist": "19:30"
+    },
+    {
+      "slug": "education",
+      "name": "Speak Fluent",
+      "handle": "@speak_fluent_language",
+      "niche": "everyday-english",
+      "category_label": "SPEAK FLUENT",
+      "voice": "en-IN-NeerjaNeural",
+      "brand_color": [
+        70,
+        150,
+        240
+      ],
+      "active": true,
+      "id": "UCDqbNH3COyGSS5B5HbRsnFQ",
+      "post_time_ist": "20:00"
+    },
+    {
+      "slug": "facts",
+      "name": "Mind Blown",
+      "handle": "@mind_blown-t2h",
+      "niche": "did-you-know-facts",
+      "category_label": "MIND BLOWN",
+      "voice": "en-IN-PrabhatNeural",
+      "brand_color": [
+        90,
+        200,
+        120
+      ],
+      "active": true,
+      "id": "UCgGW9ELX9Tc2Y1fO8TC86vA",
+      "post_time_ist": "20:30"
+    }
+  ]
+}
