@@ -126,9 +126,26 @@ def save_json(path, data):
 
 def pick_items(content, state, count):
     used = set(state.get("used_ids", []))
-    queue = [it for it in content["items"] if it["id"] not in used]
+    by_id = {it["id"]: it for it in content["items"]}
+
+    def hook(it):
+        lines = it.get("lines") or [""]
+        return (lines[0] or "").strip().lower()
+
+    # The first line is spoken first AND becomes the title, so two scripts that
+    # share it produce two videos that look identical in the feed. Scripts
+    # composed before script_composer enforced unique hooks can still collide,
+    # so filter them out here too — this is the last gate before a render.
+    spoken = {hook(by_id[i]) for i in used if i in by_id}
+    queue = []
+    for it in content["items"]:
+        if it["id"] in used or hook(it) in spoken:
+            continue
+        spoken.add(hook(it))
+        queue.append(it)
     if not queue:
-        sys.exit("All items used. Add more to content.json or run with --reset.")
+        sys.exit("No scripts left with an unused hook. Add new hooks to the "
+                 "bank in script_composer.py (see --stats for the count).")
     return queue[:count]
 
 
@@ -611,6 +628,8 @@ def main():
     ap.add_argument("--batch", type=int, default=1)
     ap.add_argument("--reset", action="store_true")
     ap.add_argument("--id", help="generate one specific script id (used by the pilot)")
+    ap.add_argument("--force", action="store_true",
+                    help="rebuild an --id that was already made (creates a duplicate)")
     _paths.add_channel_arg(ap)
     args = ap.parse_args()
 
@@ -646,6 +665,14 @@ def main():
         items = [it for it in content["items"] if it["id"] == args.id]
         if not items:
             sys.exit(f"Script id {args.id} not found in content.json")
+        # --id skipped pick_items, which is the ONLY place used_ids was checked.
+        # Rebuilding a used id ships the same script twice under two file names —
+        # that is how c015/c014 went out twice and c018 three times. YouTube reads
+        # near-identical uploads as reused content, which risks monetization.
+        if args.id in set(state.get("used_ids", [])) and not args.force:
+            sys.exit(f"Script id {args.id} was already made — refusing to build a "
+                     f"duplicate (YouTube penalizes reused content). "
+                     f"Use --force only if you really want a second cut.")
     else:
         items = pick_items(content, state, args.batch)
     print(f"Generating {len(items)} video(s)...\n")

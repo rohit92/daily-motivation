@@ -535,11 +535,34 @@ def theme_weights():
     return weights
 
 
-def remaining_combos(used):
+def hook_key(theme, h):
+    return f"{theme}:h{h}"
+
+
+def hooks_from_combos(used_combos):
+    """Recover which hooks a channel has already published, from the older
+    used_combos ledger (keys look like 'theme:hbc', one digit per slot)."""
+    out = set()
+    for key in used_combos:
+        theme, _, digits = key.rpartition(":")
+        if theme and len(digits) == 3 and digits.isdigit():
+            out.add(hook_key(theme, int(digits[0])))
+    return out
+
+
+def remaining_combos(used, used_hooks=()):
     atomic = _NICHE in ATOMIC_NICHES
     out = []
     for theme, spec in BANK.items():
         for h in range(len(spec["hooks"])):
+            # The hook is the first spoken line AND becomes the video title, so
+            # reusing one ships a near-identical video: same headline, same
+            # opening. used_combos only blocked the exact hook+body+closer
+            # triple, which let a fresh combo repeat an old hook — that is how
+            # "Doubt has killed more dreams" and "You don't need perfect
+            # grammar" got queued a second time behind videos already live.
+            if hook_key(theme, h) in used_hooks:
+                continue
             for b in range(len(spec["bodies"])):
                 # facts/tips: the hook and its explanation are one unit — only
                 # pair body[i] with hook[i], never mix two different facts.
@@ -556,11 +579,16 @@ def compose(n, prefer=None):
     content = load(CONTENT, {"items": []})
     state = load(STATE, {})
     used = set(state.get("used_combos", []))
+    # Backfill on first run so hooks published before this rule existed still
+    # count as used — otherwise the very next compose could repeat one.
+    used_hooks = set(state.get("used_hooks") or hooks_from_combos(used))
 
-    pool = remaining_combos(used)
+    pool = remaining_combos(used, used_hooks)
     if not pool:
-        raise SystemExit("All combos used! Ask Claude for a new bank, or reset "
-                         "'used_combos' in state.json.")
+        raise SystemExit(
+            f"Out of fresh hooks for this channel ({len(used_hooks)} used). "
+            f"Every remaining combo would repeat a headline that is already "
+            f"published. Add new hooks to the bank in script_composer.py.")
 
     weights = theme_weights()
     if prefer and prefer in weights:
@@ -586,7 +614,10 @@ def compose(n, prefer=None):
         parts = {(theme, "h", h), (theme, "b", b), (theme, "c", c)}
         if parts & batch_parts:
             continue
+        if hook_key(theme, h) in used_hooks:
+            continue                 # claimed earlier in this same batch
         batch_parts |= parts
+        used_hooks.add(hook_key(theme, h))
         spec = BANK[theme]
         lines = spec["hooks"][h] + spec["bodies"][b] + spec["closers"][c]
         item = {"id": f"c{seq:03d}", "theme": theme, "lines": lines}
@@ -598,6 +629,7 @@ def compose(n, prefer=None):
         seq += 1
 
     state["used_combos"] = sorted(used)
+    state["used_hooks"] = sorted(used_hooks)
     save(CONTENT, content)
     save(STATE, state)
     return added
@@ -621,9 +653,13 @@ def main():
 
     if args.stats:
         state = load(STATE, {})
-        pool = remaining_combos(set(state.get("used_combos", [])))
+        combos = set(state.get("used_combos", []))
+        hooks = set(state.get("used_hooks") or hooks_from_combos(combos))
+        pool = remaining_combos(combos, hooks)
         print(f"Unused scripts in content.json : {unused_count()}")
         print(f"Fresh combos still available   : {len(pool)}")
+        print(f"Unused headlines (hard limit)  : "
+              f"{len({(c[0], c[1]) for c in pool})} — one video each")
         w = theme_weights()
         boosted = [t for t, v in w.items() if v > 1.0]
         print(f"Trend-boosted themes this week : {boosted or '(no trend report)'}")

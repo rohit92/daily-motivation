@@ -65,11 +65,14 @@ def load(path, default=None):
     return json.load(open(path)) if os.path.exists(path) else default
 
 
-def publish_time():
+def publish_time(on_date=None):
     """Prime-time publishing: if the daily slot (config post_time_ist, default
     7:30 PM IST) is still ahead, return it as RFC3339 UTC so YouTube holds the
     video private and flips it public at exactly that time. Returns None when
-    the slot already passed (or the feature is off) → publish immediately."""
+    the slot already passed (or the feature is off) → publish immediately.
+
+    Pass `on_date` (a datetime.date) to target that day's slot instead of today's
+    — that is how a whole week can be uploaded now and released one per day."""
     cfg = load(CONFIG, {}) or {}
     if not cfg.get("schedule_uploads", True):
         return None
@@ -80,6 +83,9 @@ def publish_time():
         h, m = map(int, str(cfg.get("post_time_ist", "19:30")).split(":"))
         now = datetime.now(ist)
         slot = now.replace(hour=h, minute=m, second=0, microsecond=0)
+        if on_date:
+            slot = slot.replace(year=on_date.year, month=on_date.month,
+                                day=on_date.day)
         if slot - now < timedelta(minutes=10):
             return None                    # it's evening already — go live now
         return slot.astimezone(ZoneInfo("UTC")).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -125,6 +131,33 @@ def _check_accepted(yt, vid):
         raise
     except Exception as e:                 # verification is best-effort only
         print(f"   · post-upload check skipped ({e})")
+
+
+def mark_uploaded(library_path, filename, vid, publish_at=None):
+    """Record the upload against the library entry, INCLUDING the YouTube id.
+
+    Storing the id is what makes 'uploaded' verifiable. Without it the only link
+    back to YouTube was the title, so two videos built from the same script (the
+    old duplicate bug) both matched the one live video: each inherited its view
+    count, and a video that never actually reached YouTube still read 'uploaded'.
+    reconcile.py uses this id to check truth against the API.
+    """
+    lib = load(library_path, {"videos": {}}) or {"videos": {}}
+    base = os.path.basename(filename).replace("_toon", "")
+    touched = False
+    for name in (os.path.basename(filename), base):
+        v = lib.get("videos", {}).get(name)
+        if v is not None:
+            v["status"] = "uploaded"
+            v["video_id"] = vid
+            v["uploaded_at"] = date.today().isoformat()
+            if publish_at:
+                v["publish_at"] = publish_at
+            touched = True
+    if touched:
+        lib["last_upload_date"] = date.today().isoformat()
+        json.dump(lib, open(library_path, "w"), indent=2)
+    return touched
 
 
 def upload(path, title, description, thumb=None, comment=None, longform=False,
@@ -215,6 +248,9 @@ def main():
     ap.add_argument("--longform", action="store_true", help="normal 16:9 video, not a Short")
     ap.add_argument("--now", action="store_true",
                     help="publish immediately (skip prime-time scheduling)")
+    ap.add_argument("--publish-at", dest="publish_at", metavar="YYYY-MM-DD",
+                    help="go public at this date's prime-time slot (upload now, "
+                         "release later)")
     _paths.add_channel_arg(ap)
     a = ap.parse_args()
     set_channel(a.channel)
@@ -235,21 +271,20 @@ def main():
         sys.exit(f"Video not found: {path}")
 
     # the daily Short goes out at prime time; --file uploads publish right away
-    publish_at = None if (a.now or not used_mission) else publish_time()
-    upload(path, title, desc, thumb=thumb, comment=comment, longform=a.longform,
-           publish_at=publish_at)
+    if a.publish_at:
+        on = date.fromisoformat(a.publish_at)
+        publish_at = publish_time(on_date=on)
+        if not publish_at:
+            sys.exit(f"✗ {on}'s slot has already passed — nothing to schedule.")
+    else:
+        publish_at = None if (a.now or not used_mission) else publish_time()
+    vid = upload(path, title, desc, thumb=thumb, comment=comment,
+                 longform=a.longform, publish_at=publish_at)
 
     # mark uploaded + clear today's mission + stamp the day (double-post guard)
-    if used_mission:
-        lib = load(LIBRARY, {"videos": {}})
-        base = os.path.basename(path).replace("_toon", "")
-        for name in (os.path.basename(path), base):
-            if name in lib["videos"]:
-                lib["videos"][name]["status"] = "uploaded"
-        lib["last_upload_date"] = date.today().isoformat()
-        json.dump(lib, open(LIBRARY, "w"), indent=2)
-        if os.path.exists(TODAY):
-            os.remove(TODAY)
+    mark_uploaded(LIBRARY, path, vid, publish_at)
+    if used_mission and os.path.exists(TODAY):
+        os.remove(TODAY)
 
     # event-driven auto-replenish: right after every upload, kick a DETACHED job
     # that refreshes trends and buffers the NEXT video for every channel, so the

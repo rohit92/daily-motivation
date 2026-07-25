@@ -27,7 +27,16 @@ import urllib.request
 from urllib.parse import urlparse
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+# The proxy is a property of the NETWORK, not of a channel, so one setting drives
+# everything. It lives in the channel configs (that's what the dashboard writes),
+# so read the default channel's file and keep the old root config.json as an
+# override. Reading only the root path was a silent no-op bug: config.json has not
+# existed since the move to channels/<slug>/, so _cfg() always returned {} and the
+# dashboard's proxy switch did nothing at all.
+import paths as _paths
+
 CONFIG = os.path.join(HERE, "config.json")
+_CONFIG_FALLBACK = _paths.paths(None)["config"]
 
 LOCAL = "localhost,127.0.0.1,::1,0.0.0.0"
 _CACHE = {"t": 0.0, "v": None}       # memoized auto-detect result
@@ -35,10 +44,12 @@ _CACHE_TTL = 15                      # seconds — short so switching networks i
 
 
 def _cfg():
-    try:
-        return json.load(open(CONFIG))
-    except Exception:
-        return {}
+    for path in (CONFIG, _CONFIG_FALLBACK):
+        try:
+            return json.load(open(path))
+        except Exception:
+            continue
+    return {}
 
 
 def _mode(cfg):

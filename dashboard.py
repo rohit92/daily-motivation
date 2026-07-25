@@ -171,7 +171,68 @@ def save_json(path, data):
 
 def mission():
     m = load(TODAY)
-    return m if m and m.get("date") == date.today().isoformat() else None
+    if not (m and m.get("date") == date.today().isoformat()):
+        return None
+    # The calendar (schedule_queue.py) uploads ahead of the release time, so a
+    # mission written this morning can name a video that is ALREADY on YouTube
+    # waiting to go public. Still showing it with a live "upload" button is one
+    # click away from posting the same video twice, which is exactly the reused
+    # content YouTube penalizes. Only 'ready' means genuinely un-posted.
+    v = ((load(LIBRARY, {"videos": {}}) or {}).get("videos") or {}).get(
+        m.get("file", ""))
+    if v is not None and v.get("status") != "ready":
+        return None
+    return m
+
+
+def calendar_html():
+    """The posting calendar (schedule.json) rendered as a compact strip.
+
+    Uploads now happen ahead of time with YouTube's publishAt, so 'nothing to do
+    today' is the normal, healthy state. Without showing the calendar that looks
+    broken — this is the panel that says "yes, it's handled, here's when".
+    """
+    q = load(os.path.join(HERE, "schedule.json"), {}) or {}
+    items = q.get("items") or []
+    if not items:
+        return ""
+    today = date.today().isoformat()
+    upcoming = [i for i in items if i["publish_date"] >= today][:24]
+    if not upcoming:
+        return ""
+
+    by_day = {}
+    for i in upcoming:
+        by_day.setdefault(i["publish_date"], []).append(i)
+
+    cols = []
+    for day in sorted(by_day):
+        rows = []
+        for i in sorted(by_day[day], key=lambda x: x["channel"]):
+            live = i["status"] == "uploaded"
+            mark = "✅" if live else "🕓"
+            note = "on YouTube, goes public automatically" if live else "queued"
+            kind = " · long" if i.get("kind") == "longform" else ""
+            rows.append(
+                f"<div style='margin:4px 0;font-size:12px' title='{note}'>"
+                f"{mark} <b>{dhtml(i['channel'])}</b>{kind}<br>"
+                f"<span class='muted'>"
+                f"{dhtml((i.get('title') or '').split('#')[0].strip()[:34])}</span></div>")
+        label = "TODAY" if day == today else day[5:]
+        cols.append(
+            f"<div style='flex:1;min-width:150px;background:#0e1626;"
+            f"border:1px solid var(--line);border-radius:12px;padding:10px 12px'>"
+            f"<div style='font-weight:700;margin-bottom:6px'>{label}</div>"
+            f"{''.join(rows)}</div>")
+
+    done = sum(1 for i in items if i["status"] == "uploaded")
+    return (f"<div class='mtitle' style='margin-bottom:8px'>📅 Your posting calendar "
+            f"— {done} already on YouTube, publishing themselves</div>"
+            f"<div class='why' style='margin-bottom:8px'>✅ = uploaded and waiting for "
+            f"its release time. 🕓 = queued; it uploads automatically the day before. "
+            f"You don't have to be at the computer.</div>"
+            f"<div style='display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px'>"
+            + "".join(cols) + "</div>")
 
 
 def latest_longform():
@@ -1037,6 +1098,8 @@ def home():
     channel_switcher = "".join(switcher_bits)
 
     # ---- MASTER strip: every channel at a glance, all on one screen ----
+    cal_items = (load(os.path.join(HERE, "schedule.json"), {}) or {}).get("items") or []
+    today_iso = date.today().isoformat()
     master_cards = []
     for c in channels():
         s = c["slug"]; Pc = _paths.paths(s)
@@ -1047,7 +1110,17 @@ def home():
         # video prepared", which read as "ready" and sent you to click Prepare.
         mc = load(Pc["today"], {}) or {}
         fresh = mc.get("date") == date.today().isoformat()
-        if fresh:
+        # The calendar is the strongest signal: if today's video is already on
+        # YouTube waiting for its release time, say so. Otherwise this card
+        # nags you to post something that is, in fact, already handled.
+        sched = next((i for i in cal_items
+                      if i["channel"] == s and i["publish_date"] == today_iso
+                      and i.get("kind") != "longform"), None)
+        if sched and sched["status"] == "uploaded":
+            mt = "✅ posts by itself tonight"
+        elif sched:
+            mt = "🕓 queued — uploads automatically"
+        elif fresh:
             mt = "🎬 " + ((mc.get("title", "") or "").split("#")[0].strip()
                           or "ready to post")[:32]
         else:
@@ -1079,6 +1152,7 @@ def home():
     n_active = len(active_channels())
     is_sun = date.today().weekday() == 6
     runall_html = (master_html
+        + calendar_html()
         + f"<div class='runall'><div class='mtitle'>🚀 Run all {n_active} channels — one click</div>"
         f"<div class='why'>Generates today's Short for every channel"
         + (" and builds each weekly long-form (it's Sunday)" if is_sun else "")

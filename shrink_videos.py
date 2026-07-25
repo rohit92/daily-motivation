@@ -99,8 +99,11 @@ def main():
         lib = json.load(open(P["library"])) if os.path.exists(P["library"]) else {"videos": {}}
         print(f"[{slug}]")
         for name, v in sorted((lib.get("videos") or {}).items()):
-            if v.get("status") == "uploaded":
-                continue                              # already on YouTube
+            # "uploaded" is already on YouTube; "duplicate" is a dead-end entry
+            # reconcile.py retired and will never be posted. Neither is worth
+            # spending minutes of CPU re-encoding.
+            if v.get("status") in ("uploaded", "duplicate"):
+                continue
             path = os.path.join(P["output"], name)
             if not os.path.exists(path):
                 continue
@@ -109,6 +112,22 @@ def main():
                 old, new = res
                 saved += old - new
                 print(f"    ✓ {name}: {old:.1f} MB → {new:.1f} MB")
+
+        # Long-form videos were built by the same oversized encoder (one is
+        # 96 MB for 5 minutes) and are the slowest, most upload-fragile files
+        # in the project — they need this more than the Shorts do.
+        uploaded_lf = {os.path.basename(x.get("file", ""))
+                       for x in (lib.get("longform") or {}).values()
+                       if isinstance(x, dict) and x.get("status") == "uploaded"}
+        for name in sorted(os.listdir(P["long_form"])
+                           if os.path.isdir(P["long_form"]) else []):
+            if not name.endswith(".mp4") or name in uploaded_lf:
+                continue
+            res = shrink(os.path.join(P["long_form"], name), dry=a.dry_run)
+            if res:
+                old, new = res
+                saved += old - new
+                print(f"    ✓ long_form/{name}: {old:.1f} MB → {new:.1f} MB")
     if not a.dry_run and saved:
         print(f"\nReclaimed {saved:.1f} MB — uploads will be much faster.")
     elif not a.dry_run:

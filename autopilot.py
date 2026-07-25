@@ -232,6 +232,33 @@ def run_channel(evening):
                    title=cname)
 
 
+def run_calendar():
+    """Drive the shared posting calendar (schedule_queue.py).
+
+    This is the ONE place uploads happen. It tops the calendar up with any newly
+    built videos, then uploads whatever is due — a day ahead of its release, so a
+    failed transfer still has retries left before the video is supposed to go
+    public. YouTube's publishAt makes it appear at the channel's prime time.
+
+    It also respects the API quota: all three channels share one 10,000-unit/day
+    project and each upload costs 1,600, so the queue stops at five and picks the
+    rest up tomorrow instead of failing them.
+
+    The per-channel evening pass below still runs, but its posted_today() guard
+    sees what the calendar just did and won't post a second video.
+    """
+    from datetime import timedelta
+    try:
+        import schedule_queue as sq
+        sq.plan(date.today() + timedelta(days=6))
+        posted = sq.run()
+        log(f"✓ calendar: {posted} video(s) uploaded")
+        return posted
+    except Exception as e:
+        log(f"✗ calendar failed: {type(e).__name__}: {e}")
+        return 0
+
+
 def main():
     """Loop the autopilot over every ACTIVE channel (morning prepares each;
     evening uploads each, guarded one-per-day-per-channel). A single --channel
@@ -249,6 +276,12 @@ def main():
                 else [c["slug"] for c in _paths.active_channels()])
     log(f"=== autopilot run ({'evening' if evening else 'morning'}) — "
         f"channels: {', '.join(channels)} ===")
+
+    # The calendar runs FIRST and covers every channel in one pass, so the
+    # per-channel work below only has to fill gaps it could not cover.
+    if not a.channel:
+        run_calendar()
+
     for slug in channels:
         set_channel(slug)
         try:
