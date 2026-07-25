@@ -128,17 +128,7 @@ def prepare():
     else:
         print("  · channel scan skipped (offline or key missing) — continuing")
 
-    # 1b. scan the internet for fresh trends so each day's video can differ.
-    #     Runs every generation by default (config scan_on_generate); a very
-    #     stale report is always refreshed regardless.
-    cfg = load(CONFIG, {})
-    stale = (not os.path.exists(TRENDS) or
-             time.time() - os.path.getmtime(TRENDS) > 3 * 86400)
-    if cfg.get("scan_on_generate", True) or stale:
-        print("  · scanning the internet for this week's trends…")
-        run(["trend_scan.py", "--region", "US"])
-
-    # 1c. a ready Short cut from Sunday's story takes priority — it funnels
+    # 1b. a ready Short cut from Sunday's story takes priority — it funnels
     #     viewers to the full story (nothing to generate, it's already built)
     lib = load(LIBRARY, {"videos": {}})
     for name, v in sorted(lib["videos"].items(), key=lambda kv: kv[1].get("seq", 0)):
@@ -175,7 +165,18 @@ def prepare():
         print_status(mission)
         return
 
-    # 2. choose today's topic
+    # 2. nothing buffered → we really are building one. Only NOW is it worth
+    #    scanning the internet for fresh trends (it takes ~a minute). Doing this
+    #    before the buffer check made "Prepare" feel like it was rendering a new
+    #    video every time, when usually it just promotes one that already exists.
+    cfg = load(CONFIG, {})
+    stale = (not os.path.exists(TRENDS) or
+             time.time() - os.path.getmtime(TRENDS) > 3 * 86400)
+    if cfg.get("scan_on_generate", True) or stale:
+        print("  · scanning the internet for this week's trends…")
+        run(["trend_scan.py", "--region", "US"])
+
+    # 3. choose today's topic
     theme, reason = choose_theme()
     print(f"  ✓ today's topic: {theme}  ({reason})")
 

@@ -25,12 +25,25 @@ Privacy comes from config.json ("upload_privacy": public/unlisted/private).
 """
 
 import argparse
+import http.client
 import json
 import os
 import sys
+import time
 from datetime import date
 
 import paths as _paths
+
+# Network failures that mean "try that chunk again", not "give up". IOError
+# covers socket errors, timeouts and urllib URLError (all OSError subclasses);
+# HttpError carries Google's 5xx blips (filtered by RETRIABLE_STATUS below).
+try:
+    from googleapiclient.errors import HttpError as _HttpError
+    RETRIABLE = (IOError, http.client.HTTPException, _HttpError)
+except ImportError:                        # library missing → auth fails first
+    RETRIABLE = (IOError, http.client.HTTPException)
+RETRIABLE_STATUS = {500, 502, 503, 504}   # transient Google-side errors
+MAX_RETRIES = 6
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 _P = _paths.paths(None)
@@ -89,6 +102,31 @@ def get_service():
         sys.exit(f"✗ {e}")
 
 
+def _check_accepted(yt, vid):
+    """Did YouTube actually ACCEPT the bytes? A truncated upload is reported as
+    a successful insert but then sits in 'processing' forever at 0s duration,
+    so the Short silently never goes live. Fail loudly instead — the caller
+    (autopilot) then alerts you the same evening instead of days later."""
+    try:
+        r = yt.videos().list(part="status,processingDetails", id=vid).execute()
+        items = r.get("items") or []
+        if not items:
+            print("   ⚠ could not read the video back — check it on YouTube.")
+            return
+        st = items[0].get("status", {}) or {}
+        bad = st.get("rejectionReason") or st.get("failureReason")
+        if st.get("uploadStatus") in ("rejected", "failed") or bad:
+            raise RuntimeError(
+                f"YouTube REJECTED the upload ({bad or st.get('uploadStatus')}). "
+                f"The video is not live: https://youtube.com/watch?v={vid}")
+        print(f"   ✓ accepted by YouTube (processing: "
+              f"{(items[0].get('processingDetails') or {}).get('processingStatus', '?')})")
+    except RuntimeError:
+        raise
+    except Exception as e:                 # verification is best-effort only
+        print(f"   · post-upload check skipped ({e})")
+
+
 def upload(path, title, description, thumb=None, comment=None, longform=False,
            publish_at=None):
     from googleapiclient.http import MediaFileUpload
@@ -103,17 +141,42 @@ def upload(path, title, description, thumb=None, comment=None, longform=False,
                     "categoryId": "22"},
         "status": status_body,
     }
-    media = MediaFileUpload(path, chunksize=-1, resumable=True)
+    # 4 MB chunks make the upload GENUINELY resumable: a dropped connection
+    # retries just that chunk instead of restarting — or worse, half-delivering
+    # the file. chunksize=-1 pushed the whole video in a single request, which
+    # is how a Short ended up stuck in YouTube "processing" at 0s duration
+    # after a flaky upload (video adANN4-nIjg on the facts channel).
+    media = MediaFileUpload(path, chunksize=4 * 1024 * 1024, resumable=True,
+                            mimetype="video/*")
     req = yt.videos().insert(part="snippet,status", body=body, media_body=media)
-    print(f"Uploading {os.path.basename(path)} "
-          f"({'scheduled' if publish_at else privacy})…")
-    resp = None
+    size_mb = os.path.getsize(path) / (1024 * 1024)
+    print(f"Uploading {os.path.basename(path)} ({size_mb:.1f} MB, "
+          f"{'scheduled' if publish_at else privacy})…")
+    resp, tries = None, 0
     while resp is None:
-        status, resp = req.next_chunk()
+        try:
+            status, resp = req.next_chunk()
+            if status:
+                print(f"   … {int(status.progress() * 100)}%")
+            tries = 0                      # a good chunk resets the retry budget
+        except RETRIABLE as e:
+            # transient: server hiccup, dropped socket, proxy blip. Resume.
+            code = getattr(getattr(e, "resp", None), "status", None)
+            if code is not None and code not in RETRIABLE_STATUS:
+                raise                      # a real API error (quota, auth, bad file)
+            tries += 1
+            if tries > MAX_RETRIES:
+                raise RuntimeError(
+                    f"upload failed after {MAX_RETRIES} retries: {e}") from e
+            wait = min(2 ** tries, 30)
+            print(f"   · network hiccup ({type(e).__name__}) — resuming in "
+                  f"{wait}s [{tries}/{MAX_RETRIES}]")
+            time.sleep(wait)
     vid = resp["id"]
     url = (f"https://youtube.com/watch?v={vid}" if longform
            else f"https://youtube.com/shorts/{vid}")
     print(f"✓ Uploaded: {url}")
+    _check_accepted(yt, vid)
     if publish_at:
         slot = load(CONFIG, {}).get("post_time_ist", "19:30")
         print(f"✓ Scheduled — YouTube publishes it at your prime time "

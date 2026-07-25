@@ -1040,9 +1040,25 @@ def home():
     master_cards = []
     for c in channels():
         s = c["slug"]; Pc = _paths.paths(s)
-        chc = (load(Pc["library"], {}) or {}).get("channel", {}) or {}
+        libc = load(Pc["library"], {}) or {}
+        chc = libc.get("channel", {}) or {}
+        # Only call it today's video if the mission is actually for TODAY. The
+        # card used to show yesterday's title while the page below it said "no
+        # video prepared", which read as "ready" and sent you to click Prepare.
         mc = load(Pc["today"], {}) or {}
-        mt = ((mc.get("title", "") or "").split("#")[0].strip() or "no video ready yet")[:34]
+        fresh = mc.get("date") == date.today().isoformat()
+        if fresh:
+            mt = "🎬 " + ((mc.get("title", "") or "").split("#")[0].strip()
+                          or "ready to post")[:32]
+        else:
+            # nothing for today — but a buffered video may already be built,
+            # in which case preparing is instant (no new render).
+            buffered = any(
+                v.get("status") == "ready"
+                and os.path.exists(os.path.join(Pc["output"], n))
+                for n, v in (libc.get("videos") or {}).items())
+            mt = ("📦 buffered — 1 click to post" if buffered
+                  else "⚪ needs preparing")
         col = c.get("brand_color", [240, 190, 70])
         ring = "2px solid #fff" if s == cur else "1px solid var(--line)"
         master_cards.append(
@@ -1054,7 +1070,7 @@ def home():
             f"<b>{dhtml(c.get('name', s))}</b></div>"
             f"<div class='muted' style='margin:6px 0 4px'>{chc.get('subs',0):,} subs · "
             f"{chc.get('video_count',0)} posted</div>"
-            f"<div style='font-size:13px;opacity:.85'>🎬 {dhtml(mt)}</div></a>")
+            f"<div style='font-size:13px;opacity:.85'>{dhtml(mt)}</div></a>")
     master_html = ("<div class='mtitle' style='margin-bottom:8px'>📺 All channels — at a glance "
                    "(click one to open it)</div>"
                    "<div style='display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px'>"
