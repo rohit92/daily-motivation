@@ -121,6 +121,64 @@ class TestHookUniqueness(unittest.TestCase):
             make_video.pick_items(content, {"used_ids": ["c001"]}, 1)
 
 
+class TestPerformanceFeedback(unittest.TestCase):
+    """Themes that actually got views should be made more often — carefully."""
+
+    def _lib(self, rows):
+        """rows: (theme, views, days_ago) -> a library.json shaped dict."""
+        return {"videos": {
+            f"v{n}.mp4": {
+                "status": "uploaded", "video_id": f"id{n}", "theme": t,
+                "views": v,
+                "uploaded_at": (date.today() - timedelta(days=d)).isoformat(),
+            } for n, (t, v, d) in enumerate(rows)}}
+
+    def _weights(self, rows, niche="motivation"):
+        SC.set_channel(niche)
+        with mock.patch.object(SC, "load", side_effect=lambda p, d=None: (
+                self._lib(rows) if p == SC.LIBRARY else d)):
+            return SC.performance_weights()
+
+    def test_a_winning_theme_is_boosted_and_a_loser_damped(self):
+        w = self._weights([("discipline", 400, 10), ("discipline", 300, 10),
+                           ("doubt", 5, 10), ("doubt", 3, 10)])
+        self.assertGreater(w["discipline"], 1.2)
+        self.assertLess(w["doubt"], 1.0)
+
+    def test_nothing_is_ever_killed_off(self):
+        """A dead theme still gets tried — otherwise we can never re-learn it."""
+        w = self._weights([("discipline", 9999, 10), ("doubt", 0, 10)])
+        self.assertGreaterEqual(w["doubt"], SC.PERF_MIN_FLOOR)
+        self.assertLessEqual(w["discipline"], SC.PERF_MAX_BOOST)
+
+    def test_one_lucky_video_cannot_take_over(self):
+        """Shrinkage: n=1 must move the weight far less than n=6 does."""
+        one = self._weights([("discipline", 500, 10), ("doubt", 10, 10)])
+        many = self._weights([("discipline", 500, 10)] * 6 + [("doubt", 10, 10)])
+        self.assertLess(one["discipline"], many["discipline"])
+
+    def test_brand_new_videos_are_not_scored(self):
+        """0 views on a video posted today means nothing — ignore it."""
+        self.assertEqual(self._weights([("discipline", 0, 0)]), {})
+
+    def test_no_history_means_no_opinion(self):
+        self.assertEqual(self._weights([]), {})
+
+    def test_unsent_uploads_are_not_counted(self):
+        """No video_id = it never actually reached YouTube (the old silent bug)."""
+        SC.set_channel("motivation")
+        lib = {"videos": {"a.mp4": {"status": "uploaded", "theme": "doubt",
+                                    "views": 900, "uploaded_at": "2026-01-01"}}}
+        with mock.patch.object(SC, "load", side_effect=lambda p, d=None: (
+                lib if p == SC.LIBRARY else d)):
+            self.assertEqual(SC.theme_rates(), {})
+
+    def test_views_are_rated_per_day_not_totalled(self):
+        """Otherwise 'best theme' just means 'oldest video'."""
+        w = self._weights([("discipline", 100, 100), ("doubt", 90, 3)])
+        self.assertGreater(w["doubt"], w["discipline"])
+
+
 class TestLongform(unittest.TestCase):
     def test_short_longform_is_not_scheduled(self):
         """A 90-second 'long-form' earns no watch time — skip it."""

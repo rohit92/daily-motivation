@@ -81,7 +81,8 @@ def log(m): JOB["log"].append(m)
 # doctor/ai_brain operate on shared/global data and take no --channel.
 _CHANNEL_AWARE = {"pilot.py", "make_video.py", "metadata.py", "upload_youtube.py",
                   "channel_stats.py", "analytics.py", "channel_control.py",
-                  "evening.py", "storyteller.py", "make_longform.py", "progress.py"}
+                  "evening.py", "storyteller.py", "make_longform.py", "progress.py",
+                  "schedule_queue.py"}
 
 
 def _with_channel(cmd, channel):
@@ -233,6 +234,100 @@ def calendar_html():
             f"You don't have to be at the computer.</div>"
             f"<div style='display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px'>"
             + "".join(cols) + "</div>")
+
+
+def queue_card(slug):
+    """What this ONE channel does next, with the button that does it.
+
+    Replaces a dead end. The page used to say "No video prepared for today" and
+    offer only "Prepare", which was wrong in the two cases that now matter: the
+    video may already be on YouTube waiting for its release time, or the next
+    one may be sitting in the calendar. Both looked like "nothing exists" and
+    invited a rebuild of content that was already handled.
+    """
+    q = load(os.path.join(HERE, "schedule.json"), {}) or {}
+    mine = [i for i in (q.get("items") or []) if i["channel"] == slug]
+    today = date.today().isoformat()
+
+    def card(title, why, row):
+        return (f"<div class='mission'><div class='m-body'>"
+                f"<div class='mtitle'>{title}</div><div class='why'>{why}</div>"
+                f"<div class='row'>{row}</div></div></div>")
+
+    live = [i for i in mine if i["status"] == "uploaded"
+            and i["publish_date"] == today]
+    if live:
+        i = live[0]
+        # post_time_ist is the key upload_youtube actually schedules against;
+        # "post_time" never existed, so this card used to say "prime time" on
+        # every channel instead of each channel's real, staggered slot.
+        when = (load(CONFIG, {}) or {}).get("post_time_ist", "19:30") + " IST"
+        watch = "".join(
+            f"<button class='mini' onclick=\"window.open("
+            f"'https://youtu.be/{esc(x['video_id'])}','_blank')\">▶ "
+            f"{'long-form' if x.get('kind') == 'longform' else 'Short'}</button>"
+            for x in live if x.get("video_id"))
+        # Today being covered must not hide a broken upload further down the
+        # queue — that is how failures went unnoticed before.
+        broken = [i for i in mine if i["status"] == "failed"]
+        warn = (f"<br><span style='color:var(--gold)'>⚠ {len(broken)} later "
+                f"upload(s) failed and will be retried automatically — see the "
+                f"calendar above.</span>" if broken else "")
+        return card(
+            f"✅ Today is done — {len(live)} video(s) already on YouTube",
+            f"Uploaded and scheduled. YouTube makes {'them' if len(live) > 1 else 'it'} "
+            f"public at {esc(when)} today by itself — you don't have to be at the "
+            f"computer. Nothing to click." + warn,
+            watch + "<button class='mini' onclick='pilot()'>🚀 Build an extra one</button>")
+
+    nxt = sorted((i for i in mine if i["status"] in ("pending", "failed")),
+                 key=lambda i: i["publish_date"])
+    if nxt:
+        i = nxt[0]
+        late = i["status"] == "failed"
+        head = (i.get("title") or "").split("#")[0].strip()[:60]
+        # All three channels share one API project: 10,000 units a day, 1,600 per
+        # upload. Offering a button that cannot run today is worse than saying so.
+        budget = q.get("daily_budget", 8000)
+        left = (budget - (q.get("spent", {}) or {}).get(today, 0)) // 1600
+        if left < 1:
+            btn = ("<button class='primary' disabled style='opacity:.45;"
+                   "cursor:not-allowed'>⤴ Upload now — quota used up today</button>")
+            note = ("<br><span style='color:var(--gold)'>Today's YouTube upload "
+                    "quota is spent (6 a day across all 3 channels). This uploads "
+                    "itself tomorrow morning — nothing is lost.</span>")
+        else:
+            btn = ("<button class='primary' onclick='queueNow()'>⤴ Upload to "
+                   f"YouTube now</button>")
+            note = (f"<br><span class='muted'>{left} upload(s) left in today's "
+                    f"shared API quota.</span>")
+        return card(
+            ("⚠ Last attempt failed — send it again"
+             if late else f"🕓 Next up: {dhtml(head)}"),
+            (f"Its release date is <b>{i['publish_date']}</b>. It uploads itself the "
+             f"day before, so you can ignore this. The button sends it to YouTube "
+             f"right now instead — it still stays private until "
+             f"{i['publish_date']}, so the calendar doesn't change.")
+            + (f"<br><span style='color:var(--gold)'>Error: "
+               f"{dhtml(str(i.get('error', ''))[:120])}</span>" if late else "")
+            + note,
+            btn + "<button class='go' onclick='pilot()'>🚀 Build a new one</button>")
+
+    ready = sum(1 for n, v in (load(LIBRARY, {"videos": {}}) or {}).get(
+        "videos", {}).items()
+        if v.get("status") == "ready" and os.path.exists(os.path.join(OUTPUT, n)))
+    if ready:
+        return card(
+            f"📦 {ready} video(s) built and waiting — not on the calendar yet",
+            "They're rendered and ready; they just have no release date. "
+            "Scheduling gives each one a day and uploads them automatically.",
+            "<button class='primary' onclick='planQueue()'>🗓 Schedule them</button>"
+            "<button class='go' onclick='pilot()'>🚀 Build another</button>")
+
+    return card(
+        "No video prepared for today.",
+        "The Pilot will scan trends and build one optimized video.",
+        "<button class='primary' onclick=\"pilot()\">🚀 Prepare today's video</button>")
 
 
 def latest_longform():
@@ -704,6 +799,8 @@ PAGE = """<!doctype html><html><head><meta charset="utf-8">
   await fetch('/run_all',{method:'POST'});poll()}
  async function pilot(){return run('/pilot','Preparing today\\'s video (a minute or two)',true)}
  async function autoup(){return run('/autoupload','Uploading today\\'s video — it goes live at prime time',true)}
+ async function queueNow(){return run('/queue_now','Uploading your next queued video to YouTube',true)}
+ async function planQueue(){return run('/plan_queue','Giving your ready videos a release date',true)}
  async function done(){await fetch(withCh('/done_today'),{method:'POST'});location.reload()}
  async function setCfg(k,v){await fetch('/config?key='+encodeURIComponent(k)+'&val='+encodeURIComponent(v),{method:'POST'});toast('Saved ✓',false,1500)}
  async function askBot(){const q=document.getElementById('q').value.trim();if(!q)return;
@@ -831,11 +928,7 @@ def home():
   {qwarn}
  </div></div>"""
     else:
-        mission_html = """<div class="mission"><div class="m-body">
-  <div class="mtitle">No video prepared for today.</div>
-  <div class="why">The Pilot will scan trends and build one optimized video.</div>
-  <div class="row"><button class="primary" onclick="pilot()">🚀 Prepare today's video</button></div>
- </div></div>"""
+        mission_html = queue_card(cur)
 
     # weekly long-form card (the watch-hours engine — one per week is plenty)
     lf_name, lf = latest_longform()
@@ -1224,6 +1317,46 @@ def pilot(): return _kick(job, ["pilot.py"], "Pilot preparing today's video (a m
 @app.route("/autoupload", methods=["POST"])
 def autoupload(): return _kick(job, ["upload_youtube.py"], "Auto-uploading to YouTube",
                                "Uploaded ✅ — the console shows when it goes live", _req_channel())
+
+
+def queue_now_job(channel=None):
+    """Send this channel's next queued video to YouTube now. It keeps its planned
+    release date, so this can never put two videos on one day.
+
+    The message reports what actually happened. A run that hit the daily API
+    quota uploads nothing and still exits cleanly — announcing "On YouTube ✅"
+    there is the same silent lie that made uploads go missing in the first place.
+    """
+    try:
+        JOB["log"] = []
+        run(["schedule_queue.py", "--run", "--now", "--limit", "1"],
+            "Uploading your next queued video", channel=channel)
+        tail = " ".join(JOB["log"][-8:])
+        if "quota budget reached" in tail or "quotaExceeded" in tail:
+            JOB["done_msg"] = ("Not sent — today's YouTube upload quota is used up "
+                               "(6 uploads a day for all channels together). It "
+                               "uploads by itself tomorrow; nothing is lost.")
+        elif "Nothing due" in tail or "Done — 0 uploaded" in tail:
+            JOB["done_msg"] = "Nothing left in this channel's queue to send."
+        elif "FAILED" in tail:
+            JOB["done_msg"] = "YouTube rejected it — see the console above."
+        else:
+            JOB["done_msg"] = ("On YouTube ✅ — it goes public on its planned "
+                               "date by itself")
+    except Exception:
+        JOB["done_msg"] = "Upload failed — check the console above."
+    finally:
+        JOB["running"] = False
+
+
+@app.route("/queue_now", methods=["POST"])
+def queue_now(): return _kick(queue_now_job, _req_channel())
+
+
+@app.route("/plan_queue", methods=["POST"])
+def plan_queue():
+    return _kick(job, ["schedule_queue.py", "--plan"], "Scheduling your ready videos",
+                 "Scheduled ✅ — each one now has a release date and uploads itself")
 
 
 @app.route("/evening", methods=["POST"])

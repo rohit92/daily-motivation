@@ -22,6 +22,7 @@ import argparse
 import json
 import os
 import random
+from datetime import date
 
 import paths as _paths
 
@@ -32,6 +33,7 @@ _P = _paths.paths(None)
 CONTENT = _P["content"]
 STATE = _P["state"]
 TRENDS = _P["trends"]
+LIBRARY = _P["library"]
 # The niche whose bank we compose from (set by set_channel()).
 _NICHE = _paths.channel_meta("motivation").get("niche", "motivation")
 
@@ -501,10 +503,11 @@ BANK = bank_for(_NICHE)
 
 
 def set_channel(channel):
-    """Point CONTENT/STATE/TRENDS and the active BANK at `channel`'s files."""
-    global CONTENT, STATE, TRENDS, BANK, _NICHE
+    """Point CONTENT/STATE/TRENDS/LIBRARY and the active BANK at `channel`'s files."""
+    global CONTENT, STATE, TRENDS, LIBRARY, BANK, _NICHE
     P = _paths.paths(channel)
     CONTENT, STATE, TRENDS = P["content"], P["state"], P["trends"]
+    LIBRARY = P["library"]
     _NICHE = _paths.channel_meta(channel).get("niche", "motivation")
     BANK = bank_for(_NICHE)
 
@@ -521,17 +524,102 @@ def save(path, data):
         json.dump(data, f, indent=2)
 
 
+# ------------------------------------------------- learning from your own numbers
+# A video needs a few days before its view count means anything; scoring one that
+# went up last night would just rank "newest" instead of "best".
+PERF_MIN_AGE_DAYS = 3
+PERF_MAX_BOOST = 2.5      # a proven theme is picked more, never exclusively
+PERF_MIN_FLOOR = 0.4      # a weak theme keeps being tried — see the note below
+
+
+def theme_rates():
+    """{theme: [views-per-day, ...]} from this channel's own published videos.
+
+    Views-per-day, not views: a video from last week has had a week to collect
+    them, and comparing raw totals just tells you which video is oldest. Only
+    entries with a real video_id count — those are the ones confirmed to have
+    actually reached YouTube.
+    """
+    lib = load(LIBRARY, {"videos": {}}) or {"videos": {}}
+    today = date.today()
+    rates = {}
+    for v in (lib.get("videos") or {}).values():
+        if v.get("status") != "uploaded" or not v.get("video_id"):
+            continue
+        theme = (v.get("theme") or "").strip()
+        if theme not in BANK:
+            continue
+        stamp = str(v.get("uploaded_at") or v.get("created") or "")[:10]
+        try:
+            age = (today - date.fromisoformat(stamp)).days
+        except ValueError:
+            continue
+        if age < PERF_MIN_AGE_DAYS:
+            continue
+        try:
+            views = float(v.get("views") or 0)
+        except (TypeError, ValueError):
+            continue
+        rates.setdefault(theme, []).append(views / age)
+    return rates
+
+
+def performance_weights():
+    """Multiplier per theme: how well it actually did on THIS channel.
+
+    Three deliberate limits, because a naive "make more of what won" collapses a
+    channel onto one idea and then decays:
+      * small samples are shrunk toward 1.0, so a single lucky video cannot take
+        over the schedule (1 video counts a third, 4 count two thirds);
+      * the median is the baseline, not the mean, so one viral video does not
+        make every other theme look like a failure;
+      * nothing drops below PERF_MIN_FLOOR. A theme you stop making entirely is
+        a theme you can never get new data about, and audiences change.
+    Returns {} when there isn't enough history yet — the caller then just uses
+    trends, exactly as before.
+    """
+    rates = theme_rates()
+    if not rates:
+        return {}
+    means = {t: sum(rs) / len(rs) for t, rs in rates.items()}
+    # Baseline = the median THEME, not the median video. Taking the median over
+    # every video lets a theme you post often sit on the midpoint and get
+    # compared against itself, which reads as "average" no matter how well it
+    # did. One score per theme keeps the comparison between themes.
+    base = _median(list(means.values()))
+    if base <= 0:
+        return {}
+
+    out = {}
+    for theme, mean in means.items():
+        confidence = len(rates[theme]) / (len(rates[theme]) + 2.0)
+        mult = 1.0 + confidence * ((mean / base) - 1.0)
+        out[theme] = max(PERF_MIN_FLOOR, min(PERF_MAX_BOOST, mult))
+    return out
+
+
+def _median(nums):
+    s = sorted(nums)
+    mid = len(s) // 2
+    return s[mid] if len(s) % 2 else (s[mid - 1] + s[mid]) / 2.0
+
+
 def theme_weights():
-    """Weight themes by this week's trending hook words, if a report exists."""
+    """Weight themes by what's trending AND by what has worked on this channel."""
     weights = {t: 1.0 for t in BANK}
     trends = load(TRENDS, None)
-    if not trends:
-        return weights
-    hot = {w for w, _ in trends.get("hook_words", [])}
-    hot |= {t.lstrip("#") for t, _ in trends.get("hashtags", [])}
-    for theme, spec in BANK.items():
-        hits = sum(1 for k in spec["keywords"] if k in hot)
-        weights[theme] += hits * 1.5
+    if trends:
+        hot = {w for w, _ in trends.get("hook_words", [])}
+        hot |= {t.lstrip("#") for t, _ in trends.get("hashtags", [])}
+        for theme, spec in BANK.items():
+            hits = sum(1 for k in spec["keywords"] if k in hot)
+            weights[theme] += hits * 1.5
+    # Trends say what the internet likes; this says what YOUR audience clicked.
+    # Applied last and multiplicatively so it re-ranks the trend scores instead
+    # of drowning them.
+    perf = performance_weights()
+    for theme in weights:
+        weights[theme] *= perf.get(theme, 1.0)
     return weights
 
 
@@ -660,9 +748,25 @@ def main():
         print(f"Fresh combos still available   : {len(pool)}")
         print(f"Unused headlines (hard limit)  : "
               f"{len({(c[0], c[1]) for c in pool})} — one video each")
+        perf = performance_weights()
+        if perf:
+            rates = theme_rates()
+            print("\nWhat this channel's own numbers say (views/day, "
+                  f"videos {PERF_MIN_AGE_DAYS}+ days old):")
+            for theme, mult in sorted(perf.items(), key=lambda kv: -kv[1]):
+                rs = rates[theme]
+                arrow = "↑ more of this" if mult > 1.05 else (
+                    "↓ less of this" if mult < 0.95 else "· neutral")
+                print(f"  {theme:14} {sum(rs)/len(rs):6.1f} v/day  "
+                      f"n={len(rs)}  x{mult:.2f}  {arrow}")
+        else:
+            print(f"\nNo performance signal yet — needs videos {PERF_MIN_AGE_DAYS}+ "
+                  f"days old with view counts synced. Until then themes are "
+                  f"picked on trends alone.")
         w = theme_weights()
-        boosted = [t for t, v in w.items() if v > 1.0]
-        print(f"Trend-boosted themes this week : {boosted or '(no trend report)'}")
+        best = sorted(w.items(), key=lambda kv: -kv[1])[:3]
+        print("Most likely themes next        : "
+              + ", ".join(f"{t} ({v:.2f})" for t, v in best))
         return
 
     if args.add:

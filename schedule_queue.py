@@ -203,16 +203,23 @@ def show(q=None):
           f"{sum(1 for i in items if i['status'] == 'failed')} failed")
 
 
-def due(q, today=None):
-    """Items that should be uploaded now: due within LEAD_DAYS, oldest first."""
+def due(q, today=None, channel=None, lead=None):
+    """Items that should be uploaded now: due within LEAD_DAYS, oldest first.
+
+    `lead` overrides the lead time (the dashboard's "upload it now" button pushes
+    it wide open so the next queued video can go early), and `channel` narrows it
+    to one channel so a button on the Speak Fluent page never posts to Mind Blown.
+    """
     today = today or date.today()
-    cutoff = today + timedelta(days=LEAD_DAYS)
+    lead = LEAD_DAYS if lead is None else lead
+    cutoff = today + timedelta(days=lead)
     return [i for i in q["items"]
             if i["status"] in ("pending", "failed")
+            and (channel is None or i["channel"] == channel)
             and date.fromisoformat(i["publish_date"]) <= cutoff]
 
 
-def run(dry=False, limit=None):
+def run(dry=False, limit=None, channel=None, now=False):
     q = load(QUEUE, blank()) or blank()
     if not q.get("items"):
         print("Calendar is empty — run --plan first.")
@@ -222,7 +229,10 @@ def run(dry=False, limit=None):
     today = date.today().isoformat()
     budget = q.get("daily_budget", DAILY_BUDGET)
     spent = q.get("spent", {}).get(today, 0)
-    todo = due(q)
+    # `now` sends the next queued video early. It keeps its planned release
+    # date, so going early costs nothing: YouTube still holds it until then and
+    # the day it was meant for stays covered by exactly one video.
+    todo = due(q, channel=channel, lead=3650 if now else None)
     if not todo:
         print("Nothing due today. Calendar is ahead of schedule.")
         return 0
@@ -371,6 +381,14 @@ def main():
     ap.add_argument("--run", action="store_true", help="upload what is due")
     ap.add_argument("--dry-run", dest="dry", action="store_true")
     ap.add_argument("--limit", type=int, help="upload at most this many now")
+    ap.add_argument("--now", action="store_true",
+                    help="send the next queued video early (it keeps its "
+                         "planned release date)")
+    # Deliberately NOT paths.add_channel_arg(): that defaults to motivation, and
+    # this is the one cross-channel tool — a default here would quietly turn the
+    # nightly all-channel run into a motivation-only run.
+    ap.add_argument("--channel", default=None,
+                    help="only this channel (default: all of them)")
     a = ap.parse_args()
 
     if a.plan or a.replan:
@@ -378,7 +396,7 @@ def main():
                  else date.today() + timedelta(days=6))
         show(plan(until, replan=a.replan))
     elif a.run:
-        run(dry=a.dry, limit=a.limit)
+        run(dry=a.dry, limit=a.limit, channel=a.channel, now=a.now)
     else:
         show()
 
