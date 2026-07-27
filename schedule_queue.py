@@ -51,6 +51,38 @@ LEAD_DAYS = 1
 MIN_LONGFORM_SEC = 180
 
 
+def reached_google(exc):
+    """Did this attempt actually land on YouTube's servers?
+
+    Quota is charged by Google when videos.insert arrives. A DNS failure or a
+    TLS handshake that times out never gets there, so nothing is charged — but
+    the ledger counted 1,600 for it anyway. On the college network that was
+    self-inflicted paralysis: a morning of unreachable-network failures marked
+    the whole day's budget spent while YouTube had charged nothing, so the
+    evening run refused to try even after the network came back.
+
+    Unknown errors count as charged. Over-counting costs one day of patience;
+    under-counting overruns the real quota and gets uploads rejected.
+    """
+    import socket
+    import ssl
+    seen = set()
+    while exc is not None and id(exc) not in seen:
+        seen.add(id(exc))
+        # Google answered (any HTTP status, including quotaExceeded) → charged.
+        if getattr(getattr(exc, "resp", None), "status", None) is not None:
+            return True
+        if type(exc).__name__ == "HttpError":
+            return True
+        if type(exc).__name__ == "ServerNotFoundError":       # httplib2 DNS
+            return False
+        if isinstance(exc, (socket.gaierror, ssl.SSLError,
+                            ConnectionError, TimeoutError)):
+            return False
+        exc = exc.__cause__ or exc.__context__
+    return True
+
+
 def load(path, default=None):
     return json.load(open(path)) if os.path.exists(path) else default
 
@@ -241,6 +273,7 @@ def run(dry=False, limit=None, channel=None, now=False):
           f"({(budget - spent) // UPLOAD_UNITS} uploads left in budget)\n")
 
     posted = 0
+    offline = 0          # consecutive attempts that never reached YouTube
     for item in todo:
         if limit is not None and posted >= limit:
             print(f"· stopping at --limit {limit}")
@@ -298,19 +331,36 @@ def run(dry=False, limit=None, channel=None, now=False):
             item.pop("error", None)
             mark_done(P, item, vid, pub, U)
             posted += 1
+            spent += UPLOAD_UNITS
+            offline = 0
         except Exception as e:
             item["status"] = "failed"
             item["error"] = f"{type(e).__name__}: {e}"
-            print(f"✗ {slug}/{name} FAILED: {type(e).__name__}: {str(e)[:200]}")
-            if "quota" in str(e).lower():
-                print("  → that's the daily API quota. Everything else waits "
-                      "for tomorrow; nothing is lost.")
-                save_run(q, today, spent)
-                return posted
-            traceback.print_exc(limit=2)
+            if reached_google(e):
+                offline = 0
+                spent += UPLOAD_UNITS      # Google counted it, so we must too
+                print(f"✗ {slug}/{name} FAILED: {type(e).__name__}: {str(e)[:200]}")
+                if "quota" in str(e).lower():
+                    print("  → that's the daily API quota. Everything else waits "
+                          "for tomorrow; nothing is lost.")
+                    save_run(q, today, spent)
+                    return posted
+                traceback.print_exc(limit=2)
+            else:
+                offline += 1
+                item["error"] += "  (never reached YouTube — no quota used)"
+                print(f"✗ {slug}/{name}: could not reach YouTube "
+                      f"({type(e).__name__}). No quota spent — it retries "
+                      f"automatically on the next run.")
+                if offline >= 2:
+                    print("\n  Two in a row could not reach YouTube, so this is "
+                          "the network, not the videos. Nothing was charged and "
+                          "nothing is lost — they all retry next run.\n"
+                          "  On the college wifi, check the route with:\n"
+                          "      python3 netcfg.py --check")
+                    save_run(q, today, spent)
+                    return posted
         finally:
-            # Count the units even on failure: a failed insert still charges.
-            spent += UPLOAD_UNITS
             save_run(q, today, spent)
 
     if dry:

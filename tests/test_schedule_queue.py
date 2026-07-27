@@ -19,11 +19,43 @@ import make_video
 import schedule_queue as SQ
 import script_composer as SC
 
+# The real posting calendar must never be reachable from a test. A test method
+# that ends up outside the class providing the temp-file setUp will otherwise
+# call SQ.save() straight onto the live schedule.json — which is exactly what
+# happened: it wiped the calendar down to one fake item and cleared the quota
+# ledger. Redirect at import so a misplaced test fails loudly instead.
+_REAL_QUEUE = SQ.QUEUE
+SQ.QUEUE = os.path.join(tempfile.gettempdir(), "schedule_TESTS_ONLY.json")
+
+
+def _guard_real_queue():
+    if SQ.QUEUE == _REAL_QUEUE:
+        raise AssertionError(
+            "a test is pointing at the real schedule.json — refusing to write")
+
+
+class _ServerNotFound(Exception):
+    """Stands in for httplib2.ServerNotFoundError (matched by class name)."""
+
+
+_ServerNotFound.__name__ = "ServerNotFoundError"
+
+
+def _wrapped(inner):
+    """Rebuild what upload_youtube raises: RuntimeError(...) from <network error>."""
+    def raiser(*a, **k):
+        try:
+            raise inner
+        except Exception as e:
+            raise RuntimeError("upload failed after 6 retries") from e
+    return raiser
+
 
 class TestQuotaBudget(unittest.TestCase):
     """One project = 10,000 units/day, one upload = 1,600. Never exceed it."""
 
     def setUp(self):
+        _guard_real_queue()
         self.tmp = tempfile.NamedTemporaryFile(suffix=".json", delete=False)
         self.tmp.close()
         self._orig, SQ.QUEUE = SQ.QUEUE, self.tmp.name
@@ -72,6 +104,48 @@ class TestQuotaBudget(unittest.TestCase):
                          2 * SQ.UPLOAD_UNITS)
         self.assertTrue(all(i["status"] == "failed" for i in q["items"]))
 
+    def test_unreachable_network_costs_no_quota(self):
+        """DNS never reached Google, so Google charged nothing — nor may we.
+
+        This is what locked the queue up on the college network: a morning of
+        unreachable failures marked the budget spent, so the evening run
+        refused to try even once the network was back.
+        """
+        self._queue(4)
+        boom = _wrapped(_ServerNotFound("Unable to find the server"))
+        with mock.patch.object(SQ, "item_path", lambda i: __file__), \
+             mock.patch("upload_youtube.set_channel"), \
+             mock.patch("upload_youtube.publish_time", return_value=None), \
+             mock.patch("upload_youtube.upload", side_effect=boom):
+            SQ.run()
+        q = SQ.load(SQ.QUEUE)
+        self.assertEqual(q["spent"].get(date.today().isoformat(), 0), 0)
+
+    def test_run_stops_once_the_network_is_clearly_down(self):
+        """Don't grind through 5 videos when the first two prove it's the wifi."""
+        self._queue(5)
+        boom = _wrapped(_ServerNotFound("Unable to find the server"))
+        with mock.patch.object(SQ, "item_path", lambda i: __file__), \
+             mock.patch("upload_youtube.set_channel"), \
+             mock.patch("upload_youtube.publish_time", return_value=None), \
+             mock.patch("upload_youtube.upload", side_effect=boom) as up:
+            SQ.run()
+        self.assertEqual(up.call_count, 2)
+        q = SQ.load(SQ.QUEUE)
+        # the untried ones stay pending so the next run picks them straight up
+        self.assertEqual(sum(1 for i in q["items"] if i["status"] == "pending"), 3)
+
+    def test_network_failures_are_labelled_as_free(self):
+        self._queue(1)
+        boom = _wrapped(_ServerNotFound("nope"))
+        with mock.patch.object(SQ, "item_path", lambda i: __file__), \
+             mock.patch("upload_youtube.set_channel"), \
+             mock.patch("upload_youtube.publish_time", return_value=None), \
+             mock.patch("upload_youtube.upload", side_effect=boom):
+            SQ.run()
+        err = SQ.load(SQ.QUEUE)["items"][0]["error"]
+        self.assertIn("no quota used", err)
+
     def test_not_yet_due_is_left_alone(self):
         """Videos further out than the lead time wait their turn."""
         far = (date.today() + timedelta(days=SQ.LEAD_DAYS + 3)).isoformat()
@@ -79,6 +153,30 @@ class TestQuotaBudget(unittest.TestCase):
             {"channel": "facts", "file": "x.mp4", "publish_date": far,
              "status": "pending"}]})
         self.assertEqual(SQ.due(SQ.load(SQ.QUEUE)), [])
+
+
+class TestQuotaAccounting(unittest.TestCase):
+    """Charge only what YouTube actually charged."""
+
+    def test_google_answering_means_charged(self):
+        class Resp:
+            status = 403
+
+        class HttpError(Exception):
+            def __init__(self):
+                self.resp = Resp()
+        self.assertTrue(SQ.reached_google(HttpError()))
+
+    def test_dns_and_tls_failures_are_free(self):
+        import socket
+        import ssl
+        for exc in (_ServerNotFound("x"), ssl.SSLError("handshake timed out"),
+                    socket.gaierror(), ConnectionRefusedError(), TimeoutError()):
+            self.assertFalse(SQ.reached_google(exc), type(exc).__name__)
+
+    def test_an_unknown_error_is_assumed_charged(self):
+        """Over-counting costs a day of patience; under-counting overruns quota."""
+        self.assertTrue(SQ.reached_google(ValueError("who knows")))
 
 
 class TestHookUniqueness(unittest.TestCase):
