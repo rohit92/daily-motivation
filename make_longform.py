@@ -90,17 +90,38 @@ BRAND_LABEL = "MINDSET REFUEL"
 BRAND_HANDLE = "@mindsetrefuel"
 
 
+# The spoken opening and closing of every long-form. These are narrated aloud,
+# so a motivation pep-talk intro on the facts channel is heard, not just read.
+_BOOKENDS = {
+    "everyday-english": (
+        ["Give me the next few minutes, and your English will sound clearer.",
+         "No theory you'll never use. Just what people actually say.",
+         "Listen while you commute, cook, or wind down."],
+        ["You didn't watch this far by accident.",
+         "Pick ONE phrase from this video and say it out loud today."]),
+    "did-you-know-facts": (
+        ["Give me the next few minutes, and I'll change how you see normal things.",
+         "Every fact in here is true. Some of them shouldn't be.",
+         "Watch while you eat, commute, or wind down."],
+        ["You didn't watch this far by accident.",
+         "Pick ONE fact from this video and tell somebody today."]),
+}
+
+
 def _refresh_brand():
-    global BRAND_NAME, BRAND_LABEL, BRAND_HANDLE, OUTRO_LINES
+    global BRAND_NAME, BRAND_LABEL, BRAND_HANDLE, INTRO_LINES, OUTRO_LINES
     m = _paths.channel_meta(CHANNEL)
     BRAND_NAME = m.get("name", BRAND_NAME)
     BRAND_LABEL = (m.get("category_label") or BRAND_NAME).upper()
     BRAND_HANDLE = m.get("handle", BRAND_HANDLE)
-    OUTRO_LINES = [
+    intro, outro = _BOOKENDS.get(m.get("niche"), (None, None))
+    if intro:
+        INTRO_LINES = list(intro)
+    OUTRO_LINES = (list(outro) if outro else [
         "You didn't watch this far by accident.",
-        "Pick ONE idea from this video and act on it today.",
-        f"Subscribe to {BRAND_NAME} — a brand new video every single day.",
-    ]
+        "Pick ONE idea from this video and act on it today."])
+    OUTRO_LINES.append(
+        f"Subscribe to {BRAND_NAME} — a brand new video every single day.")
 
 
 OUTRO_LINES = [
@@ -120,6 +141,38 @@ def save(path, data):
 
 # ---------- script (Ollama / Claude → your own script bank) ----------
 
+# What the AI is writing, per niche. Every prompt in this file used to say
+# "motivation channel" outright, so a facts long-form that needed padding came
+# back with "Break the Procrastination Cycle" and "Find Your Why" — a motivation
+# talk published under Mind Blown. The niche has to reach the prompt.
+_NICHE_VOICE = {
+    "motivation": (
+        "a faceless YouTube motivation channel. Punchy, honest, no hype",
+        "chaptered motivation talk"),
+    "everyday-english": (
+        "a faceless YouTube channel teaching everyday spoken English to "
+        "learners. Clear, practical, encouraging; every tip must be usable "
+        "in a real conversation today",
+        "chaptered spoken-English lesson"),
+    "did-you-know-facts": (
+        "a faceless YouTube channel of surprising, TRUE science and history "
+        "facts. Curious and precise. Never invent a fact, never exaggerate a "
+        "number — if you are unsure of a detail, leave it out",
+        "chaptered run of surprising true facts"),
+}
+
+
+def _voice():
+    """(who you are, what you're writing) for the active channel's niche."""
+    niche = _paths.channel_meta(CHANNEL).get("niche", "motivation")
+    return _NICHE_VOICE.get(niche, _NICHE_VOICE["motivation"])
+
+
+def _facts_niche():
+    """True when this channel publishes claims that must be literally true."""
+    return _paths.channel_meta(CHANNEL).get("niche") == "did-you-know-facts"
+
+
 def llm_script(minutes, theme):
     """Ask the AI for a chaptered long-form script. Returns dict or None."""
     try:
@@ -128,11 +181,11 @@ def llm_script(minutes, theme):
         return None
     n_chapters = max(3, round(minutes * 60 / SECONDS_PER_LINE / 8))
     prefer = f" Lean into the theme '{theme}'." if theme else ""
-    system = ("You write spoken scripts for Mindset Refuel, a faceless YouTube "
-              "motivation channel. Punchy, honest, no hype, short lines of 6-12 "
-              "words each — every line is one on-screen caption. No hashtags, "
-              "no emojis, no stage directions.")
-    user = (f"{prefer} Write a {minutes}-minute chaptered motivation talk. "
+    who, what = _voice()
+    system = (f"You write spoken scripts for {BRAND_NAME}, {who}, short lines "
+              f"of 6-12 words each — every line is one on-screen caption. No "
+              f"hashtags, no emojis, no stage directions.")
+    user = (f"{prefer} Write a {minutes}-minute {what}. "
             f"Return ONLY JSON: {{\"title\":\"video title, max 8 words\","
             f"\"chapters\":[{{\"title\":\"2-4 words\",\"lines\":[\"...\"]}}]}} "
             f"with exactly {n_chapters} chapters of 7-9 lines each.")
@@ -156,6 +209,29 @@ def llm_script(minutes, theme):
         return None
     return {"title": str(data.get("title", "")).strip()[:70] or None,
             "chapters": chapters}
+
+
+def _cta_lines():
+    """Every closer line in this channel's Shorts bank.
+
+    Bank chapters are whole Shorts — hook + body + CLOSER — and a Short's closer
+    is a call to action. Stacked into a long-form that meant hearing "Follow for
+    more" and "See you tomorrow" at the end of all thirteen chapters. The video
+    has its own outro; the per-chapter sign-offs have to go.
+    """
+    try:
+        import script_composer as sc
+        sc.set_channel(CHANNEL)
+        return {l.strip().lower() for spec in sc.BANK.values()
+                for closer in spec["closers"] for l in closer}
+    except Exception:
+        return set()
+
+
+def _strip_ctas(lines, ctas):
+    """Drop trailing call-to-action lines, but never gut the chapter."""
+    kept = [l for l in lines if l.strip().lower() not in ctas]
+    return kept if len(kept) >= 3 else lines
 
 
 def bank_script(minutes, theme):
@@ -191,10 +267,12 @@ def bank_script(minutes, theme):
             import progress
             return progress._infer_theme(it["lines"][0]).title()
         except Exception:
-            return "Keep Going"
+            return _reflect_titles()[0]
 
+    ctas = _cta_lines()
     return {"title": None,
-            "chapters": [{"title": chapter_title(it), "lines": it["lines"]}
+            "chapters": [{"title": chapter_title(it),
+                          "lines": _strip_ctas(it["lines"], ctas)}
                          for it in picked]}
 
 
@@ -217,13 +295,13 @@ def _llm_more_chapters(script, n, story):
         return []
     so_far = "\n".join(f"- {c['title']}: {c['lines'][0]}"
                        for c in script["chapters"])
+    who, kind = _voice()
     what = ("the STORY — deepen the middle with a setback, a doubt, and a "
             "small win, same narrator voice; do NOT resolve the ending again"
             if story else
-            "the motivation talk with NEW angles — no repeated ideas")
-    system = ("You write spoken scripts for Mindset Refuel, a faceless YouTube "
-              "motivation channel. Punchy, honest, no hype, short lines of "
-              "6-12 words each. No hashtags, no emojis, no stage directions.")
+            f"the {kind} with NEW angles — no repeated ideas")
+    system = (f"You write spoken scripts for {BRAND_NAME}, {who}, short lines "
+              f"of 6-12 words each. No hashtags, no emojis, no stage directions.")
     user = (f"Chapters so far:\n{so_far}\n\nWrite {n} MORE chapters continuing "
             f'{what}. Return ONLY JSON: {{"chapters":[{{"title":"2-4 words",'
             f'"lines":["..."]}}]}} with exactly {n} chapters of 7-9 lines each.')
@@ -249,10 +327,28 @@ def _llm_more_chapters(script, n, story):
     return out
 
 
-_REFLECT_TITLES = ["What It Means For You", "The First Step", "Make It Stick",
+# Filler chapter titles, per niche. "Keep It Burning" under a facts video reads
+# as a different channel's video — these show up in the description's chapter
+# list, so they have to match what the viewer subscribed for.
+_REFLECT_BY_NICHE = {
+    "motivation": ["What It Means For You", "The First Step", "Make It Stick",
                    "Your Move", "Keep It Burning", "Start Tonight",
                    "The Hard Part", "Read This Twice", "The Quiet Truth",
-                   "One Rule", "Before You Go", "Carry It With You"]
+                   "One Rule", "Before You Go", "Carry It With You"],
+    "everyday-english": ["Use It Today", "Say It Out Loud", "Make It Stick",
+                         "Common Mistakes", "Practice This", "Sound Natural",
+                         "One More Phrase", "Try It Tonight", "Quick Recap",
+                         "Your Turn", "Before You Go", "Keep Speaking"],
+    "did-you-know-facts": ["One More Fact", "Stranger Still", "Hard To Believe",
+                           "The Explanation", "Even Weirder", "Nobody Expects This",
+                           "The Numbers", "Look Closer", "Quick Recap",
+                           "One Last Fact", "Before You Go", "Keep Wondering"],
+}
+
+
+def _reflect_titles():
+    niche = _paths.channel_meta(CHANNEL).get("niche", "motivation")
+    return _REFLECT_BY_NICHE.get(niche, _REFLECT_BY_NICHE["motivation"])
 
 
 def _fresh_title(pool, used):
@@ -270,6 +366,7 @@ def _bank_more_chapters(script, theme, story, n=2):
     """No AI? Top up from the owner's script bank. For stories the extra
     chapters become the LESSON section (story → what it means → act on it)."""
     content = load(CONTENT, {"items": []})
+    ctas = _cta_lines()
     have = {l for c in script["chapters"] for l in c["lines"]}
     items = [it for it in content["items"]
              if len(it.get("lines", [])) >= 4
@@ -285,14 +382,14 @@ def _bank_more_chapters(script, theme, story, n=2):
             continue                       # overlaps something already picked
         have.update(it["lines"])
         if story:
-            title = _fresh_title(_REFLECT_TITLES, used_titles)
+            title = _fresh_title(_reflect_titles(), used_titles)
         else:
             th = (it.get("theme") or "").strip()
-            title = th.title() if th and th != "ai" else "Keep Going"
+            title = th.title() if th and th != "ai" else _reflect_titles()[0]
             if title in used_titles:
-                title = _fresh_title(_REFLECT_TITLES, used_titles)
+                title = _fresh_title(_reflect_titles(), used_titles)
         used_titles.add(title)
-        out.append({"title": title, "lines": it["lines"]})
+        out.append({"title": title, "lines": _strip_ctas(it["lines"], ctas)})
     return out
 
 
@@ -306,7 +403,9 @@ def ensure_minutes(script, minutes, theme=None, story=False):
         if gap <= 0:
             break
         n = max(1, min(3, round(gap / 30)))       # ~30s per added chapter
-        added = _llm_more_chapters(script, n, story)
+        # Same rule as the opening script: on a facts channel the padding must
+        # come from verified material, not from whatever the model improvises.
+        added = [] if _facts_niche() else _llm_more_chapters(script, n, story)
         if added and story and len(script["chapters"]) > 1:
             script["chapters"][-1:-1] = added      # story grows in the middle,
         elif added:                                # the payoff stays last
@@ -492,11 +591,19 @@ def build(minutes, theme, music_on=True, script=None, kind="longform"):
 
     story = kind == "story"
     if script is None:
-        script = llm_script(minutes, theme)
-        engine = "AI-written"
-        if not script:
+        if _facts_niche():
+            # A local 7B model will happily invent a statistic. On a channel
+            # whose entire promise is "this is true", one wrong claim costs more
+            # than a slower build — so facts videos are assembled only from the
+            # hand-verified bank, never from anything the AI made up.
             script = bank_script(minutes, theme)
-            engine = "from your script bank"
+            engine = "from your verified fact bank (AI writing off for facts)"
+        else:
+            script = llm_script(minutes, theme)
+            engine = "AI-written"
+            if not script:
+                script = bank_script(minutes, theme)
+                engine = "from your script bank"
     else:
         engine = script.get("engine", "story mode")
     before = len(script["chapters"])
@@ -635,6 +742,14 @@ def build(minutes, theme, music_on=True, script=None, kind="longform"):
             "created": date.today().isoformat(), "status": "ready",
             "engine": engine}
     save(os.path.join(OUT_DIR, stem + "_meta.json"), meta)
+    # Every spoken line, saved next to the video. Seven minutes of narration
+    # used to exist only as caption PNGs and audio, so there was no way to read
+    # what the channel was about to claim before it went public — which matters
+    # most on the channel whose whole promise is that the claims are true.
+    save(os.path.join(OUT_DIR, stem + "_script.json"),
+         {"title": title, "engine": engine,
+          "chapters": [{"title": c["title"], "lines": c["lines"]}
+                       for c in chapters]})
     lib = load(LIBRARY, {"videos": {}})
     lib.setdefault("longform", {})[os.path.basename(out)] = meta
     save(LIBRARY, lib)

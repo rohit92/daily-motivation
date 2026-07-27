@@ -210,6 +210,106 @@ MOTIVATION_BANK = {
             ["Stand up. Dust off.", "Go again."],
         ],
     },
+    "patience": {
+        "keywords": ["patience", "slow", "time", "wait", "seasons", "process", "trust"],
+        "hooks": [
+            ["You're not behind.", "You're early and impatient."],
+            ["Everything you want", "is on the other side of boring."],
+            ["Bamboo grows underground for years.", "Then it explodes."],
+            ["You want in six months", "what takes six years."],
+        ],
+        "bodies": [
+            ["Nothing real grows on your timeline.", "Trees don't apologise for their season,",
+             "and neither should you."],
+            ["The exciting part is the smallest part.", "The rest is repetition nobody claps for.",
+             "That repetition is where it's decided."],
+            ["For years it looks like nothing works.", "Roots are being built the whole time,",
+             "and then the growth is impossible to miss."],
+            ["Speed feels like progress.", "But depth is what actually holds,",
+             "and depth cannot be rushed."],
+        ],
+        "closers": [
+            ["Stay in it longer than feels reasonable.", "That's where most people leave."],
+            ["Trust the season you're in.", "Keep watering it."],
+            ["Slow is still forward.", "Don't confuse the two."],
+            ["Give it time it actually needs.", "Then decide."],
+        ],
+    },
+    "fear": {
+        "keywords": ["fear", "afraid", "scared", "courage", "brave", "risk", "nervous"],
+        "hooks": [
+            ["Fear doesn't protect you.", "It just keeps you exactly where you are."],
+            ["You're not scared of failing.", "You're scared of being seen failing."],
+            ["Courage isn't the absence of fear.", "It's moving while afraid."],
+            ["The thing you're avoiding", "is the thing that would change everything."],
+        ],
+        "bodies": [
+            ["Fear shows up at the edge of growth.", "It marks the direction, not the danger,",
+             "and it never points at easy things."],
+            ["Nobody is watching as closely as you think.", "They're busy fearing their own audience.",
+             "Do it badly in public and move on."],
+            ["Brave people feel exactly what you feel.", "Their hands shake the same way,",
+             "they just don't wait for the shaking to stop."],
+            ["The task you keep postponing", "is usually the one that matters most.",
+             "Avoidance is a signal, not a strategy."],
+        ],
+        "closers": [
+            ["Do it scared.", "That's the only version available."],
+            ["Move toward the thing you're avoiding.", "Start today."],
+            ["Feel it and go anyway.", "That's courage."],
+            ["Your fear knows where the growth is.", "Follow it."],
+        ],
+    },
+    "identity": {
+        "keywords": ["identity", "become", "self", "character", "who", "person", "standards"],
+        "hooks": [
+            ["You don't rise to your goals.", "You fall to your habits."],
+            ["Stop trying to be motivated.", "Start being someone who shows up."],
+            ["Every action is a vote", "for who you're becoming."],
+            ["Change what you do", "and who you are follows."],
+        ],
+        "bodies": [
+            ["Goals are what you say you want.", "Habits are what you actually do,",
+             "and only one of them shapes your life."],
+            ["Motivation is a feeling — it comes and goes.", "Identity is a decision you keep making,",
+             "and it doesn't need a good mood."],
+            ["One workout doesn't change your body.", "It casts a vote for being someone who trains.",
+             "Enough votes and the identity is real."],
+            ["You can't think your way into a new self.", "You act your way there, badly at first,",
+             "until the evidence stacks up."],
+        ],
+        "closers": [
+            ["Cast one vote today.", "That's how a person changes."],
+            ["Be it before you feel it.", "The feeling follows."],
+            ["Choose the identity, then act like it.", "Starting now."],
+            ["Small actions, repeated, become you.", "Pick one."],
+        ],
+    },
+    "ownership": {
+        "keywords": ["ownership", "responsibility", "blame", "excuses", "control", "accountable"],
+        "hooks": [
+            ["Nobody is coming to save you.", "That's the good news."],
+            ["Blame feels good", "and costs you everything."],
+            ["You can't control what happened.", "You own everything after."],
+            ["Stop asking why it happened to you.", "Start asking what now."],
+        ],
+        "bodies": [
+            ["If nobody is coming, you're not waiting.", "The only permission you need is yours,",
+             "and you can give it right now."],
+            ["Blame hands your power to someone else.", "It's comfortable and completely useless,",
+             "because they're not going to fix it."],
+            ["The event isn't yours. The response is.", "That gap is where your whole life happens,",
+             "and it's yours every single time."],
+            ["'Why me' keeps you in the story.", "'What now' gets you out of it.",
+             "One question is a trap, the other is a door."],
+        ],
+        "closers": [
+            ["Take the responsibility nobody assigned you.", "That's where power lives."],
+            ["Stop waiting for fair.", "Start working with real."],
+            ["Own the next move.", "It's the only one you control."],
+            ["Your life is your job.", "Clock in."],
+        ],
+    },
 }
 
 
@@ -284,7 +384,7 @@ EDUCATION_BANK = {
     "connectors": {
         "keywords": ["connectors", "linking", "smooth", "flow", "sentence", "advanced"],
         "hooks": [
-            ["One word", "that replaces ten boring ones."],
+            ["Three tiny words", "that make you sound native."],
             ["Link your sentences like a native", "with these little words."],
             ["Your English sounds choppy?", "You're missing connectors."],
             ["Small linking words", "make you sound advanced."],
@@ -344,6 +444,156 @@ EDUCATION_BANK = {
             ["Say it before you feel ready.", "Ready comes from doing."],
         ],
     },
+    "smalltalk": {
+        "keywords": ["smalltalk", "conversation", "friendly", "chat", "social", "meeting"],
+        "hooks": [
+            ["'How are you?' isn't a real question.", "Here's what it actually means."],
+            ["Small talk feels fake", "until you know the four safe topics."],
+            ["Never let a conversation die again.", "Use this one trick."],
+            ["Ending a chat politely", "is a skill nobody teaches you."],
+        ],
+        "bodies": [
+            ["It's a greeting, not a health check.", "'Good, thanks — you?' is the whole answer.",
+             "Save the real answer for real friends."],
+            ["Weather, weekend, food, travel.", "All four are safe anywhere in the world,",
+             "and everyone has something to say."],
+            ["Never answer with one word.", "Add one detail, then ask back.",
+             "'Busy — big project. You?' keeps it alive."],
+            ["'Anyway, I should get going.'", "'It was great talking to you.'",
+             "Signal first, then leave. Never just stop."],
+        ],
+        "closers": [
+            ["Try one in your next conversation.", "Small talk is a skill, not a talent."],
+            ["Follow for one social phrase a day.", "Confidence is built in small chats."],
+            ["Say it out loud once now.", "Your mouth needs the practice."],
+            ["Use it today, not someday.", "That's the whole difference."],
+        ],
+    },
+    "workplace": {
+        "keywords": ["work", "office", "email", "professional", "job", "career", "business"],
+        "hooks": [
+            ["Your English emails sound rude.", "You probably don't know why."],
+            ["Say this in a meeting", "and people take you seriously."],
+            ["Disagreeing politely at work", "is an English superpower."],
+            ["'Sorry for the late reply'", "has a better version."],
+        ],
+        "bodies": [
+            ["'Send me the file' is an order.", "'Could you send me the file?' is a request.",
+             "One word decides how you sound."],
+            ["'Can I add something here?' opens a door.", "'To build on that...' shows you listened.",
+             "'My concern is...' names a problem calmly."],
+            ["'I see it differently' is not rude.", "'That's fair, though have we considered...'",
+             "Agree with the person, question the idea."],
+            ["Don't apologise — thank instead.", "'Thanks for your patience' sounds confident,",
+             "'sorry for the delay' sounds guilty."],
+        ],
+        "closers": [
+            ["Use it in your next email.", "Small wording, big impression."],
+            ["Follow for one work phrase a day.", "Professional English is learnable."],
+            ["Save this before your next meeting.", "You'll want it."],
+            ["Rewrite one sentence today.", "Notice how different it feels."],
+        ],
+    },
+    "listening": {
+        "keywords": ["listening", "listen", "understand", "fast", "native", "ear"],
+        "hooks": [
+            ["Natives don't speak fast.", "They just join their words together."],
+            ["You know the words", "but can't hear them. Here's why."],
+            ["'Whatcha doin?' is real English.", "Textbooks won't teach you this."],
+            ["Stop watching with subtitles on.", "Do this instead."],
+        ],
+        "bodies": [
+            ["'Want to' becomes 'wanna'.", "'Going to' becomes 'gonna'.",
+             "Learn the joins and speed disappears."],
+            ["Your ear expects each word separately.", "Real speech blends the endings together,",
+             "so train on sound, not spelling."],
+            ["'What are you doing' loses its middle.", "'Did you eat' becomes 'dijaeat'.",
+             "This isn't lazy — it's the actual rhythm."],
+            ["Watch once with subtitles.", "Then again without, same clip.",
+             "Your ear fills the gaps the second time."],
+        ],
+        "closers": [
+            ["Try it with one video today.", "Your ear improves faster than you think."],
+            ["Follow for one listening tip a day.", "Understanding comes before speaking."],
+            ["Replay one line five times.", "That's real practice."],
+            ["Listen for the joins tomorrow.", "You'll start hearing them everywhere."],
+        ],
+    },
+    "idioms": {
+        "keywords": ["idiom", "idioms", "expression", "meaning", "slang", "natural"],
+        "hooks": [
+            ["'Break a leg' isn't a threat.", "Here's what natives really mean."],
+            ["Three idioms", "you'll hear at work this week."],
+            ["'It's not rocket science'", "and four more you should know."],
+            ["Using idioms wrong", "is worse than not using them."],
+        ],
+        "bodies": [
+            ["It means good luck, not injury.", "Actors said it before going on stage,",
+             "because wishing luck was bad luck."],
+            ["'Touch base' means check in briefly.", "'On the same page' means we agree.",
+             "'Circle back' means talk about it later."],
+            ["It means it's not complicated.", "'A piece of cake' means easy.",
+             "'Once in a blue moon' means rarely."],
+            ["Idioms are fixed — you can't change words.", "It's 'spill the beans', never 'drop the beans'.",
+             "Learn the whole phrase or skip it."],
+        ],
+        "closers": [
+            ["Use one this week.", "Idioms make you sound like a local."],
+            ["Follow for one idiom a day.", "Real English lives in these phrases."],
+            ["Comment an idiom you've heard.", "Let's decode it."],
+            ["Learn it whole, not word by word.", "That's the rule."],
+        ],
+    },
+    "questions": {
+        "keywords": ["question", "questions", "ask", "asking", "polite", "clarify"],
+        "hooks": [
+            ["You've been asking questions wrong.", "This is why people pause."],
+            ["Didn't understand?", "Never say 'what?' again."],
+            ["One word turns a rude question", "into a polite one."],
+            ["Asking for help in English", "has a formula."],
+        ],
+        "bodies": [
+            ["'Where you are from?' is the common error.", "In questions, the verb comes first:",
+             "'Where are you from?' Always."],
+            ["'Sorry, could you repeat that?'", "'I didn't catch that last part.'",
+             "Both are polite. 'What?' sounds sharp."],
+            ["'What's your name?' is direct.", "'Could I ask your name?' is warm.",
+             "'Could I' softens almost anything."],
+            ["Name the problem, then ask.", "'I'm stuck on this part — could you help?'",
+             "Vague requests get vague answers."],
+        ],
+        "closers": [
+            ["Ask one question properly today.", "People notice the difference."],
+            ["Follow for one speaking fix a day.", "Clear questions get real answers."],
+            ["Say the correct version out loud.", "That's how it sticks."],
+            ["Practise it before you need it.", "Pressure makes us forget."],
+        ],
+    },
+    "storytelling": {
+        "keywords": ["story", "storytelling", "past", "narrative", "describe", "interesting"],
+        "hooks": [
+            ["Your stories are boring in English.", "It's a structure problem, not vocabulary."],
+            ["Natives tell stories in present tense.", "Even about last year."],
+            ["Four words", "that make any story better."],
+            ["Stop starting stories with 'so basically'.", "Try this instead."],
+        ],
+        "bodies": [
+            ["Set the scene in one line.", "Then the problem, then what happened.",
+             "Three beats. That's every good story."],
+            ["'So I'm walking home and this guy...'", "Present tense pulls the listener in,",
+             "like it's happening right now."],
+            ["'Suddenly' adds surprise.", "'Meanwhile' adds a second thread.",
+             "'In the end' signals you're finishing."],
+            ["'You'll never guess what happened.'", "'This actually happened yesterday.'",
+             "Give them a reason to listen first."],
+        ],
+        "closers": [
+            ["Tell one short story today.", "Structure beats vocabulary."],
+            ["Follow for one storytelling tip a day.", "People remember stories, not grammar."],
+            ["Try the three-beat shape.", "It works in any language."],
+            ["Practise on a friend tonight.", "Watch their face, not your words."],
+        ],
+    },
 }
 
 
@@ -399,13 +649,13 @@ FACTS_BANK = {
             ["Honey never spoils.", "3,000-year-old honey is still edible."],
             ["Oxford University is older", "than the Aztec Empire."],
             ["The Great Pyramid was ancient", "when Cleopatra was born."],
-            ["Cleopatra lived closer to us", "than to the pyramids' builders."],
+            ["The last woolly mammoths were alive", "while the pyramids were being built."],
         ],
         "bodies": [
             ["Bacteria can't grow in honey.", "Very low water, high acidity —", "sealed honey lasts millennia."],
             ["Teaching at Oxford began by 1096.", "The Aztec capital was founded in 1325.", "The gap is over two centuries."],
             ["The Great Pyramid was built around 2560 BC.", "Cleopatra was born in 69 BC.", "That's about 2,500 years apart."],
-            ["The pyramids rose around 2560 BC.", "Cleopatra lived around 30 BC.", "The Moon landing was 1969 AD."],
+            ["A small population survived on Wrangel Island", "in the Arctic until roughly 1650 BC —", "centuries after the Great Pyramid was finished."],
         ],
         "closers": [
             ["Follow — one history fact daily.", "The past is stranger than you think."],
@@ -475,6 +725,156 @@ FACTS_BANK = {
             ["Share with a map lover.", "See you tomorrow."],
             ["Comment a place fact you know.", "Let's compare."],
             ["The world is bigger than it looks.", "Follow for more."],
+        ],
+    },
+    "ocean": {
+        "keywords": ["ocean", "sea", "deep", "water", "marine", "underwater", "didyouknow"],
+        "hooks": [
+            ["We have better maps of Mars", "than of our own ocean floor."],
+            ["Drop Everest into the deepest trench", "and it still wouldn't reach the top."],
+            ["More than half the oxygen you breathe", "doesn't come from trees."],
+            ["There are more shipwrecks underwater", "than objects in the world's museums."],
+        ],
+        "bodies": [
+            ["Orbiters photographed all of Mars in detail.", "Most of our seafloor is mapped only roughly,",
+             "because water blocks the same instruments."],
+            ["The Mariana Trench runs about 11 kilometres down.", "Everest stands under 9 above sea level,",
+             "leaving two kilometres of water above the peak."],
+            ["Ocean plankton produce it by photosynthesis.", "Estimates put their share at half or more",
+             "of all the oxygen on Earth."],
+            ["UNESCO estimates roughly three million wrecks", "still lie on the seabed worldwide,",
+             "most of them never surveyed."],
+        ],
+        "closers": [
+            ["Follow — one ocean fact daily.", "The deep is barely explored."],
+            ["Share with someone who loves the sea.", "See you tomorrow."],
+            ["Comment an ocean fact you know.", "Let's compare."],
+            ["We know the sky better than the sea.", "Follow for more."],
+        ],
+    },
+    "sleep": {
+        "keywords": ["sleep", "dream", "dreams", "night", "rest", "brain", "didyouknow"],
+        "hooks": [
+            ["You are taller in the morning", "than you are tonight."],
+            ["Dolphins never fully fall asleep.", "Half their brain stays awake."],
+            ["You cannot sneeze", "while you're dreaming."],
+            ["Giraffes sleep less in a day", "than you do in a nap."],
+        ],
+        "bodies": [
+            ["The discs in your spine hold fluid.", "Standing all day slowly compresses them,",
+             "and a night lying down restores it."],
+            ["One half sleeps while the other watches.", "It keeps them surfacing for air",
+             "and alert for predators — all night."],
+            ["In REM sleep the body is paralysed.", "The nerves that trigger a sneeze",
+             "are switched off along with everything else."],
+            ["Wild giraffes average only a few hours,", "often in short bursts of minutes,",
+             "because lying down makes them vulnerable."],
+        ],
+        "closers": [
+            ["Follow — one sleep fact daily.", "Your body is stranger at night."],
+            ["Share with someone who never sleeps.", "See you tomorrow."],
+            ["Comment a sleep fact you know.", "Let's compare."],
+            ["Sleep is weirder than being awake.", "Follow for more."],
+        ],
+    },
+    "food": {
+        "keywords": ["food", "eat", "fruit", "cooking", "kitchen", "taste", "didyouknow"],
+        "hooks": [
+            ["Nutmeg was once worth", "more than its weight in gold."],
+            ["A banana is a berry.", "A strawberry is not."],
+            ["Carrots used to be purple.", "Orange was invented later."],
+            ["Peanuts are not nuts.", "They grow underground."],
+        ],
+        "bodies": [
+            ["It grew on a few tiny Indonesian islands.", "European powers fought wars over control of it,",
+             "and traders guarded the route for centuries."],
+            ["Botanically, a berry grows from one flower", "with seeds inside the flesh — that's a banana.",
+             "A strawberry's seeds sit on the outside."],
+            ["Early cultivated carrots were purple and yellow.", "Orange varieties were bred in Europe",
+             "and only later became the standard."],
+            ["Peanuts are legumes, like peas and beans.", "They flower above ground,",
+             "then push their pods down into the soil."],
+        ],
+        "closers": [
+            ["Follow — one food fact daily.", "Your kitchen is full of surprises."],
+            ["Share with someone who loves food.", "See you tomorrow."],
+            ["Comment a food fact you know.", "Let's compare."],
+            ["Nothing on your plate is simple.", "Follow for more."],
+        ],
+    },
+    "technology": {
+        "keywords": ["technology", "computer", "internet", "invention", "engineering", "didyouknow"],
+        "hooks": [
+            ["The computer that landed Apollo 11", "was weaker than your phone charger."],
+            ["The first computer bug", "was an actual insect."],
+            ["The world's first webcam", "was pointed at a coffee pot."],
+            ["The @ symbol is far older", "than email."],
+        ],
+        "bodies": [
+            ["Its guidance computer held a few kilobytes.", "Modern phones carry millions of times more,",
+             "and it still flew people to the Moon."],
+            ["In 1947 a moth was found in a relay", "of the Harvard Mark II computer.",
+             "The team taped it into the logbook."],
+            ["Cambridge researchers aimed a camera at it", "so nobody would walk to an empty pot.",
+             "That feed went online in the early 1990s."],
+            ["Merchants used it for centuries", "to mean 'at the rate of' in ledgers.",
+             "Email borrowed a symbol nobody else wanted."],
+        ],
+        "closers": [
+            ["Follow — one tech fact daily.", "Progress is stranger than it looks."],
+            ["Share with someone who loves gadgets.", "See you tomorrow."],
+            ["Comment a tech fact you know.", "Let's compare."],
+            ["Every invention has a weird origin.", "Follow for more."],
+        ],
+    },
+    "weather": {
+        "keywords": ["weather", "storm", "lightning", "rain", "snow", "climate", "didyouknow"],
+        "hooks": [
+            ["Lightning is hotter", "than the surface of the sun."],
+            ["Raindrops are not teardrop shaped.", "That drawing is a lie."],
+            ["Snow can be pink", "and it's alive."],
+            ["It really can be too cold", "to snow."],
+        ],
+        "bodies": [
+            ["A bolt can reach about 30,000 kelvin.", "The sun's visible surface is near 5,500,",
+             "so lightning briefly runs five times hotter."],
+            ["Small drops are almost perfect spheres.", "Bigger ones flatten as they fall,",
+             "ending up more like a hamburger bun."],
+            ["Cold-loving algae grow in old snowfields.", "Their pigment tints the surface pink,",
+             "which is why hikers call it watermelon snow."],
+            ["Snow needs moisture in the air.", "Extremely cold air holds almost none,",
+             "so the heaviest snow falls near freezing."],
+        ],
+        "closers": [
+            ["Follow — one weather fact daily.", "The sky is stranger than it looks."],
+            ["Share with someone who watches storms.", "See you tomorrow."],
+            ["Comment a weather fact you know.", "Let's compare."],
+            ["Look up more often.", "Follow for more."],
+        ],
+    },
+    "psychology": {
+        "keywords": ["psychology", "mind", "memory", "perception", "thinking", "brain", "didyouknow"],
+        "hooks": [
+            ["Your brain deletes your nose", "from everything you see."],
+            ["You cannot tickle yourself.", "Your brain won't allow it."],
+            ["Your brain feels no pain.", "It has no receptors for it."],
+            ["Your brain burns a fifth of your energy", "while sitting perfectly still."],
+        ],
+        "bodies": [
+            ["Your nose is always in your vision.", "The brain treats it as constant and useless,",
+             "so it edits it out of what you notice."],
+            ["The cerebellum predicts your own movements.", "It cancels the sensation before it lands,",
+             "which is why surprise is required."],
+            ["Surgeons can operate on a waking patient.", "The brain registers pain from elsewhere,",
+             "but feels nothing done to itself."],
+            ["It's about two percent of your body weight.", "Yet it consumes roughly twenty percent",
+             "of the calories you burn each day."],
+        ],
+        "closers": [
+            ["Follow — one mind fact daily.", "Your brain hides things from you."],
+            ["Share with someone who overthinks.", "See you tomorrow."],
+            ["Comment a mind fact you know.", "Let's compare."],
+            ["You don't see reality — you see a model.", "Follow for more."],
         ],
     },
 }
@@ -638,11 +1038,41 @@ def hooks_from_combos(used_combos):
     return out
 
 
+def hook_text(theme, h):
+    """The headline a hook produces, normalised for comparison."""
+    return " ".join(BANK[theme]["hooks"][h]).strip().lower()
+
+
+def spoken_hooks(used_hooks):
+    """The headline TEXT behind each used hook key.
+
+    used_hooks stores 'theme:hN', so two themes that happen to contain the same
+    hook are two different keys and both could be published — which is how
+    education carried "One word that replaces ten boring ones" in both its
+    vocabulary and connectors themes. The ledger has to compare what the viewer
+    actually sees, not the slot it came from.
+    """
+    out = set()
+    for key in used_hooks:
+        theme, _, idx = key.rpartition(":h")
+        if theme in BANK and idx.isdigit() and int(idx) < len(BANK[theme]["hooks"]):
+            out.add(hook_text(theme, int(idx)))
+    return out
+
+
 def remaining_combos(used, used_hooks=()):
     atomic = _NICHE in ATOMIC_NICHES
     out = []
+    spoken = spoken_hooks(used_hooks)
+    claimed = {}          # headline text -> the one (theme, h) allowed to use it
     for theme, spec in BANK.items():
         for h in range(len(spec["hooks"])):
+            txt = hook_text(theme, h)
+            if txt in spoken:
+                continue          # this exact headline is already published
+            owner = claimed.setdefault(txt, (theme, h))
+            if owner != (theme, h):
+                continue          # a different theme already offers this headline
             # The hook is the first spoken line AND becomes the video title, so
             # reusing one ships a near-identical video: same headline, same
             # opening. used_combos only blocked the exact hook+body+closer
