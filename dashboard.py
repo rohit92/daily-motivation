@@ -1176,7 +1176,13 @@ def home():
         f"<div class='muted'>On <b>Auto</b>, the app checks whether the college proxy is "
         f"reachable and switches by itself — no need to toggle when you change networks. If the "
         f"proxy blocks the neural voice, videos still build with the offline voice. Your local "
-        f"AI (Ollama) always stays direct.</div>")
+        f"AI (Ollama) always stays direct.</div>"
+        f"<div class='row' style='margin-top:12px'>"
+        f"<button class='go' onclick=\"post('/netcheck','Testing the connection to YouTube',false)\">"
+        f"🌐 Test my connection to YouTube</button></div>"
+        f"<div class='muted'>Run this once <b>on the college wifi</b>. It doesn't just ping the "
+        f"proxy — it actually calls Google through it, which is the only way to tell a working "
+        f"proxy from one that answers and then refuses everything.</div>")
 
     # ---- channel switcher (one pill per channel) + Run-all-3 card ----
     cmeta = _paths.channel_meta(cur)
@@ -1347,6 +1353,12 @@ def queue_now_job(channel=None):
         JOB["done_msg"] = "Upload failed — check the console above."
     finally:
         JOB["running"] = False
+
+
+@app.route("/netcheck", methods=["POST"])
+def netcheck():
+    return _kick(job, ["netcfg.py", "--check"], "Testing the route to YouTube",
+                 "Connection test done — read the console above")
 
 
 @app.route("/queue_now", methods=["POST"])

@@ -23,6 +23,7 @@ import json
 import os
 import socket
 import time
+import urllib.error
 import urllib.request
 from urllib.parse import urlparse
 
@@ -46,7 +47,8 @@ _CACHE_TTL = 15                      # seconds — short so switching networks i
 def _cfg():
     for path in (CONFIG, _CONFIG_FALLBACK):
         try:
-            return json.load(open(path))
+            with open(path) as f:
+                return json.load(f)
         except Exception:
             continue
     return {}
@@ -59,15 +61,24 @@ def _mode(cfg):
     return "on" if cfg.get("use_proxy") else "off"
 
 
-def _reachable(addr, timeout=2):
-    """True if we can open a TCP connection to the proxy host:port."""
-    try:
-        p = urlparse(addr)
-        host, port = p.hostname, p.port or 80
-        socket.create_connection((host, port), timeout=timeout).close()
-        return True
-    except Exception:
-        return False
+def _reachable(addr, timeout=3, tries=2):
+    """True if we can open a TCP connection to the proxy host:port.
+
+    Retried, because a false negative is expensive: on campus the proxy is the
+    only way out, so one slow probe at 7 AM would send the whole day's uploads
+    down a direct route that cannot work — and a failed upload still costs 1,600
+    quota units. A false positive is cheap by comparison.
+    """
+    p = urlparse(addr)
+    host, port = p.hostname, p.port or 80
+    for attempt in range(tries):
+        try:
+            socket.create_connection((host, port), timeout=timeout).close()
+            return True
+        except Exception:
+            if attempt + 1 < tries:
+                time.sleep(0.4)
+    return False
 
 
 def resolve():
@@ -126,5 +137,53 @@ def apply():
     os.environ.update(proxy_env())
 
 
+def check():
+    """Prove, from wherever you are right now, that uploads can reach YouTube.
+
+    Run this ON the college wifi. It reports the route it picked and then
+    actually calls Google over it, because "the proxy answers on port 8080" and
+    "Google is reachable through it" are different claims — a proxy that wants a
+    username answers the TCP probe and then returns 407 to everything.
+    """
+    cfg = _cfg()
+    addr = (cfg.get("proxy") or "").strip()
+    px = resolve()
+    print(f"  proxy configured : {addr or '(none)'}")
+    print(f"  mode             : {_mode(cfg)}")
+    if addr:
+        print(f"  proxy answers    : {'yes' if _reachable(addr) else 'no'}")
+    print(f"  decision         : {detected()}")
+
+    ok = True
+    for name, url in (("googleapis.com", "https://www.googleapis.com/discovery/v1/apis"),
+                      ("oauth2 token endpoint", "https://oauth2.googleapis.com/")):
+        try:
+            with opener().open(url, timeout=20) as r:
+                print(f"  ✓ {name}: HTTP {r.status}")
+        except urllib.error.HTTPError as e:
+            # 4xx from the endpoint itself still proves we got there.
+            if e.code == 407:
+                print(f"  ✗ {name}: HTTP 407 — this proxy needs a username and "
+                      f"password. Set proxy to http://USER:PASS@host:port")
+                ok = False
+            else:
+                print(f"  ✓ {name}: reachable (HTTP {e.code})")
+        except Exception as e:
+            print(f"  ✗ {name}: {type(e).__name__}: {e}")
+            ok = False
+
+    print("\n  " + ("Uploads can reach YouTube from this network. ✅"
+                    if ok else
+                    "Uploads CANNOT reach YouTube from this network. ❌"))
+    return ok
+
+
 if __name__ == "__main__":
+    import argparse
+    import urllib.error
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--check", action="store_true",
+                    help="test the real connection to YouTube from this network")
+    if ap.parse_args().check:
+        raise SystemExit(0 if check() else 1)
     print(detected())

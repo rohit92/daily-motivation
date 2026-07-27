@@ -55,6 +55,33 @@ def set_channel(channel):
 ENV = {**os.environ, "PATH": os.environ.get("PATH", "") + os.pathsep + "/opt/homebrew/bin"}
 
 
+def _proxy_env():
+    """Proxy variables for children, or {} for a direct connection."""
+    try:
+        import netcfg
+        return netcfg.proxy_env()
+    except Exception:
+        return {}
+
+
+def use_network():
+    """Route THIS process (and log which way it went).
+
+    launchd hands the autopilot a bare environment with no proxy set, so on the
+    college network every unattended upload was trying to reach googleapis.com
+    directly and failing, while the same upload clicked from the dashboard
+    worked — the dashboard passes the proxy to the children it spawns.
+    """
+    try:
+        import netcfg
+        netcfg.apply()
+        log(f"network: {netcfg.detected()}")
+        return netcfg.proxy_url()
+    except Exception as e:
+        log(f"network: proxy check failed ({type(e).__name__}: {e}) — going direct")
+        return ""
+
+
 def load(path, default=None):
     return json.load(open(path)) if os.path.exists(path) else default
 
@@ -88,8 +115,11 @@ def notify(msg, title="Mindset Refuel"):
 def run(label, script, *args):
     log(f"▸ {label}")
     extra = ["--channel", CHANNEL] if script in _CHANNEL_AWARE else []
+    # Resolved per run, not at import: launchd fires this at 7:00 and 19:30, and
+    # the machine may be on campus for one and at home for the other.
     p = subprocess.run([PY, os.path.join(HERE, script), *args, *extra],
-                       cwd=HERE, env=ENV, capture_output=True, text=True)
+                       cwd=HERE, env={**ENV, **_proxy_env()},
+                       capture_output=True, text=True)
     tail = (p.stdout or p.stderr or "").strip().splitlines()[-4:]
     for t in tail:
         log(f"    {t}")
@@ -270,6 +300,7 @@ def main():
     a = ap.parse_args()
 
     evening = datetime.now().hour >= 17
+    use_network()          # before anything talks to Google
     ensure_ollama()
 
     channels = ([a.channel] if a.channel

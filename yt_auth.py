@@ -61,7 +61,31 @@ def setup_state():
     return "connected" if os.path.exists(TOKEN) else "authorize"
 
 
+def use_network():
+    """Point this process's HTTP stacks at the right route before we talk to Google.
+
+    Every path to YouTube goes through this module, and until now none of them
+    applied the proxy. The dashboard injected it into the env of the children it
+    spawned, so clicking Upload worked on the college network — but the launchd
+    autopilot calls schedule_queue in-process, inherits launchd's bare
+    environment, and so tried to reach googleapis.com directly. On a campus
+    network that is a dead end, which is why scheduled uploads only ever
+    succeeded at home.
+
+    Both stacks read the env we set here: httplib2 (the Data API and the
+    resumable upload) defaults to proxy_info_from_environment, and requests
+    (the OAuth token refresh) reads the same variables.
+    """
+    try:
+        import netcfg
+        netcfg.apply()
+        return netcfg.proxy_url()
+    except Exception:
+        return ""          # never let a proxy-config problem block an upload
+
+
 def get_credentials(interactive=True):
+    use_network()
     try:
         from google.auth.transport.requests import Request
         from google.oauth2.credentials import Credentials
