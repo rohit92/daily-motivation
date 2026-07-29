@@ -35,6 +35,15 @@ HEALTHY = "processed"
 DEAD_DURATION = "P0D"
 
 
+def _still_processing(entry):
+    """True while a video is new enough that P0D just means 'not transcoded yet'.
+
+    Long-form takes YouTube a while, so 'uploaded today' is the grace window —
+    anything older than that with no duration really is a dead transfer.
+    """
+    return str(entry.get("uploaded_at", ""))[:10] == date.today().isoformat()
+
+
 def load(path, default=None):
     return json.load(open(path)) if os.path.exists(path) else default
 
@@ -161,6 +170,12 @@ def reconcile_channel(slug, fix=False):
         if info is None:
             changes += retire(name, entry,
                               f"video_id {vid} is not on the channel (deleted?)")
+        elif not info["healthy"] and _still_processing(entry):
+            # A video uploaded minutes ago legitimately reports P0D until
+            # YouTube finishes transcoding. Calling that BROKEN meant crying
+            # wolf on every fresh upload — including the ones this run just made.
+            print(f"  ⏳ {name}: {vid} still processing on YouTube's side "
+                  f"(uploaded today) — check again later.")
         elif not info["healthy"]:
             print(f"  ⚠ {name}: {vid} is {info['upload_status']} "
                   f"/ duration {info['duration']} → BROKEN on YouTube. "

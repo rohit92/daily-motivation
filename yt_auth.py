@@ -84,6 +84,28 @@ def use_network():
         return ""          # never let a proxy-config problem block an upload
 
 
+_NETWORK_WORDS = ("transport", "connection", "timed out", "timeout", "ssl",
+                  "temporary failure", "name resolution", "unreachable",
+                  "getaddrinfo", "connection refused", "network is down",
+                  "max retries",
+                  # exact phrasings seen in this project's own logs
+                  "unable to find the server",      # httplib2 DNS failure
+                  "nodename nor servname")          # macOS resolver
+
+
+def _looks_like_network(msg):
+    """Was the refresh blocked by the network rather than by Google saying no?
+
+    google-auth wraps everything in TransportError/RefreshError, so the class
+    alone doesn't separate 'the wifi is blocking us' from 'this token is dead'.
+    An actually-rejected token comes back with invalid_grant.
+    """
+    low = (msg or "").lower()
+    if "invalid_grant" in low or "invalid_client" in low:
+        return False               # Google answered: the token really is dead
+    return any(w in low for w in _NETWORK_WORDS)
+
+
 def get_credentials(interactive=True):
     use_network()
     try:
@@ -106,15 +128,35 @@ def get_credentials(interactive=True):
         # authorized before a scope was added → one fresh consent needed
         if creds and not set(SCOPES).issubset(set(creds.scopes or [])):
             creds = None
+    why = ""
     if creds and not creds.valid and creds.expired and creds.refresh_token:
         try:
             creds.refresh(Request())
-        except Exception:
+            # Save it. This used to refresh in memory only, so the token on disk
+            # stayed stale forever and EVERY run had to reach Google before it
+            # could do anything — turning one flaky moment into a total failure.
+            try:
+                open(TOKEN, "w").write(creds.to_json())
+            except OSError:
+                pass                      # refreshed fine; just couldn't cache it
+        except Exception as e:
+            why = f"{type(e).__name__}: {e}"
             creds = None
     if not creds or not creds.valid:
         if not interactive:
+            # Distinguish "you never authorised" from "we couldn't reach Google
+            # to renew". Reporting the second as the first sent you to reconnect
+            # an account that was never disconnected — which is what the
+            # autopilot log showed for three runs straight while the saved
+            # token was perfectly good.
+            if _looks_like_network(why):
+                raise NotConnected(
+                    f"Could not reach Google to renew the login ({why}). Your "
+                    f"YouTube connection is fine — this is the network. On the "
+                    f"college wifi run: python3 netcfg.py --check")
             raise NotConnected("Not connected to YouTube yet — click 'Connect "
-                               "YouTube' in the dashboard Settings once.")
+                               "YouTube' in the dashboard Settings once."
+                               + (f" ({why})" if why else ""))
         flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRET, SCOPES)
         creds = flow.run_local_server(port=0)
         os.makedirs(os.path.dirname(TOKEN), exist_ok=True)

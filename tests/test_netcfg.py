@@ -128,5 +128,31 @@ class TestDetection(ProxyTestCase):
             self.assertEqual(netcfg.resolve(), "")
 
 
+class TestRefreshFailureIsDiagnosedHonestly(unittest.TestCase):
+    """"Can't renew the login" and "you never connected" are different problems.
+
+    Reporting the first as the second sent the owner to re-authorise an account
+    that was never disconnected — three autopilot runs in a row said "click
+    Connect YouTube" while the saved token was perfectly good and the real
+    fault was the network.
+    """
+
+    def test_network_failures_are_named_as_network(self):
+        for msg in ("TransportError: Failed to fetch token: Connection timed out",
+                    "TransportError: [Errno 8] nodename nor servname provided",
+                    "SSLError: handshake operation timed out",
+                    "ServerNotFoundError: Unable to find the server at oauth2.googleapis.com",
+                    "ConnectionError: Max retries exceeded with url"):
+            self.assertTrue(yt_auth._looks_like_network(msg), msg)
+
+    def test_a_genuinely_dead_token_is_not_blamed_on_the_network(self):
+        for msg in ("RefreshError: ('invalid_grant: Token has been expired or revoked.')",
+                    "RefreshError: invalid_client"):
+            self.assertFalse(yt_auth._looks_like_network(msg), msg)
+
+    def test_no_message_is_not_a_network_fault(self):
+        self.assertFalse(yt_auth._looks_like_network(""))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
