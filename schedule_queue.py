@@ -161,6 +161,12 @@ def item_path(item):
     return os.path.join(root, item["file"])
 
 
+def _theme_of(P, name):
+    """This video's script theme, for search tags. '' when we can't tell."""
+    lib = load(P["library"], {"videos": {}}) or {"videos": {}}
+    return ((lib.get("videos") or {}).get(name, {}) or {}).get("theme", "")
+
+
 def plan(until, replan=False):
     """Assign each ready video a public release date, one per channel per day."""
     q = load(QUEUE, blank()) or blank()
@@ -312,6 +318,10 @@ def run(dry=False, limit=None, channel=None, now=False):
             cand = os.path.join(P["long_form"], item["thumb"])
             thumb = cand if os.path.exists(cand) else None
 
+        # The theme drives this video's search tags. The queue item never
+        # carried one, but the library entry it was built from does.
+        theme = item.get("theme") or _theme_of(P, name)
+
         U.set_channel(slug)
         pub = U.publish_time(on_date=date.fromisoformat(item["publish_date"]))
         when = pub or "immediately (slot already passed)"
@@ -325,7 +335,7 @@ def run(dry=False, limit=None, channel=None, now=False):
         try:
             vid = U.upload(path, item["title"], item["description"],
                            thumb=thumb, comment=item.get("pin_comment"),
-                           longform=longform, publish_at=pub)
+                           longform=longform, publish_at=pub, theme=theme)
             item["status"] = "uploaded"
             item["video_id"] = vid
             item.pop("error", None)

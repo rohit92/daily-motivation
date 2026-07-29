@@ -160,8 +160,25 @@ def mark_uploaded(library_path, filename, vid, publish_at=None):
     return touched
 
 
+def _seo_category():
+    """This channel's YouTube category, falling back to the old hardcoded 22."""
+    try:
+        import seo
+        return seo.category_id(CHANNEL)
+    except Exception:
+        return "22"        # a bad SEO lookup must never block an upload
+
+
+def _seo_tags(theme, longform, title):
+    try:
+        import seo
+        return seo.tags_for(CHANNEL, theme=theme, longform=longform, title=title)
+    except Exception:
+        return []
+
+
 def upload(path, title, description, thumb=None, comment=None, longform=False,
-           publish_at=None):
+           publish_at=None, theme=None):
     from googleapiclient.http import MediaFileUpload
     privacy = load(CONFIG, {}).get("upload_privacy", "public")
     yt = get_service()
@@ -169,11 +186,17 @@ def upload(path, title, description, thumb=None, comment=None, longform=False,
     if publish_at:      # YouTube requires private + publishAt for scheduling
         status_body = {"privacyStatus": "private", "publishAt": publish_at,
                        "selfDeclaredMadeForKids": False}
-    body = {
-        "snippet": {"title": title[:100], "description": description,
-                    "categoryId": "22"},
-        "status": status_body,
-    }
+    # Tags and category were the two things missing from every upload this
+    # system has ever made: no `tags` key at all, and categoryId pinned to 22
+    # ("People & Blogs") even on the English and science channels. That is why
+    # search accounted for ~1% of views — there was nothing to search against.
+    snippet = {"title": title[:100], "description": description,
+               "categoryId": _seo_category(), "defaultLanguage": "en",
+               "defaultAudioLanguage": "en"}
+    tags = _seo_tags(theme, longform, title)
+    if tags:
+        snippet["tags"] = tags
+    body = {"snippet": snippet, "status": status_body}
     # 4 MB chunks make the upload GENUINELY resumable: a dropped connection
     # retries just that chunk instead of restarting — or worse, half-delivering
     # the file. chunksize=-1 pushed the whole video in a single request, which
@@ -185,6 +208,8 @@ def upload(path, title, description, thumb=None, comment=None, longform=False,
     size_mb = os.path.getsize(path) / (1024 * 1024)
     print(f"Uploading {os.path.basename(path)} ({size_mb:.1f} MB, "
           f"{'scheduled' if publish_at else privacy})…")
+    print(f"   · category {snippet['categoryId']}, {len(tags)} tag(s)"
+          + (f": {', '.join(tags[:5])}…" if tags else " — NONE"))
     resp, tries = None, 0
     while resp is None:
         try:
