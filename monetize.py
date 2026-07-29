@@ -260,6 +260,12 @@ def advice(ms):
         for t in tips or ["on track — keep the cadence."]:
             print(f"    · {t}")
 
+    print("\n  ── on the ETAs above")
+    print("    They extrapolate the last 30 days in a straight line. YouTube growth")
+    print("    is not linear — one video that lands moves a channel further than a")
+    print("    year of the current rate. Read them as 'this is what standing still")
+    print("    looks like', not as a forecast.")
+
 
 def main():
     ap = argparse.ArgumentParser()
