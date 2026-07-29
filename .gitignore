@@ -23,6 +23,14 @@ assets/voices/
 # make_music.py output
 assets/music/
 *.mp4
+# imagery.py stock photos — hundreds of MB, and `imagery.py --stock` rebuilds
+# them from Wikimedia/Openverse on demand. manifest.json is NOT ignored: it is
+# the record of which licence and which author each image carries, which is the
+# part that actually matters and the part that cannot be regenerated.
+assets/images/**/*.jpg
+assets/images/**/*.jpeg
+assets/images/**/*.png
+!assets/images/manifest.json
 *.mov
 *.mkv
 *.mp3

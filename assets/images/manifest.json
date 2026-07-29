@@ -663,6 +663,86 @@
    "source": "wikimedia",
    "page": "https://commons.wikimedia.org/wiki/File:Siegsdorfer_Mammut.jpg",
    "query": "woolly mammoths"
+  },
+  "animals/animals_014.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/James_Flamingos_MC.jpg/1920px-James_Flamingos_MC.jpg",
+   "license": "CC BY 3.0",
+   "artist": "Christian Mehlf\u00fchrer, User:Chmehl",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:James_Flamingos_MC.jpg",
+   "query": "flamingo"
+  },
+  "animals/animals_015.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Parson%27s_Chameleon_02.jpg/1920px-Parson%27s_Chameleon_02.jpg",
+   "license": "CC BY 4.0",
+   "artist": "Maubreville",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Parson%27s_Chameleon_02.jpg",
+   "query": "chameleon"
+  },
+  "animals/animals_016.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Arctic_Fox_%288148547384%29.jpg/1920px-Arctic_Fox_%288148547384%29.jpg",
+   "license": "CC BY 2.0",
+   "artist": "David Shane from United States of America",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Arctic_Fox_(8148547384).jpg",
+   "query": "arctic fox"
+  },
+  "animals/animals_017.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Arctic_Fox_on_Banks_Island_04.jpg/1920px-Arctic_Fox_on_Banks_Island_04.jpg",
+   "license": "CC BY 4.0",
+   "artist": "Stephan Sprinz",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Arctic_Fox_on_Banks_Island_04.jpg",
+   "query": "arctic fox"
+  },
+  "animals/animals_018.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Fawn-breasted_Brilliant_hummingbird_in_Ecuador_-_%2854564276957%29.jpg/1920px-Fawn-breasted_Brilliant_hummingbird_in_Ecuador_-_%2854564276957%29.jpg",
+   "license": "CC BY 2.0",
+   "artist": "Andy  Morffew from Itchen Abbas, Hampshire, UK",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Fawn-breasted_Brilliant_hummingbird_in_Ecuador_-_(54564276957).jpg",
+   "query": "hummingbird"
+  },
+  "animals/animals_019.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Sword-billed_hummingbird_%28male%29_at_Guango_Lodge%2C_Ecuador_%2821310837273%29.jpg/1920px-Sword-billed_hummingbird_%28male%29_at_Guango_Lodge%2C_Ecuador_%2821310837273%29.jpg",
+   "license": "CC BY 2.0",
+   "artist": "Andy Morffew from Itchen Abbas, Hampshire, UK",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Sword-billed_hummingbird_(male)_at_Guango_Lodge,_Ecuador_(21310837273).jpg",
+   "query": "hummingbird"
+  },
+  "animals/animals_020.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Canis_lupus_laying_in_grass.jpg/1920px-Canis_lupus_laying_in_grass.jpg",
+   "license": "Public domain",
+   "artist": "John and Karen Hollingsworth",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Canis_lupus_laying_in_grass.jpg",
+   "query": "wolf"
+  },
+  "animals/animals_021.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Canis_lupus_baileyi_running.jpg/1920px-Canis_lupus_baileyi_running.jpg",
+   "license": "Public domain",
+   "artist": "Photographer: Jim Clark",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Canis_lupus_baileyi_running.jpg",
+   "query": "wolf"
+  },
+  "animals/animals_022.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Snowy_owl_on_alert_-_closeup%2C_cupsogue_beach_%2832631856131%29.jpg/1920px-Snowy_owl_on_alert_-_closeup%2C_cupsogue_beach_%2832631856131%29.jpg",
+   "license": "CC BY 2.0",
+   "artist": "Russ",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Snowy_owl_on_alert_-_closeup,_cupsogue_beach_(32631856131).jpg",
+   "query": "owl closeup"
+  },
+  "animals/animals_023.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Mottled_Wood_Owl_is_a_species_of_large_owl_found_in_India.jpg/1920px-Mottled_Wood_Owl_is_a_species_of_large_owl_found_in_India.jpg",
+   "license": "CC BY 4.0",
+   "artist": "Shiv's fotografia",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Mottled_Wood_Owl_is_a_species_of_large_owl_found_in_India.jpg",
+   "query": "owl closeup"
   }
  }
 }
