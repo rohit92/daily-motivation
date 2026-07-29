@@ -283,10 +283,41 @@ def run_calendar():
         sq.plan(date.today() + timedelta(days=6))
         posted = sq.run()
         log(f"✓ calendar: {posted} video(s) uploaded")
+        backfill_seo()
         return posted
     except Exception as e:
         log(f"✗ calendar failed: {type(e).__name__}: {e}")
         return 0
+
+
+def backfill_seo():
+    """Spend leftover quota tagging the back catalogue, never the upload budget.
+
+    Every video published before seo.py existed went up with no tags and the
+    wrong category, and those videos keep earning views for years. There is
+    usually a few hundred spare units after the day's uploads — enough for a
+    handful of videos — so this chips away on its own instead of waiting for
+    someone to remember a one-off script.
+    """
+    try:
+        import seo_backfill as sb
+        if sb.quota_left() < sb.VIDEO_UPDATE_UNITS:
+            return
+        import io
+        import contextlib
+        buf = io.StringIO()
+        argv = sys.argv                    # sb.main() parses argv; put it back
+        try:
+            with contextlib.redirect_stdout(buf):
+                sys.argv = ["seo_backfill.py", "--apply", "--videos-only"]
+                sb.main()
+        finally:
+            sys.argv = argv
+        done = sum(1 for line in buf.getvalue().splitlines() if " ✎ " in line)
+        if done:
+            log(f"✓ SEO backfill: tagged {done} older video(s)")
+    except Exception as e:
+        log(f"· SEO backfill skipped ({type(e).__name__}: {str(e)[:80]})")
 
 
 def main():

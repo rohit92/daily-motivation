@@ -33,10 +33,46 @@ import yt_auth
 
 VIDEO_UPDATE_UNITS = 50
 CHANNEL_UPDATE_UNITS = 50
+# Keep enough units in reserve for one upload. Backfilling metadata on a video
+# published last month is never worth losing tonight's post — and the two share
+# one 10,000-unit project quota.
+DEFAULT_RESERVE = 1600
 
 
 def load(path, default=None):
     return json.load(open(path)) if os.path.exists(path) else default
+
+
+def quota_left(reserve=DEFAULT_RESERVE):
+    """Units we may spend right now, per schedule_queue's own ledger.
+
+    Google resets the real quota at midnight Pacific, which is the middle of the
+    following day in IST — so the morning autopilot run is still inside the
+    previous quota day. Spending freely here is how tomorrow's upload dies with
+    quotaExceeded.
+    """
+    try:
+        import schedule_queue as SQ
+        q = SQ.load(SQ.QUEUE, {}) or {}
+        budget = q.get("daily_budget", 8000)
+        spent = (q.get("spent") or {}).get(SQ.date.today().isoformat(), 0)
+        return max(0, budget - spent - reserve)
+    except Exception:
+        return 0            # can't tell → assume none, never gamble
+
+
+def charge(units):
+    """Record what we spent, so uploads see an honest ledger."""
+    if units <= 0:
+        return
+    try:
+        import schedule_queue as SQ
+        q = SQ.load(SQ.QUEUE, {}) or {}
+        today = SQ.date.today().isoformat()
+        q.setdefault("spent", {})[today] = (q.get("spent") or {}).get(today, 0) + units
+        SQ.save(q)
+    except Exception:
+        pass
 
 
 def theme_index(slug):
@@ -89,7 +125,7 @@ def _is_longform(duration):
     return int(m.group(1) or 0) >= 1
 
 
-def backfill_videos(slug, yt, apply=False):
+def backfill_videos(slug, yt, apply=False, budget=None):
     themes = theme_index(slug)
     try:
         live = live_snippets(yt)
@@ -123,6 +159,13 @@ def backfill_videos(slug, yt, apply=False):
             print(f"  · {vid}  already good")
             continue
 
+        # Check the budget BEFORE announcing the change, so a stopped run never
+        # prints an edit marker for something it did not write.
+        if apply and budget is not None and budget[0] < VIDEO_UPDATE_UNITS:
+            print(f"  · quota reserve reached — {vid} and the rest are unchanged; "
+                  f"re-run after the reset and it resumes here")
+            break
+
         bits = []
         if need_tags:
             bits.append(f"tags {len(have_tags)}→{len(new_tags)}")
@@ -152,6 +195,9 @@ def backfill_videos(slug, yt, apply=False):
             except Exception as e:
                 print(f"     ✗ failed: {type(e).__name__}: {str(e)[:140]}")
                 continue
+            if budget is not None:
+                budget[0] -= VIDEO_UPDATE_UNITS
+                charge(VIDEO_UPDATE_UNITS)
         changed += 1
     return changed, changed * VIDEO_UPDATE_UNITS
 
@@ -206,10 +252,21 @@ def main():
     ap.add_argument("--channel", default=None, help="one channel (default: all)")
     ap.add_argument("--videos-only", action="store_true")
     ap.add_argument("--channel-only", action="store_true")
+    ap.add_argument("--reserve", type=int, default=DEFAULT_RESERVE,
+                    help=f"units to leave for uploads (default {DEFAULT_RESERVE})")
     a = ap.parse_args()
 
     slugs = ([a.channel] if a.channel
              else [c["slug"] for c in _paths.active_channels()])
+    budget = None
+    if a.apply:
+        budget = [quota_left(a.reserve)]
+        print(f"quota available for backfill: {budget[0]} units "
+              f"({budget[0] // VIDEO_UPDATE_UNITS} videos), "
+              f"keeping {a.reserve} in reserve for uploads")
+        if budget[0] < VIDEO_UPDATE_UNITS and not a.channel_only:
+            print("Nothing to spend today — re-run after the quota resets and "
+                  "it picks up where it left off.")
     total, units = 0, 0
     for slug in slugs:
         name = _paths.channel_meta(slug).get("name", slug)
@@ -221,7 +278,7 @@ def main():
             print(f"  ! not connected: {type(e).__name__}: {str(e)[:140]}")
             continue
         if not a.channel_only:
-            c, u = backfill_videos(slug, yt, apply=a.apply)
+            c, u = backfill_videos(slug, yt, apply=a.apply, budget=budget)
             total += c
             units += u
         if not a.videos_only:
