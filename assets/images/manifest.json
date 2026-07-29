@@ -1919,6 +1919,46 @@
    "source": "wikimedia",
    "page": "https://commons.wikimedia.org/wiki/File:Flemish_Portrait_of_an_astronomer.jpg",
    "query": "hands holding compass"
+  },
+  "carrots_used/carrots_used_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Squash_and_Carrots.jpg",
+   "license": "Public domain",
+   "artist": "Sue Clark",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Squash_and_Carrots.jpg",
+   "query": "carrots used"
+  },
+  "carrots_used/carrots_used_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Marzipan_carrots_for_carrot_cake.jpg/1920px-Marzipan_carrots_for_carrot_cake.jpg",
+   "license": "CC BY 4.0",
+   "artist": "SKopp",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Marzipan_carrots_for_carrot_cake.jpg",
+   "query": "carrots used"
+  },
+  "carrots_used/carrots_used_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Guacamole_with_baby_carrots_-_Massachusetts.jpg/1920px-Guacamole_with_baby_carrots_-_Massachusetts.jpg",
+   "license": "CC0",
+   "artist": "Daderot",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Guacamole_with_baby_carrots_-_Massachusetts.jpg",
+   "query": "carrots food"
+  },
+  "carrots_used/carrots_used_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Carrot_juice_-_July_2023_-_Sarah_Stierch.jpg/1920px-Carrot_juice_-_July_2023_-_Sarah_Stierch.jpg",
+   "license": "CC BY 4.0",
+   "artist": "Missvain",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Carrot_juice_-_July_2023_-_Sarah_Stierch.jpg",
+   "query": "carrots food"
+  },
+  "carrots_used/carrots_used_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Vegan_carrot_%2B_orange_cake_-_Cafe_Coho_2025-11-21.jpg/1920px-Vegan_carrot_%2B_orange_cake_-_Cafe_Coho_2025-11-21.jpg",
+   "license": "CC0",
+   "artist": "Andy Li",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Vegan_carrot_%2B_orange_cake_-_Cafe_Coho_2025-11-21.jpg",
+   "query": "carrots food"
   }
  }
 }

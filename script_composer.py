@@ -34,6 +34,7 @@ CONTENT = _P["content"]
 STATE = _P["state"]
 TRENDS = _P["trends"]
 LIBRARY = _P["library"]
+CONFIG = _P["config"]
 # The niche whose bank we compose from (set by set_channel()).
 _NICHE = _paths.channel_meta("motivation").get("niche", "motivation")
 
@@ -904,10 +905,11 @@ BANK = bank_for(_NICHE)
 
 def set_channel(channel):
     """Point CONTENT/STATE/TRENDS/LIBRARY and the active BANK at `channel`'s files."""
-    global CONTENT, STATE, TRENDS, LIBRARY, BANK, _NICHE
+    global CONTENT, STATE, TRENDS, LIBRARY, CONFIG, BANK, _NICHE
     P = _paths.paths(channel)
     CONTENT, STATE, TRENDS = P["content"], P["state"], P["trends"]
     LIBRARY = P["library"]
+    CONFIG = P["config"]
     _NICHE = _paths.channel_meta(channel).get("niche", "motivation")
     BANK = bank_for(_NICHE)
 
@@ -1027,6 +1029,34 @@ def hook_key(theme, h):
     return f"{theme}:h{h}"
 
 
+def _fit_runtime(hooks, bodies, closers):
+    """Trim a script to the target line count, cutting from the middle only.
+
+    hooks + bodies + closers is 7 lines, which renders at ~25s. The trend scan
+    puts the median winning Short at 18s, and a Short that outlasts its
+    audience is one people swipe out of — which the algorithm reads as a worse
+    signal than a shorter video watched to the end.
+
+    What gets cut matters as much as how much. The hook is the first two
+    seconds and decides whether anyone stays, so it is never touched. One
+    closer line survives because that is the engagement ask, and this channel's
+    weak spot is conversion (4.1 subscribers per 1,000 views) — buying runtime
+    by deleting the call to action would trade the wrong thing. So the body
+    gives up the lines.
+
+    Set "short_max_lines" in a channel's config.json to override; 0 disables.
+    """
+    cfg = load(CONFIG, {}) or {}
+    budget = cfg.get("short_max_lines", 5)
+    full = list(hooks) + list(bodies) + list(closers)
+    if not budget or budget >= len(full):
+        return full
+    keep_hook = list(hooks)[:max(1, budget - 2)]
+    keep_close = list(closers)[:1] if budget > len(keep_hook) else []
+    room = max(0, budget - len(keep_hook) - len(keep_close))
+    return keep_hook + list(bodies)[:room] + keep_close
+
+
 def hooks_from_combos(used_combos):
     """Recover which hooks a channel has already published, from the older
     used_combos ledger (keys look like 'theme:hbc', one digit per slot)."""
@@ -1137,7 +1167,7 @@ def compose(n, prefer=None):
         batch_parts |= parts
         used_hooks.add(hook_key(theme, h))
         spec = BANK[theme]
-        lines = spec["hooks"][h] + spec["bodies"][b] + spec["closers"][c]
+        lines = _fit_runtime(spec["hooks"][h], spec["bodies"][b], spec["closers"][c])
         item = {"id": f"c{seq:03d}", "theme": theme, "lines": lines}
         content["items"].append(item)
         added.append(item)

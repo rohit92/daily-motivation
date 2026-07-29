@@ -20,5 +20,6 @@
   "use_proxy": true,
   "proxy_mode": "auto",
   "animated_bg": true,
-  "prepare_next_on_upload": true
+  "prepare_next_on_upload": true,
+  "short_max_lines": 5
 }
