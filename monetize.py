@@ -38,6 +38,9 @@ TIERS = {
     "fan funding": (500, 3000, 3_000_000),
 }
 RECENT_DAYS = 30          # window used to measure the channel's current speed
+# Below this many long-form views, the watch-hours-per-view ratio is one or two
+# videos' luck rather than a property of the format. Report it, but say so.
+MIN_CONFIDENT_VIEWS = 100
 
 
 def _rows(yta, start, end, **kw):
@@ -226,13 +229,24 @@ def advice(ms):
         l_rate = (longf["hours"] / longf["views"] * 1000) if longf.get("views") else 0
         if l_rate and s_rate:
             need = TIERS["ad revenue"][1]
+            n = longf["views"]
             tips.append(f"long-form earns {l_rate / max(s_rate, 0.01):.0f}x the watch "
                         f"hours per view that Shorts do ({l_rate:.1f} vs "
-                        f"{s_rate:.1f} h per 1,000 views).")
+                        f"{s_rate:.1f} h per 1,000 views)."
+                        + (f"  ⚠ measured on only {n} long-form view(s) — treat the "
+                           f"multiple as rough; the direction is arithmetic, the "
+                           f"size is not." if n < MIN_CONFIDENT_VIEWS else ""))
             tips.append(f"to reach {need:,} hours: ~{need / l_rate * 1000:,.0f} "
                         f"long-form views, or ~{need / s_rate * 1000:,.0f} Shorts "
                         f"views. Same door, {(need / s_rate) / (need / l_rate):.0f}x "
                         f"the effort.")
+            # Retention is what decides whether long-form keeps this edge. A
+            # 6-minute video watched 11% of the way through is a 40-second video.
+            if l_rate and longf.get("hours"):
+                avg_min = longf["hours"] * 60 / max(n, 1)
+                tips.append(f"long-form is currently watched {avg_min:.1f} min per "
+                            f"view. Every extra minute held is worth more than "
+                            f"any number of extra Shorts.")
         elif not longf.get("views"):
             tips.append("no long-form watch time yet — the 4,000-hour door stays "
                         "shut until this channel has videos over 60 seconds "
