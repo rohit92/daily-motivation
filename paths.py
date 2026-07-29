@@ -48,6 +48,7 @@ DEFAULT_CHANNEL = "motivation"
 _PER_CHANNEL_FILES = [
     "config", "content", "state", "library", "links", "today", "story_plan",
     "profile",   # each channel has its own goal/audience/style for coach + scripts
+    "trends",    # each channel scans its own niche, not motivation's
 ]
 _FILE_NAMES = {
     "config": "config.json",
@@ -58,6 +59,11 @@ _FILE_NAMES = {
     "today": "today.json",
     "story_plan": "story_plan.json",
     "profile": "profile.json",
+    # Per channel, not shared: a facts channel and a motivation channel are not
+    # trending on the same things. One global report meant script_composer
+    # weighted all three by whatever motivational Shorts were popular, which
+    # left the facts channel with every theme at 1.0 — no signal at all.
+    "trends": "trends_report.json",
 }
 
 # SHARED roots (identical for every channel).
@@ -66,7 +72,6 @@ SHARED = {
     "backgrounds": os.path.join(HERE, "assets", "backgrounds"),
     "music": os.path.join(HERE, "assets", "music"),
     "voices": os.path.join(HERE, "assets", "voices"),
-    "trends": os.path.join(HERE, "trends_report.json"),   # trend scan is global
 }
 
 

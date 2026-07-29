@@ -76,9 +76,11 @@ def set_channel(channel):
 OUTPUT_DIR = _P["output"]
 
 
-# Child scripts that understand --channel (per-channel data). trend_scan.py and
-# character.py operate on shared/global data and do NOT take --channel.
+# Child scripts that understand --channel (per-channel data). character.py
+# operates on shared data and does NOT take --channel. trend_scan.py does now:
+# it searches this channel's niche and writes this channel's report.
 _CHANNEL_AWARE = {"channel_stats.py", "make_video.py", "metadata.py",
+                  "trend_scan.py",
                   "storyteller.py", "make_longform.py", "analytics.py",
                   "channel_control.py", "upload_youtube.py"}
 
@@ -248,10 +250,12 @@ def prepare_next():
     the pipeline is always one video ahead. Idempotent — a channel that already
     has a ready buffer is skipped, so it never piles up or loops."""
     print("Preparing the next video for all channels (trend-scan + build)…\n")
-    run(["trend_scan.py", "--region", "US"])          # refresh trends (global)
     made = []
     for c in _paths.active_channels():
         set_channel(c["slug"])
+        # Scan inside the loop now: each channel searches its own niche, so a
+        # single global scan can no longer steer all three by motivation.
+        run(["trend_scan.py", "--region", "US"])
         lib = load(LIBRARY, {"videos": {}}) or {"videos": {}}
         buffered = [n for n, v in (lib.get("videos") or {}).items()
                     if v.get("status") == "ready" and not weak_hook(v.get("title"))

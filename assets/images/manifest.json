@@ -1735,6 +1735,190 @@
    "source": "wikimedia",
    "page": "https://commons.wikimedia.org/wiki/File:Young_girl_touching_dictionary_pages.jpg",
    "query": "dictionary page"
+  },
+  "listening/listening_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Headphone-dynamic-premium.png/1920px-Headphone-dynamic-premium.png",
+   "license": "CC0",
+   "artist": "Vijay Verma",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Headphone-dynamic-premium.png",
+   "query": "headphones listening"
+  },
+  "listening/listening_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Headphone-dynamic-clay.png/1920px-Headphone-dynamic-clay.png",
+   "license": "CC0",
+   "artist": "Vijay Verma",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Headphone-dynamic-clay.png",
+   "query": "headphones listening"
+  },
+  "listening/listening_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Headphone-dynamic-gradient.png/1920px-Headphone-dynamic-gradient.png",
+   "license": "CC0",
+   "artist": "Vijay Verma",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Headphone-dynamic-gradient.png",
+   "query": "headphones listening"
+  },
+  "listening/listening_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Headphone-dynamic-color.png/1920px-Headphone-dynamic-color.png",
+   "license": "CC0",
+   "artist": "Vijay Verma",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Headphone-dynamic-color.png",
+   "query": "headphones listening"
+  },
+  "listening/listening_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/RT_Podcast_Live%2C_RTX_2013_%289362057570%29.jpg/1920px-RT_Podcast_Live%2C_RTX_2013_%289362057570%29.jpg",
+   "license": "CC BY 2.0",
+   "artist": "Tronnic photos",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:RT_Podcast_Live,_RTX_2013_(9362057570).jpg",
+   "query": "podcast microphone"
+  },
+  "listening/listening_006.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Rangers_recording_for_Glacier%27s_podcast%2C_%22Headwaters%22_%2852944378233%29.jpg/1920px-Rangers_recording_for_Glacier%27s_podcast%2C_%22Headwaters%22_%2852944378233%29.jpg",
+   "license": "Public domain",
+   "artist": "GlacierNPS",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Rangers_recording_for_Glacier%27s_podcast,_%22Headwaters%22_(52944378233).jpg",
+   "query": "podcast microphone"
+  },
+  "listening/listening_007.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Person_enjoying_vinyl_records_while_listening_to_music.jpg/1920px-Person_enjoying_vinyl_records_while_listening_to_music.jpg",
+   "license": "CC BY 2.0",
+   "artist": "Shixart1985",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Person_enjoying_vinyl_records_while_listening_to_music.jpg",
+   "query": "person listening"
+  },
+  "listening/listening_008.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Teufelsberg_listening_station_Berlin-Grunewald_2021-10-13_02.jpg/1920px-Teufelsberg_listening_station_Berlin-Grunewald_2021-10-13_02.jpg",
+   "license": "CC0",
+   "artist": "Leonhard Lenz",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Teufelsberg_listening_station_Berlin-Grunewald_2021-10-13_02.jpg",
+   "query": "person listening"
+  },
+  "ocean/ocean_013.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Coconut_octopus_%28Amphioctopus_marginatus%29_%2845031078485%29.jpg/1920px-Coconut_octopus_%28Amphioctopus_marginatus%29_%2845031078485%29.jpg",
+   "license": "CC BY 2.0",
+   "artist": "Rickard Zerpe",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Coconut_octopus_(Amphioctopus_marginatus)_(45031078485).jpg",
+   "query": "octopus"
+  },
+  "ocean/ocean_014.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Jellyfish_-_119337949.jpg/960px-Jellyfish_-_119337949.jpg",
+   "license": "CC BY 2.0",
+   "artist": "andrew bishop",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Jellyfish_-_119337949.jpg",
+   "query": "jellyfish"
+  },
+  "ocean/ocean_015.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Yellow_Jellyfish_%2810787831%29.jpeg/1920px-Yellow_Jellyfish_%2810787831%29.jpeg",
+   "license": "CC BY 3.0",
+   "artist": "Lars Juhl Jensen",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Yellow_Jellyfish_(10787831).jpeg",
+   "query": "jellyfish"
+  },
+  "ocean/ocean_016.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Coral_reef_ecosystem_at_American_Museum_of_Natural_History.jpg/1920px-Coral_reef_ecosystem_at_American_Museum_of_Natural_History.jpg",
+   "license": "CC BY 4.0",
+   "artist": "Vicpeters",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Coral_reef_ecosystem_at_American_Museum_of_Natural_History.jpg",
+   "query": "coral reef"
+  },
+  "ocean/ocean_017.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Denizens_of_the_deep_%28microform%29_%281904%29_%2820026296264%29.jpg/1920px-Denizens_of_the_deep_%28microform%29_%281904%29_%2820026296264%29.jpg",
+   "license": "No restrictions",
+   "artist": "Bullen, Frank Thomas, 1857-1915",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Denizens_of_the_deep_(microform)_(1904)_(20026296264).jpg",
+   "query": "deep sea creature"
+  },
+  "ocean/ocean_018.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/The_Deep_submarium%2C_City_of_Kingston-upon-Hull%2C_East_Riding_f_Yorkshire%2C_England_-_Flickr_-_kitmasterbloke.jpg/1920px-The_Deep_submarium%2C_City_of_Kingston-upon-Hull%2C_East_Riding_f_Yorkshire%2C_England_-_Flickr_-_kitmasterbloke.jpg",
+   "license": "CC BY 2.0",
+   "artist": "Steve Knight from Halstead, United Kingdom",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:The_Deep_submarium,_City_of_Kingston-upon-Hull,_East_Riding_f_Yorkshire,_England_-_Flickr_-_kitmasterbloke.jpg",
+   "query": "deep sea creature"
+  },
+  "ocean/ocean_019.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/The_sea_fairies_%281911%29_%2814750932654%29.jpg/1920px-The_sea_fairies_%281911%29_%2814750932654%29.jpg",
+   "license": "No restrictions",
+   "artist": "Internet Archive Book Images",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:The_sea_fairies_(1911)_(14750932654).jpg",
+   "query": "deep sea creature"
+  },
+  "ocean/ocean_020.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/HIHWNMS_Humpback_Whale_Underwater_%2849530678743%29.jpg/1920px-HIHWNMS_Humpback_Whale_Underwater_%2849530678743%29.jpg",
+   "license": "CC BY 2.0",
+   "artist": "National Marine Sanctuaries",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:HIHWNMS_Humpback_Whale_Underwater_(49530678743).jpg",
+   "query": "whale underwater"
+  },
+  "ocean/ocean_021.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Loggerhead_sea_turtle.jpg/1920px-Loggerhead_sea_turtle.jpg",
+   "license": "CC BY 2.0",
+   "artist": "ukanda",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Loggerhead_sea_turtle.jpg",
+   "query": "sea turtle"
+  },
+  "ocean/ocean_022.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Sea_Turtle_in_Apo_Island.jpg/1920px-Sea_Turtle_in_Apo_Island.jpg",
+   "license": "CC BY 4.0",
+   "artist": "Anna Varona",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Sea_Turtle_in_Apo_Island.jpg",
+   "query": "sea turtle"
+  },
+  "ocean/ocean_023.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Okinawa_Churaumi_aquarium_Manta_hdsr_Vlux5_01.jpg/1920px-Okinawa_Churaumi_aquarium_Manta_hdsr_Vlux5_01.jpg",
+   "license": "CC BY 4.0",
+   "artist": "Hyppolyte de Saint-Rambert",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Okinawa_Churaumi_aquarium_Manta_hdsr_Vlux5_01.jpg",
+   "query": "manta ray"
+  },
+  "ocean/ocean_024.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Okinawa_Churaumi_aquarium_Manta_hdsr_Vlux5_03.jpg/1920px-Okinawa_Churaumi_aquarium_Manta_hdsr_Vlux5_03.jpg",
+   "license": "CC BY 4.0",
+   "artist": "Hyppolyte de Saint-Rambert",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Okinawa_Churaumi_aquarium_Manta_hdsr_Vlux5_03.jpg",
+   "query": "manta ray"
+  },
+  "ownership/ownership_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Adventure-beach-compass-691637.jpg/1920px-Adventure-beach-compass-691637.jpg",
+   "license": "CC0",
+   "artist": "Valentin Antonucci",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Adventure-beach-compass-691637.jpg",
+   "query": "hands holding compass"
+  },
+  "ownership/ownership_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Great_Malvern_Priory_Window_s3_%2843538561752%29.jpg/1920px-Great_Malvern_Priory_Window_s3_%2843538561752%29.jpg",
+   "license": "CC BY 2.0",
+   "artist": "Jules &amp; Jenny from Lincoln, UK",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Great_Malvern_Priory_Window_s3_(43538561752).jpg",
+   "query": "hands holding compass"
+  },
+  "ownership/ownership_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flemish_Portrait_of_an_astronomer.jpg/1920px-Flemish_Portrait_of_an_astronomer.jpg",
+   "license": "Public domain",
+   "artist": "Unidentified painter",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Flemish_Portrait_of_an_astronomer.jpg",
+   "query": "hands holding compass"
   }
  }
 }

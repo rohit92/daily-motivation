@@ -49,6 +49,33 @@ API = "https://www.googleapis.com/youtube/v3"
 DEFAULT_QUERIES = ["motivation", "discipline", "self improvement",
                    "motivational speech", "success mindset"]
 
+# What to search for on each channel. Until now every channel scanned the
+# motivation queries and shared one report, so script_composer weighted the
+# English channel and the facts channel by whatever motivational Shorts were
+# trending. Facts came out with every theme at 1.0 — no trend signal at all on
+# the channel that needs discovery most.
+QUERIES_BY_NICHE = {
+    "motivation": DEFAULT_QUERIES,
+    "everyday-english": ["learn english", "english speaking practice",
+                         "spoken english", "english vocabulary",
+                         "english grammar tips"],
+    "did-you-know-facts": ["did you know facts", "amazing facts",
+                           "science facts", "interesting facts",
+                           "mind blowing facts"],
+}
+
+
+def queries_for(channel):
+    """The search terms that match what this channel actually publishes."""
+    if not channel:
+        return DEFAULT_QUERIES
+    try:
+        import paths as _paths
+        niche = _paths.channel_meta(channel).get("niche", "motivation")
+    except Exception:
+        return DEFAULT_QUERIES
+    return QUERIES_BY_NICHE.get(niche, DEFAULT_QUERIES)
+
 STOPWORDS = set(
     "a an the this that these those and or but if then so of to in on for with "
     "your you my me we our it its is are be was were will just how why what when "
@@ -233,10 +260,15 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--days", type=int, default=7)
     ap.add_argument("--region", default="US")
-    ap.add_argument("--queries", default=",".join(DEFAULT_QUERIES))
+    ap.add_argument("--queries", default=None,
+                    help="override the search terms (default: this channel's niche)")
+    ap.add_argument("--channel", default=None,
+                    help="scan for this channel's niche and write its report")
     ap.add_argument("--key")
     ap.add_argument("--demo", action="store_true", help="run on baked-in sample data")
     args = ap.parse_args()
+    if not args.queries:
+        args.queries = ",".join(queries_for(args.channel))
 
     if args.demo:
         print_report(analyze(enrich(DEMO)), args.days)
@@ -261,7 +293,12 @@ def main():
     report = analyze(enrich(videos))
 
     print_report(report, args.days)
-    out = os.path.join(HERE, "trends_report.json")
+    try:
+        import paths as _paths
+        out = _paths.paths(args.channel)["trends"]
+        os.makedirs(os.path.dirname(out), exist_ok=True)
+    except Exception:
+        out = os.path.join(HERE, "trends_report.json")
     with open(out, "w") as f:
         json.dump({
             "generated": datetime.now(timezone.utc).isoformat(),
