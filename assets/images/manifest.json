@@ -743,6 +743,614 @@
    "source": "wikimedia",
    "page": "https://commons.wikimedia.org/wiki/File:Mottled_Wood_Owl_is_a_species_of_large_owl_found_in_India.jpg",
    "query": "owl closeup"
+  },
+  "biology/biology_011.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Illustration_from_Cheselden%2C_The_Anatomy_of_the_Human_Body._Wellcome_L0018143.jpg",
+   "license": "CC BY 4.0",
+   "artist": "",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Illustration_from_Cheselden,_The_Anatomy_of_the_Human_Body._Wellcome_L0018143.jpg",
+   "query": "human anatomy illustration"
+  },
+  "biology/biology_012.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Neuron_-_Nerve_Cell_01.png/1920px-Neuron_-_Nerve_Cell_01.png",
+   "license": "CC BY 4.0",
+   "artist": "Doctor Jana",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Neuron_-_Nerve_Cell_01.png",
+   "query": "neuron"
+  },
+  "biology/biology_013.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Blausen_0456_Heart_Posterior.png/1920px-Blausen_0456_Heart_Posterior.png",
+   "license": "CC BY 3.0",
+   "artist": "BruceBlaus. When using this image in external sources it can be cited as:\n\nBlausen.com staff (2014). \"Medical gallery of",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Blausen_0456_Heart_Posterior.png",
+   "query": "human heart anatomy"
+  },
+  "biology/biology_014.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Heart_anterior_exterior_view.jpg",
+   "license": "CC BY 2.5",
+   "artist": "Patrick J. Lynch, medical illustrator",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Heart_anterior_exterior_view.jpg",
+   "query": "human heart anatomy"
+  },
+  "biology/biology_015.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Flower_petal_cell.jpg/1920px-Flower_petal_cell.jpg",
+   "license": "CC BY 4.0",
+   "artist": "Anassulkh",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Flower_petal_cell.jpg",
+   "query": "microscope cells"
+  },
+  "biology/biology_016.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Human_Skeleton_01.jpg/1920px-Human_Skeleton_01.jpg",
+   "license": "CC0",
+   "artist": "Abdsomod",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Human_Skeleton_01.jpg",
+   "query": "human skeleton"
+  },
+  "biology/biology_017.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Skeleton_Back_View_%E2%80%A2_p81_%E2%80%A2_Scammel%27s_Cyclopedia.tif/lossy-page1-1280px-Skeleton_Back_View_%E2%80%A2_p81_%E2%80%A2_Scammel%27s_Cyclopedia.tif.jpg",
+   "license": "Public domain",
+   "artist": "Unknown",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Skeleton_Back_View_%E2%80%A2_p81_%E2%80%A2_Scammel%27s_Cyclopedia.tif",
+   "query": "human skeleton"
+  },
+  "comeback/comeback_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Crevice_Mountain_Patrol_Cabin-_fall_sunrise_after_a_snow_storm_%2853375702524%29.jpg/1920px-Crevice_Mountain_Patrol_Cabin-_fall_sunrise_after_a_snow_storm_%2853375702524%29.jpg",
+   "license": "Public domain",
+   "artist": "YellowstoneNPS",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Crevice_Mountain_Patrol_Cabin-_fall_sunrise_after_a_snow_storm_(53375702524).jpg",
+   "query": "sunrise after storm"
+  },
+  "comeback/comeback_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Amber_Cove_Sunrise_%2853657070317%29.jpg/1920px-Amber_Cove_Sunrise_%2853657070317%29.jpg",
+   "license": "CC0",
+   "artist": "Mustang Joe",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Amber_Cove_Sunrise_(53657070317).jpg",
+   "query": "sunrise after storm"
+  },
+  "comeback/comeback_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Toward_the_sunrise%2C_being_sketches_of_travel_in_Europe_and_the_East%2C_to_which_is_added_a_Memorial_sketch_of_the_Rev._William_Morley_Punshon_%281883%29_%2814782831195%29.jpg/1920px-thumbnail.jpg",
+   "license": "No restrictions",
+   "artist": "Internet Archive Book Images",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Toward_the_sunrise,_being_sketches_of_travel_in_Europe_and_the_East,_to_which_is_added_a_Memorial_sketch_of_the_Rev._William_Morley_Punshon_(1883)_(14782831195).jpg",
+   "query": "sunrise after storm"
+  },
+  "comeback/comeback_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Phoenix_Fire_LA18.jpg/1920px-Phoenix_Fire_LA18.jpg",
+   "license": "CC BY 2.0",
+   "artist": "Az_Manny_322",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Phoenix_Fire_LA18.jpg",
+   "query": "phoenix fire"
+  },
+  "comeback/comeback_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Phoenix_Fire_Museum%2C_Mobile%2C_Alabama_LCCN2010638063.tif/lossy-page1-1920px-Phoenix_Fire_Museum%2C_Mobile%2C_Alabama_LCCN2010638063.tif.jpg",
+   "license": "Public domain",
+   "artist": "Carol M. Highsmith",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Phoenix_Fire_Museum,_Mobile,_Alabama_LCCN2010638063.tif",
+   "query": "phoenix fire"
+  },
+  "comeback/comeback_006.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Phoenix_SF_fire_department.jpg/1920px-Phoenix_SF_fire_department.jpg",
+   "license": "Public domain",
+   "artist": "United States Coast Guard",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Phoenix_SF_fire_department.jpg",
+   "query": "phoenix fire"
+  },
+  "comeback/comeback_007.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Argentina_-_Bariloche_trekking_050_-_climbers_on_the_spire_%286797843335%29.jpg/1920px-Argentina_-_Bariloche_trekking_050_-_climbers_on_the_spire_%286797843335%29.jpg",
+   "license": "CC BY 2.0",
+   "artist": "McKay Savage from London, UK",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Argentina_-_Bariloche_trekking_050_-_climbers_on_the_spire_(6797843335).jpg",
+   "query": "climber reaching top"
+  },
+  "comeback/comeback_008.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Climber_and_belayer_with_headlamps_%2850409177011%29.jpg/1920px-Climber_and_belayer_with_headlamps_%2850409177011%29.jpg",
+   "license": "Public domain",
+   "artist": "Joshua Tree National Park",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Climber_and_belayer_with_headlamps_(50409177011).jpg",
+   "query": "climber reaching top"
+  },
+  "comeback/comeback_009.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Rescue_Climbing_Training_%284566365%29.jpg/1920px-Rescue_Climbing_Training_%284566365%29.jpg",
+   "license": "Public domain",
+   "artist": "U.S. Air Force photo by 2nd Lt. Justin Davidson-Beebe",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Rescue_Climbing_Training_(4566365).jpg",
+   "query": "climber reaching top"
+  },
+  "comparison/comparison_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Thunderbirds_mirror_image_2014.jpg/1920px-Thunderbirds_mirror_image_2014.jpg",
+   "license": "Public domain",
+   "artist": "U.S. Air Force photo by Staff Sgt. Brandon Shapiro/Released",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Thunderbirds_mirror_image_2014.jpg",
+   "query": "mirror reflection"
+  },
+  "comparison/comparison_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Mount_Hood_reflected_in_Mirror_Lake%2C_Oregon.jpg/1920px-Mount_Hood_reflected_in_Mirror_Lake%2C_Oregon.jpg",
+   "license": "Public domain",
+   "artist": "Oregon's Mt. Hood Territory.",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Mount_Hood_reflected_in_Mirror_Lake,_Oregon.jpg",
+   "query": "mirror reflection"
+  },
+  "comparison/comparison_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Two_hikers_ascending_a_stone-stepped_forest_path.jpg/1920px-Two_hikers_ascending_a_stone-stepped_forest_path.jpg",
+   "license": "CC0",
+   "artist": "Krishna k. sahh",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Two_hikers_ascending_a_stone-stepped_forest_path.jpg",
+   "query": "two paths forest"
+  },
+  "comparison/comparison_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/2/27/The_Two_Paths_%2858718080%29.jpeg",
+   "license": "CC BY 3.0",
+   "artist": "Ola Photography",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:The_Two_Paths_(58718080).jpeg",
+   "query": "two paths forest"
+  },
+  "comparison/comparison_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Leiria_sunset_crowd_silhouette_%28Unsplash%29.jpg/1920px-Leiria_sunset_crowd_silhouette_%28Unsplash%29.jpg",
+   "license": "CC0",
+   "artist": "Marcos Paix\u00e3o marcosjtpx",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Leiria_sunset_crowd_silhouette_(Unsplash).jpg",
+   "query": "crowd silhouette"
+  },
+  "comparison/comparison_006.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Two_behind_the_crowd_%289213360297%29.jpg/1920px-Two_behind_the_crowd_%289213360297%29.jpg",
+   "license": "CC BY 2.0",
+   "artist": "Damian Gadal",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Two_behind_the_crowd_(9213360297).jpg",
+   "query": "crowd silhouette"
+  },
+  "confidence/confidence_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Zone_Of_Interaction_with_Stage_Movement.png/1920px-Zone_Of_Interaction_with_Stage_Movement.png",
+   "license": "CC0",
+   "artist": "Ryanx7",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Zone_Of_Interaction_with_Stage_Movement.png",
+   "query": "public speaking stage"
+  },
+  "confidence/confidence_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Carla_speaking_on_stage_%2848836589361%29.jpg/1920px-Carla_speaking_on_stage_%2848836589361%29.jpg",
+   "license": "CC0",
+   "artist": "Bristol Green Party",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Carla_speaking_on_stage_(48836589361).jpg",
+   "query": "public speaking stage"
+  },
+  "confidence/confidence_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Confident_Eye_Contact_%28Unsplash%29.jpg/1920px-Confident_Eye_Contact_%28Unsplash%29.jpg",
+   "license": "CC0",
+   "artist": "Tanja Heffner tanjaheffner",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Confident_Eye_Contact_(Unsplash).jpg",
+   "query": "confident person portrait"
+  },
+  "confidence/confidence_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Mexico%2C_Nayarit%2C_Ixtlan_del_Rio_Style_-_Pair_of_Standing_Figures_-_1990.266_-_Cleveland_Museum_of_Art.tif/lossy-page1-1920px-Mexico%2C_Nayarit%2C_Ixtlan_del_Rio_Style_-_Pair_of_Standing_Figures_-_1990.266_-_Cleveland_Museum_of_Art.tif.jpg",
+   "license": "CC0",
+   "artist": "",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Mexico,_Nayarit,_Ixtlan_del_Rio_Style_-_Pair_of_Standing_Figures_-_1990.266_-_Cleveland_Museum_of_Art.tif",
+   "query": "confident person portrait"
+  },
+  "confidence/confidence_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Martha_S._Baker_-_The_Blue_Gown_%28Portrait_of_Ethel_Coe%29_-_1915.142_-_Cleveland_Museum_of_Art.tif/lossy-page1-1920px-Martha_S._Baker_-_The_Blue_Gown_%28Portrait_of_Ethel_Coe%29_-_1915.142_-_Cleveland_Museum_of_Art.tif.jpg",
+   "license": "CC0",
+   "artist": "Martha S. Baker",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Martha_S._Baker_-_The_Blue_Gown_(Portrait_of_Ethel_Coe)_-_1915.142_-_Cleveland_Museum_of_Art.tif",
+   "query": "confident person portrait"
+  },
+  "confidence/confidence_006.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Presentation_by_Pietro_Longhi.jpg/1920px-Presentation_by_Pietro_Longhi.jpg",
+   "license": "Public domain",
+   "artist": "Pietro Longhi",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Presentation_by_Pietro_Longhi.jpg",
+   "query": "presentation"
+  },
+  "confidence/confidence_007.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Presentation_by_Pietro_Longhi_-_detail.jpg/1920px-Presentation_by_Pietro_Longhi_-_detail.jpg",
+   "license": "Public domain",
+   "artist": "Pietro Longhi",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Presentation_by_Pietro_Longhi_-_detail.jpg",
+   "query": "presentation"
+  },
+  "connectors/connectors_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Tests_of_chain_links_%281906%29_%2814764263325%29.jpg/1920px-Tests_of_chain_links_%281906%29_%2814764263325%29.jpg",
+   "license": "No restrictions",
+   "artist": "Evans, Robert Mills",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Tests_of_chain_links_(1906)_(14764263325).jpg",
+   "query": "chain links"
+  },
+  "connectors/connectors_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Very_rusty_chain_in_rain_4.jpg/1920px-Very_rusty_chain_in_rain_4.jpg",
+   "license": "CC0",
+   "artist": "W.carter",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Very_rusty_chain_in_rain_4.jpg",
+   "query": "chain links"
+  },
+  "connectors/connectors_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Zhongxiao_Bridge_Connection_Ramp_Scrapping_20160209-033.jpg/1920px-Zhongxiao_Bridge_Connection_Ramp_Scrapping_20160209-033.jpg",
+   "license": "CC0",
+   "artist": "\u7384\u53f2\u751f",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Zhongxiao_Bridge_Connection_Ramp_Scrapping_20160209-033.jpg",
+   "query": "bridge connection"
+  },
+  "connectors/connectors_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Zhongxiao_Bridge_Connection_Ramp_Scrapping_20160209-035.JPG/1920px-Zhongxiao_Bridge_Connection_Ramp_Scrapping_20160209-035.JPG",
+   "license": "CC0",
+   "artist": "\u7384\u53f2\u751f",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Zhongxiao_Bridge_Connection_Ramp_Scrapping_20160209-035.JPG",
+   "query": "bridge connection"
+  },
+  "connectors/connectors_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Frances_%28Appleton%29_Longfellow_to_Reverend_Samuel_Longfellow%2C_5_November_1855_%28d6e2e278-a7f5-4ff4-bb85-ba2271c824c2%29.jpg/1920px-Frances_%28Appleton%29_Longfellow_to_Reverend_Samuel_Longfellow%2C_5_November_1855_%28d6e2e278-a7f5-4ff4-bb85-ba2271c824c2%29.jpg",
+   "license": "Public domain",
+   "artist": "Fanny (Appleton) Longfellow (1817-1861)",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Frances_(Appleton)_Longfellow_to_Reverend_Samuel_Longfellow,_5_November_1855_(d6e2e278-a7f5-4ff4-bb85-ba2271c824c2).jpg",
+   "query": "puzzle pieces joining"
+  },
+  "connectors/connectors_006.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Frances_%28Appleton%29_Longfellow_to_Reverend_Samuel_Longfellow%2C_5_November_1855_%28ab99cc96-48ba-49a3-8d1c-e998af0f17c4%29.jpg/1920px-Frances_%28Appleton%29_Longfellow_to_Reverend_Samuel_Longfellow%2C_5_November_1855_%28ab99cc96-48ba-49a3-8d1c-e998af0f17c4%29.jpg",
+   "license": "Public domain",
+   "artist": "Fanny (Appleton) Longfellow (1817-1861)",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Frances_(Appleton)_Longfellow_to_Reverend_Samuel_Longfellow,_5_November_1855_(ab99cc96-48ba-49a3-8d1c-e998af0f17c4).jpg",
+   "query": "puzzle pieces joining"
+  },
+  "consistency/consistency_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/INTERIOR%2C_TOWER_STAIR%2C_LOOKING_UPWARD_-_Portland_Head_Light%2C_Portland_Head%2C_approximately_1-2_mile_East_of_Shore_Road%2C_Cape_Elizabeth%2C_Cumberland_County%2C_ME_HABS_ME%2C3-CAPEL%2C2-8.tif/lossy-page1-1920px-thumbnail.tif.jpg",
+   "license": "Public domain",
+   "artist": "",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:INTERIOR,_TOWER_STAIR,_LOOKING_UPWARD_-_Portland_Head_Light,_Portland_Head,_approximately_1-2_mile_East_of_Shore_Road,_Cape_Elizabeth,_Cumberland_County,_ME_HABS_ME,3-CAPEL,2-8.tif",
+   "query": "stairs upward"
+  },
+  "consistency/consistency_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Williamson_Mound%2C_stairs_looking_upward.jpg/1920px-Williamson_Mound%2C_stairs_looking_upward.jpg",
+   "license": "Public domain",
+   "artist": "Nyttend",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Williamson_Mound,_stairs_looking_upward.jpg",
+   "query": "stairs upward"
+  },
+  "consistency/consistency_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Tone_stairs_on_an_ascending_trail_in_a_dense_broadleaf_forest.jpg/1920px-Tone_stairs_on_an_ascending_trail_in_a_dense_broadleaf_forest.jpg",
+   "license": "CC0",
+   "artist": "Krishna k. sahh",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Tone_stairs_on_an_ascending_trail_in_a_dense_broadleaf_forest.jpg",
+   "query": "stairs upward"
+  },
+  "consistency/consistency_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Fluidesign_Quad_Rowing_Team_At_Dawn.jpg/1920px-Fluidesign_Quad_Rowing_Team_At_Dawn.jpg",
+   "license": "CC0",
+   "artist": "TudorTulok",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Fluidesign_Quad_Rowing_Team_At_Dawn.jpg",
+   "query": "rowing team"
+  },
+  "consistency/consistency_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Paternity_Leave_Marked_On_Calendar.jpg/1920px-Paternity_Leave_Marked_On_Calendar.jpg",
+   "license": "CC BY 2.0",
+   "artist": "CIPHR Connect",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Paternity_Leave_Marked_On_Calendar.jpg",
+   "query": "calendar marked"
+  },
+  "consistency/consistency_006.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Event_Cancelled_Marked_On_Calendar.jpg/1920px-Event_Cancelled_Marked_On_Calendar.jpg",
+   "license": "CC BY 2.0",
+   "artist": "delegateconnectimages",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Event_Cancelled_Marked_On_Calendar.jpg",
+   "query": "calendar marked"
+  },
+  "discipline/discipline_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Inyo_Mountain_Wilderness_%2849753258623%29.jpg/1920px-Inyo_Mountain_Wilderness_%2849753258623%29.jpg",
+   "license": "Public domain",
+   "artist": "blmcalifornia",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Inyo_Mountain_Wilderness_(49753258623).jpg",
+   "query": "mountain climber summit"
+  },
+  "discipline/discipline_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Karim_akachar%2C_marocain_sur_le_Sommet_Tserko_Peak.jpg/1920px-Karim_akachar%2C_marocain_sur_le_Sommet_Tserko_Peak.jpg",
+   "license": "CC0",
+   "artist": "Karim68",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Karim_akachar,_marocain_sur_le_Sommet_Tserko_Peak.jpg",
+   "query": "mountain climber summit"
+  },
+  "discipline/discipline_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/First_Sergeant_Dawn_Adams%2C_Company_First_Sergeant%2C_Headquarters_and_Service_Company%2C_Marine_Corps_Combat_Service_Support_Schools_%28MCCSSS%29%2C_runs_in_the_Running_of_the_Ranks_event_during_MCCSSS_Field_Meet_aboard_131025-M-GJ479-007.jpg/1920px-thumbnail.jpg",
+   "license": "Public domain",
+   "artist": "Sgt Mark E Morrow",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:First_Sergeant_Dawn_Adams,_Company_First_Sergeant,_Headquarters_and_Service_Company,_Marine_Corps_Combat_Service_Support_Schools_(MCCSSS),_runs_in_the_Running_of_the_Ranks_event_during_MCCSSS_Field_Meet_aboard_131025-M-GJ479-007.jpg",
+   "query": "running at dawn"
+  },
+  "discipline/discipline_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Running_Wild_%28Explored_August_2021%29_-_Flickr_-_G._Lamar.jpg/1920px-Running_Wild_%28Explored_August_2021%29_-_Flickr_-_G._Lamar.jpg",
+   "license": "CC BY 2.0",
+   "artist": "G. Lamar",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Running_Wild_(Explored_August_2021)_-_Flickr_-_G._Lamar.jpg",
+   "query": "running at dawn"
+  },
+  "discipline/discipline_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Woman_in_the_gym_with_a_bar_with_weights_on_her_back.jpg/1920px-Woman_in_the_gym_with_a_bar_with_weights_on_her_back.jpg",
+   "license": "CC BY 2.0",
+   "artist": "Shixart1985",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Woman_in_the_gym_with_a_bar_with_weights_on_her_back.jpg",
+   "query": "gym weights"
+  },
+  "discipline/discipline_006.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/The_Gym_Group_Foss_Islands_Road_York_Aug25.jpg/1920px-The_Gym_Group_Foss_Islands_Road_York_Aug25.jpg",
+   "license": "CC0",
+   "artist": "Malcolmxl5",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:The_Gym_Group_Foss_Islands_Road_York_Aug25.jpg",
+   "query": "gym weights"
+  },
+  "doubt/doubt_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Leafs_in_the_winter_fog_-_Flickr_-_Gael_Varoquaux.jpg/1920px-Leafs_in_the_winter_fog_-_Flickr_-_Gael_Varoquaux.jpg",
+   "license": "CC BY 2.0",
+   "artist": "Gael Varoquaux from Paris, France",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Leafs_in_the_winter_fog_-_Flickr_-_Gael_Varoquaux.jpg",
+   "query": "fog path forest"
+  },
+  "doubt/doubt_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Light_Through_The_Fog_%2859596778%29.jpeg/1920px-Light_Through_The_Fog_%2859596778%29.jpeg",
+   "license": "CC BY 3.0",
+   "artist": "Donnie Nunley",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Light_Through_The_Fog_(59596778).jpeg",
+   "query": "fog path forest"
+  },
+  "doubt/doubt_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Moody%2C_foggy_black_forest_-_Flickr_-_Tannenschleicher.jpg/1920px-Moody%2C_foggy_black_forest_-_Flickr_-_Tannenschleicher.jpg",
+   "license": "Public domain",
+   "artist": "F R",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Moody,_foggy_black_forest_-_Flickr_-_Tannenschleicher.jpg",
+   "query": "fog path forest"
+  },
+  "doubt/doubt_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Why_they_call_it_Crossroads%2C_PA.jpg/1920px-Why_they_call_it_Crossroads%2C_PA.jpg",
+   "license": "CC0",
+   "artist": "Smallbones",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Why_they_call_it_Crossroads,_PA.jpg",
+   "query": "crossroads sign"
+  },
+  "doubt/doubt_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Carmichael_Crossroads_sign%2C_Cherokee_County_GA.jpg/1920px-Carmichael_Crossroads_sign%2C_Cherokee_County_GA.jpg",
+   "license": "CC BY 4.0",
+   "artist": "John Phelan",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Carmichael_Crossroads_sign,_Cherokee_County_GA.jpg",
+   "query": "crossroads sign"
+  },
+  "doubt/doubt_006.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Cumulonimbus_Storm_Clouds_-_panoramio.jpg/1920px-Cumulonimbus_Storm_Clouds_-_panoramio.jpg",
+   "license": "CC BY 3.0",
+   "artist": "Corey Coyle",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Cumulonimbus_Storm_Clouds_-_panoramio.jpg",
+   "query": "storm clouds"
+  },
+  "doubt/doubt_007.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Thomas_Lindsay_-_Storm_Clouds_-_B1975.4.59_-_Yale_Center_for_British_Art.jpg",
+   "license": "CC0",
+   "artist": "Thomas Lindsay",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Thomas_Lindsay_-_Storm_Clouds_-_B1975.4.59_-_Yale_Center_for_British_Art.jpg",
+   "query": "storm clouds"
+  },
+  "doubt/doubt_008.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Port_and_lighthouse_overnight_storm_with_lightning_in_Port-la-Nouvelle.jpg/1920px-Port_and_lighthouse_overnight_storm_with_lightning_in_Port-la-Nouvelle.jpg",
+   "license": "CC BY 2.0",
+   "artist": "Maxime Raynal from France",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Port_and_lighthouse_overnight_storm_with_lightning_in_Port-la-Nouvelle.jpg",
+   "query": "storm clouds"
+  },
+  "fear/fear_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/A_kiss_in_the_dark-_mischievous_conductor%2C-%22dark_tunnel%2C_through_in_half_an_hour%21%22_scene%2C-when_the_train_struck_the_light_in_just_3_minutes_LCCN2002707713.tif/lossy-page1-1920px-A_kiss_in_the_dark-_mischievous_conductor%2C-%22dark_tunnel%2C_through_in_half_an_hour%21%22_scene%2C-when_the_train_struck_the_light_in_just_3_minutes_LCCN2002707713.tif.jpg",
+   "license": "Public domain",
+   "artist": "Popular Graphic Arts",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:A_kiss_in_the_dark-_mischievous_conductor,-%22dark_tunnel,_through_in_half_an_hour!%22_scene,-when_the_train_struck_the_light_in_just_3_minutes_LCCN2002707713.tif",
+   "query": "dark tunnel light"
+  },
+  "fear/fear_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Andheri_or_Dark_Passage_located_inside_Daulatabad_Fort_or_Deogiri_Fort%2C_Daulatabad%2C_Maharashtra_05.jpg/1920px-Andheri_or_Dark_Passage_located_inside_Daulatabad_Fort_or_Deogiri_Fort%2C_Daulatabad%2C_Maharashtra_05.jpg",
+   "license": "CC BY 4.0",
+   "artist": "Amitabha Gupta",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Andheri_or_Dark_Passage_located_inside_Daulatabad_Fort_or_Deogiri_Fort,_Daulatabad,_Maharashtra_05.jpg",
+   "query": "dark tunnel light"
+  },
+  "fear/fear_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/A_storm_at_Pors-Loubous.jpg/1920px-A_storm_at_Pors-Loubous.jpg",
+   "license": "CC BY 1.0",
+   "artist": "Henri Camus",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:A_storm_at_Pors-Loubous.jpg",
+   "query": "storm ocean waves"
+  },
+  "fear/fear_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Waves_on_the_Th%C3%A9%C3%A2tre_de_la_Mer.jpg/1920px-Waves_on_the_Th%C3%A9%C3%A2tre_de_la_Mer.jpg",
+   "license": "CC BY 4.0",
+   "artist": "Christian Ferrer",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Waves_on_the_Th%C3%A9%C3%A2tre_de_la_Mer.jpg",
+   "query": "storm ocean waves"
+  },
+  "focus/focus_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Banana_fibre_Chess_board_02.jpg/1920px-Banana_fibre_Chess_board_02.jpg",
+   "license": "CC BY 4.0",
+   "artist": "Denis kasozi",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Banana_fibre_Chess_board_02.jpg",
+   "query": "chess board"
+  },
+  "focus/focus_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Modern_Fianchetto_Setup._Chess_game_Staunton_No._6.jpg/1920px-Modern_Fianchetto_Setup._Chess_game_Staunton_No._6.jpg",
+   "license": "CC0",
+   "artist": "Wilfredor",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Modern_Fianchetto_Setup._Chess_game_Staunton_No._6.jpg",
+   "query": "chess board"
+  },
+  "focus/focus_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Chess_game_Staunton_No._6_perfil_view_8.jpg/1920px-Chess_game_Staunton_No._6_perfil_view_8.jpg",
+   "license": "CC0",
+   "artist": "Wilfredor",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Chess_game_Staunton_No._6_perfil_view_8.jpg",
+   "query": "chess board"
+  },
+  "focus/focus_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/James_Lick_telescope_c.a._1900.jpg/1920px-James_Lick_telescope_c.a._1900.jpg",
+   "license": "Public domain",
+   "artist": "Unknown authorUnknown author",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:James_Lick_telescope_c.a._1900.jpg",
+   "query": "telescope"
+  },
+  "focus/focus_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Observatory_Telescope_at_the_University_of_Saskatchewan.jpg/1920px-Observatory_Telescope_at_the_University_of_Saskatchewan.jpg",
+   "license": "CC0",
+   "artist": "SSPWXR",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Observatory_Telescope_at_the_University_of_Saskatchewan.jpg",
+   "query": "telescope"
+  },
+  "food/food_014.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Jars_of_Honey_on_Display_at_the_Fair_%2842128624510%29.jpg/1920px-Jars_of_Honey_on_Display_at_the_Fair_%2842128624510%29.jpg",
+   "license": "CC BY 2.0",
+   "artist": "Cindy Shebley",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Jars_of_Honey_on_Display_at_the_Fair_(42128624510).jpg",
+   "query": "honey jar"
+  },
+  "food/food_015.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Antique_Glass_Honey_Jar_With_Rusted_Metal_Cap_%2831009798197%29.jpg/1920px-Antique_Glass_Honey_Jar_With_Rusted_Metal_Cap_%2831009798197%29.jpg",
+   "license": "CC BY 2.0",
+   "artist": "Cindy Shebley",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Antique_Glass_Honey_Jar_With_Rusted_Metal_Cap_(31009798197).jpg",
+   "query": "honey jar"
+  },
+  "food/food_016.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Three_French_monofloral_honey_jars.jpg/1920px-Three_French_monofloral_honey_jars.jpg",
+   "license": "CC BY 4.0",
+   "artist": "Hayden Soloviev",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Three_French_monofloral_honey_jars.jpg",
+   "query": "honey jar"
+  },
+  "food/food_017.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/From_coffee_bean_to_instant_coffee_01.jpg/1920px-From_coffee_bean_to_instant_coffee_01.jpg",
+   "license": "CC BY 4.0",
+   "artist": "Heiti Paves",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:From_coffee_bean_to_instant_coffee_01.jpg",
+   "query": "coffee beans"
+  },
+  "food/food_018.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Finely_grounded_coffee_beans_in_white_bowl_with_intact_roasted_bean.png/1920px-Finely_grounded_coffee_beans_in_white_bowl_with_intact_roasted_bean.png",
+   "license": "CC BY 4.0",
+   "artist": "Alorin",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Finely_grounded_coffee_beans_in_white_bowl_with_intact_roasted_bean.png",
+   "query": "coffee beans"
+  },
+  "food/food_019.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Inle_Lake%2C_Dried_red_chili_%28chilli%29_pepper%2C_Capsicum_annuum%2C_Myanmar.jpg/1920px-Inle_Lake%2C_Dried_red_chili_%28chilli%29_pepper%2C_Capsicum_annuum%2C_Myanmar.jpg",
+   "license": "CC BY 4.0",
+   "artist": "Vyacheslav Argenberg",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Inle_Lake,_Dried_red_chili_(chilli)_pepper,_Capsicum_annuum,_Myanmar.jpg",
+   "query": "chili peppers"
+  },
+  "food/food_020.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Red_Hot_Chili_Peppers%2C_O2_Arena%2C_London_%2832064983916%29.jpg/1920px-Red_Hot_Chili_Peppers%2C_O2_Arena%2C_London_%2832064983916%29.jpg",
+   "license": "CC BY 2.0",
+   "artist": "Drew de F Fawkes",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Red_Hot_Chili_Peppers,_O2_Arena,_London_(32064983916).jpg",
+   "query": "chili peppers"
+  },
+  "food/food_021.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Baking_bread_1950_%28JOKAMT2Kot08-8%29.tif/lossy-page1-1920px-Baking_bread_1950_%28JOKAMT2Kot08-8%29.tif.jpg",
+   "license": "CC BY 4.0",
+   "artist": "Erkki Voutilainen",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Baking_bread_1950_(JOKAMT2Kot08-8).tif",
+   "query": "bread baking"
+  },
+  "food/food_022.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Baking_bread_1950_%28JOKAMT2Kot08-7%29.tif/lossy-page1-1920px-Baking_bread_1950_%28JOKAMT2Kot08-7%29.tif.jpg",
+   "license": "CC BY 4.0",
+   "artist": "Erkki Voutilainen",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Baking_bread_1950_(JOKAMT2Kot08-7).tif",
+   "query": "bread baking"
+  },
+  "food/food_023.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Spices_olives_market_antwerp.jpg/1920px-Spices_olives_market_antwerp.jpg",
+   "license": "CC BY 3.0",
+   "artist": "Kschotanus",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Spices_olives_market_antwerp.jpg",
+   "query": "spices market"
+  },
+  "food/food_024.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Rocky_Mountain_chocolates.jpg/1920px-Rocky_Mountain_chocolates.jpg",
+   "license": "CC0",
+   "artist": "Wilfredor",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Rocky_Mountain_chocolates.jpg",
+   "query": "chocolate"
+  },
+  "food/food_025.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/South_Bend_Chocolate_Company_facade%2C_Nov_2024.jpg/1920px-South_Bend_Chocolate_Company_facade%2C_Nov_2024.jpg",
+   "license": "CC0",
+   "artist": "CusterDome",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:South_Bend_Chocolate_Company_facade,_Nov_2024.jpg",
+   "query": "chocolate"
   }
  }
 }
