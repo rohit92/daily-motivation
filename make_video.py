@@ -101,10 +101,27 @@ def _load_voice(config_path):
         return ""
 
 
+def _load_cfg(config_path, key, default):
+    try:
+        with open(config_path) as _f:
+            v = json.load(_f).get(key)
+            return default if v is None else v
+    except Exception:
+        return default
+
+
 EDGE_VOICE = _load_voice(CONFIG) or "en-US-AndrewNeural"
-EDGE_RATE = "-9%"     # slightly slower = more deliberate delivery
-PIPER_LENGTH_SCALE = 1.08
-GAP_SECONDS = 0.50    # silent pause after each line (also lengthens the video)
+# Delivery speed. This was pinned at -9% ("more deliberate"), which is wrong for
+# Shorts: the first two seconds decide whether someone swipes, and a slow opening
+# line reads as dead air. Faster delivery also fits more words into the same
+# runtime, so the hook lands before the viewer's thumb does.
+# Override per channel with "voice_rate": "+12%" in that channel's config.json.
+EDGE_RATE = _load_cfg(CONFIG, "voice_rate", "+12%")
+# Piper's scale is inverse: lower = faster. Kept roughly in step with EDGE_RATE.
+PIPER_LENGTH_SCALE = float(_load_cfg(CONFIG, "piper_length_scale", 0.94))
+# Dead air between lines. Half a second per line on a 6-line Short is 3 seconds
+# of silence — a third of the video spent saying nothing.
+GAP_SECONDS = float(_load_cfg(CONFIG, "line_gap_seconds", 0.22))
 
 
 def need(binary):
@@ -487,6 +504,55 @@ def grad_bg_video(total, out_mp4):
     return out_mp4
 
 
+def _theme_backgrounds(theme, n, lines=None):
+    """n images of what this script is about, or [] if nothing is available.
+
+    Subject first, theme second: matching on theme alone put elephants behind a
+    fact about a shrimp, because the theme was 'animals' and the library
+    obligingly returned animals.
+    """
+    try:
+        import imagery
+        if lines and _subject_mode():
+            return imagery.for_script(lines, theme, n)
+        return imagery.pick(theme, n) if theme else []
+    except Exception:
+        return []          # imagery is an enhancement; never break a render
+
+
+def _write_credits(video_path, bgs):
+    """Save image attribution beside the video. Silent no-op when none is due."""
+    try:
+        import imagery
+        block = imagery.credit_block(bgs)
+        side = os.path.splitext(video_path)[0] + "_credits.txt"
+        if block:
+            with open(side, "w") as f:
+                f.write(block)
+        elif os.path.exists(side):
+            os.remove(side)
+    except Exception:
+        pass
+
+
+def _subject_mode():
+    """True when the picture is the point, not the mood.
+
+    On a facts channel the image carries the information — someone stops
+    scrolling because they see the octopus. Dimming it to -0.18 and washing 42%
+    of a moving gradient over it, which is right for a motivation backdrop,
+    makes the subject unreadable. Set "image_mode": "subject" (or "mood") in a
+    channel's config.json to override the per-niche default.
+    """
+    mode = (load_json(CONFIG, {}) or {}).get("image_mode")
+    if mode:
+        return mode == "subject"
+    try:
+        return _paths.channel_meta(CHANNEL).get("niche") == "did-you-know-facts"
+    except Exception:
+        return False
+
+
 def build_video(item, content, seq, bg_pool):
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     os.makedirs(WORK_DIR, exist_ok=True)
@@ -500,10 +566,16 @@ def build_video(item, content, seq, bg_pool):
     lines = item["lines"]
     n = len(lines)
 
-    # choose n distinct backgrounds for this video
-    bgs = random.sample(bg_pool, min(n, len(bg_pool)))
-    while len(bgs) < n:
-        bgs.append(random.choice(bg_pool))
+    # Backgrounds matched to what this script is actually ABOUT. The old code
+    # sampled a shared pool of 20 generic photos at random, so every channel drew
+    # from the same handful and a fact about an octopus was illustrated with a
+    # stock landscape. imagery.py keeps a per-theme library; fall back to the
+    # generic pool only when that theme hasn't been stocked yet.
+    bgs = _theme_backgrounds(item.get("theme"), n, item.get("lines"))
+    if not bgs:
+        bgs = random.sample(bg_pool, min(n, len(bg_pool)))
+        while len(bgs) < n:
+            bgs.append(random.choice(bg_pool))
 
     # synth each line, then render one caption PNG per word (karaoke highlight)
     seg_wavs, seg_durs = [], []
@@ -565,15 +637,27 @@ def build_video(item, content, seq, bg_pool):
                 "-i", (f"gradients=s={W}x{H}:c0={c0}:c1={c1}:c2={c2}:c3={c3}:"
                        f"nb_colors=4:speed=0.05:type=spiral")]
 
+    # When the picture carries the information, it has to stay legible: dim it
+    # less and let more of its own colour through.
+    subject = _subject_mode()
+    dim = -0.07 if subject else -0.18
+    sat = 1.06 if subject else 1.20
+
     fc = []
     for i in range(n):
         # stronger Ken Burns — a clear, faster zoom so every image visibly moves.
+        # Alternate the direction so consecutive shots don't all drift the same
+        # way, which is what made a run of images read as one static block.
+        if i % 2:
+            z = "z='max(1.32-0.0040*on,1.02)'"
+        else:
+            z = "z='min(1.02+0.0040*on,1.32)'"
         fc.append(
             f"[{i}:v]scale=1296:2304:force_original_aspect_ratio=increase,"
             f"crop=1296:2304,"
-            f"zoompan=z='min(1.02+0.0040*on,1.32)':d=1:"
+            f"zoompan={z}:d=1:"
             f"x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s={W}x{H}:fps={FPS},"
-            f"eq=brightness=-0.18:saturation=1.20,setsar=1[bg{i}]"
+            f"eq=brightness={dim}:saturation={sat},setsar=1[bg{i}]"
         )
         # overlay each word-PNG only during its spoken window; a disabled
         # overlay passes the frame through, so exactly one word is lit at a time.
@@ -589,8 +673,12 @@ def build_video(item, content, seq, bg_pool):
     vconcat = "".join(f"[seg{i}]" for i in range(n)) + f"concat=n={n}:v=1:a=0[vc]"
     aconcat = "".join(f"[{audio_base+i}:a]" for i in range(n)) + f"concat=n={n}:v=0:a=1[ac]"
     if animated and color_in is not None:
+        # The colour wash is mood, not content. At 0.42 it buried the subject of
+        # a facts image under a moving gradient; keep it faint when the picture
+        # is the payload.
+        wash = 0.16 if subject else 0.42
         vout = (f"[{color_in}:v]fps={FPS},format=yuv420p,setsar=1[cw];"
-                f"[vc][cw]blend=all_mode=softlight:all_opacity=0.42,"
+                f"[vc][cw]blend=all_mode=softlight:all_opacity={wash},"
                 f"noise=alls=7:allf=t,"
                 f"fade=t=in:st=0:d=0.4,fade=t=out:st={fade_out}:d=0.5,"
                 f"format=yuv420p[vout]")
@@ -606,6 +694,9 @@ def build_video(item, content, seq, bg_pool):
     filter_complex = ";".join(fc) + ";" + vconcat + ";" + aconcat + ";" + vout + ";" + aout
 
     out_path = os.path.join(OUTPUT_DIR, f"{seq:02d}_{item['id']}.mp4")
+    # Record the attribution CC BY images require, next to the video, so the
+    # description generator can append it without re-deriving which images ran.
+    _write_credits(out_path, bgs)
     cmd += [
         "-filter_complex", filter_complex,
         "-map", "[vout]", "-map", "[aout]",
@@ -635,6 +726,8 @@ def main():
 
     # Resolve this channel's data files + branding (defaults to motivation).
     global CONTENT, STATE, CONFIG, OUTPUT_DIR, LOGO, EDGE_VOICE, WORK_DIR
+    global EDGE_RATE, PIPER_LENGTH_SCALE, GAP_SECONDS, CHANNEL
+    CHANNEL = args.channel
     P = _paths.paths(args.channel)
     CONTENT, STATE, CONFIG = P["content"], P["state"], P["config"]
     OUTPUT_DIR = P["output"]
@@ -642,6 +735,12 @@ def main():
     # Channel-scoped scratch dir so parallel renders never collide.
     WORK_DIR = os.path.join(HERE, ".work", args.channel)
     EDGE_VOICE = _load_voice(CONFIG) or EDGE_VOICE
+    # Pacing is per channel too — these were read at import against the DEFAULT
+    # channel's config, so a per-channel override never took effect.
+    EDGE_RATE = _load_cfg(CONFIG, "voice_rate", EDGE_RATE)
+    PIPER_LENGTH_SCALE = float(_load_cfg(CONFIG, "piper_length_scale",
+                                         PIPER_LENGTH_SCALE))
+    GAP_SECONDS = float(_load_cfg(CONFIG, "line_gap_seconds", GAP_SECONDS))
     meta = _paths.channel_meta(args.channel)
     _set_branding(meta.get("name"), meta.get("handle"), meta.get("brand_color"))
 

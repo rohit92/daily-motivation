@@ -1,0 +1,668 @@
+{
+ "images": {
+  "ocean/ocean_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/32/Octopus_vulgaris_Merculiano.jpg",
+   "license": "Public domain",
+   "artist": "Comingio Merculiano (1845-1915) in Jatta Giuseppe (1860-1903)",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Octopus_vulgaris_Merculiano.jpg",
+   "query": "octopus"
+  },
+  "ocean/ocean_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Lion%27s_mane_jellyfish_in_Gullmarn_fjord_at_S%C3%A4mstad_8.jpg/1920px-Lion%27s_mane_jellyfish_in_Gullmarn_fjord_at_S%C3%A4mstad_8.jpg",
+   "license": "CC0",
+   "artist": "W.carter",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Lion%27s_mane_jellyfish_in_Gullmarn_fjord_at_S%C3%A4mstad_8.jpg",
+   "query": "jellyfish"
+  },
+  "ocean/ocean_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Jellyfish_from_Corpus_Christi.jpg/1920px-Jellyfish_from_Corpus_Christi.jpg",
+   "license": "CC0",
+   "artist": "Miguel Angel Oma\u00f1a Rojas",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Jellyfish_from_Corpus_Christi.jpg",
+   "query": "jellyfish"
+  },
+  "ocean/ocean_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Mimic_goatfish_coral_reef_Howland_Island_2023.png",
+   "license": "Public domain",
+   "artist": "NOAA Fisheries/Mia Lamirand",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Mimic_goatfish_coral_reef_Howland_Island_2023.png",
+   "query": "coral reef"
+  },
+  "ocean/ocean_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Colorful_underwater_landscape_of_a_coral_reef.jpg/1920px-Colorful_underwater_landscape_of_a_coral_reef.jpg",
+   "license": "Public domain",
+   "artist": "Jim E Maragos, U.S. Fish and Wildlife Service",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Colorful_underwater_landscape_of_a_coral_reef.jpg",
+   "query": "coral reef"
+  },
+  "ocean/ocean_006.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/The_sea_fairies_%281911%29_%2814753271115%29.jpg/1920px-The_sea_fairies_%281911%29_%2814753271115%29.jpg",
+   "license": "No restrictions",
+   "artist": "Internet Archive Book Images",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:The_sea_fairies_(1911)_(14753271115).jpg",
+   "query": "deep sea creature"
+  },
+  "ocean/ocean_007.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Sea_and_land_%28microform%29_-_an_illustrated_history_of_the_wonderful_and_curious_things_of_nature_existing_before_and_since_the_deluge_-_being_a_natural_history_of_the_sea_illustrated_by_stirring_%2820462375210%29.jpg",
+   "license": "No restrictions",
+   "artist": "Internet Archive Book Images",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Sea_and_land_(microform)_-_an_illustrated_history_of_the_wonderful_and_curious_things_of_nature_existing_before_and_since_the_deluge_-_being_a_natural_history_of_the_sea_illustrated_by_stirring_(20462375210).jpg",
+   "query": "deep sea creature"
+  },
+  "ocean/ocean_008.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Humpback_Whale_Underwater_%2837209287981%29.jpg/1920px-Humpback_Whale_Underwater_%2837209287981%29.jpg",
+   "license": "Public domain",
+   "artist": "National Marine Sanctuaries",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Humpback_Whale_Underwater_(37209287981).jpg",
+   "query": "whale underwater"
+  },
+  "animals/animals_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Thane_creek_Flamingo_Scantuary.jpg/1920px-Thane_creek_Flamingo_Scantuary.jpg",
+   "license": "CC0",
+   "artist": "Betame",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Thane_creek_Flamingo_Scantuary.jpg",
+   "query": "flamingo"
+  },
+  "animals/animals_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg/1920px-Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg",
+   "license": "CC0",
+   "artist": "Wilfredor",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg",
+   "query": "flamingo"
+  },
+  "animals/animals_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Chameleon_Yekaterinburg_2026.jpg/1920px-Chameleon_Yekaterinburg_2026.jpg",
+   "license": "CC0",
+   "artist": "MSDN.WhiteKnight",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Chameleon_Yekaterinburg_2026.jpg",
+   "query": "chameleon"
+  },
+  "animals/animals_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Chameleon_on_a_coconut_tree.jpg/1920px-Chameleon_on_a_coconut_tree.jpg",
+   "license": "CC0",
+   "artist": "Shreyanrane 14",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Chameleon_on_a_coconut_tree.jpg",
+   "query": "chameleon"
+  },
+  "animals/animals_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/A_Iceland_Arctic_Fox.jpg/1920px-A_Iceland_Arctic_Fox.jpg",
+   "license": "CC0",
+   "artist": "David Mark",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:A_Iceland_Arctic_Fox.jpg",
+   "query": "arctic fox"
+  },
+  "animals/animals_006.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Sanak_south_fox_Arctic_fox_alopex_lagopus.jpg/1920px-Sanak_south_fox_Arctic_fox_alopex_lagopus.jpg",
+   "license": "Public domain",
+   "artist": "Hillebrand Steve, U.S. Fish and Wildlife Service",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Sanak_south_fox_Arctic_fox_alopex_lagopus.jpg",
+   "query": "arctic fox"
+  },
+  "animals/animals_007.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Vulpes_lagopus_in_Iceland_%28cropped_3%29.jpg/1920px-Vulpes_lagopus_in_Iceland_%28cropped_3%29.jpg",
+   "license": "CC0",
+   "artist": "Jonathen Pie https://unsplash.com/@r3dmax",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Vulpes_lagopus_in_Iceland_(cropped_3).jpg",
+   "query": "arctic fox"
+  },
+  "animals/animals_008.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Hummingbird_in_a_pine_tree.jpg/1920px-Hummingbird_in_a_pine_tree.jpg",
+   "license": "CC0",
+   "artist": "JoyD Smiths PTMr8",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Hummingbird_in_a_pine_tree.jpg",
+   "query": "hummingbird"
+  },
+  "animals/animals_009.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Haeckel_Trochilidae.jpg/1920px-Haeckel_Trochilidae.jpg",
+   "license": "Public domain",
+   "artist": "Ernst Haeckel",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Haeckel_Trochilidae.jpg",
+   "query": "hummingbird"
+  },
+  "animals/animals_010.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Elephant_Herd_Of_Elephants_African_Bush_Elephant.jpg/1920px-Elephant_Herd_Of_Elephants_African_Bush_Elephant.jpg",
+   "license": "CC0",
+   "artist": "cocoparisienne",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Elephant_Herd_Of_Elephants_African_Bush_Elephant.jpg",
+   "query": "elephant herd"
+  },
+  "animals/animals_011.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Canis_lupus_standing_in_snow.jpg/1920px-Canis_lupus_standing_in_snow.jpg",
+   "license": "Public domain",
+   "artist": "Tracy Brooks",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Canis_lupus_standing_in_snow.jpg",
+   "query": "wolf"
+  },
+  "animals/animals_012.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Mexican_Wolf_2_yfb-edit_1.jpg/1920px-Mexican_Wolf_2_yfb-edit_1.jpg",
+   "license": "Public domain",
+   "artist": "Clark, Jim (U.S. Fish and Wildlife Service)",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Mexican_Wolf_2_yfb-edit_1.jpg",
+   "query": "wolf"
+  },
+  "animals/animals_013.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Eastern_Screech_Owl_Closeup_%2851834218458%29.jpg/1920px-Eastern_Screech_Owl_Closeup_%2851834218458%29.jpg",
+   "license": "Public domain",
+   "artist": "ShenandoahNPS",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Eastern_Screech_Owl_Closeup_(51834218458).jpg",
+   "query": "owl closeup"
+  },
+  "biology/biology_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Human_Anatomy_%28NIH_BioArt_519_-_657946%29.png/1920px-Human_Anatomy_%28NIH_BioArt_519_-_657946%29.png",
+   "license": "Public domain",
+   "artist": "Courtesy of NIAID\n\nRyan Kissinger",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Human_Anatomy_(NIH_BioArt_519_-_657946).png",
+   "query": "human anatomy illustration"
+  },
+  "biology/biology_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Human_Anatomy_%28NIH_BioArt_519_-_657942%29.png/1920px-Human_Anatomy_%28NIH_BioArt_519_-_657942%29.png",
+   "license": "Public domain",
+   "artist": "Courtesy of NIAID\n\nRyan Kissinger",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Human_Anatomy_(NIH_BioArt_519_-_657942).png",
+   "query": "human anatomy illustration"
+  },
+  "biology/biology_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Neurons_%28Purkinje_cells%29.jpg/1920px-Neurons_%28Purkinje_cells%29.jpg",
+   "license": "CC0",
+   "artist": "Lennart Rikk",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Neurons_(Purkinje_cells).jpg",
+   "query": "neuron"
+  },
+  "biology/biology_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/DNA_Helix_CPK.jpg/1920px-DNA_Helix_CPK.jpg",
+   "license": "Public domain",
+   "artist": "Ude",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:DNA_Helix_CPK.jpg",
+   "query": "dna helix"
+  },
+  "biology/biology_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Human_heart_male_adult_autopsy.jpg/1920px-Human_heart_male_adult_autopsy.jpg",
+   "license": "CC0",
+   "artist": "Jebulon",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Human_heart_male_adult_autopsy.jpg",
+   "query": "human heart anatomy"
+  },
+  "biology/biology_006.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Two_lateral_views_of_the_human_heart._Coloured_engraving_by_G._Kirtland%2C_1806.jpg/1920px-Two_lateral_views_of_the_human_heart._Coloured_engraving_by_G._Kirtland%2C_1806.jpg",
+   "license": "Public domain",
+   "artist": "George Kirtland, 1806",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Two_lateral_views_of_the_human_heart._Coloured_engraving_by_G._Kirtland,_1806.jpg",
+   "query": "human heart anatomy"
+  },
+  "biology/biology_007.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Anatomy_Heart_Latin_Tiesworks.jpg/1920px-Anatomy_Heart_Latin_Tiesworks.jpg",
+   "license": "Public domain",
+   "artist": "Tvanbr",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Anatomy_Heart_Latin_Tiesworks.jpg",
+   "query": "human heart anatomy"
+  },
+  "biology/biology_008.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Human_cheek_cells_from_science_class.jpg/1920px-Human_cheek_cells_from_science_class.jpg",
+   "license": "CC0",
+   "artist": "Kyreb",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Human_cheek_cells_from_science_class.jpg",
+   "query": "microscope cells"
+  },
+  "biology/biology_009.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Purple_cells.jpg/1920px-Purple_cells.jpg",
+   "license": "Public domain",
+   "artist": "National Cancer Institute",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Purple_cells.jpg",
+   "query": "microscope cells"
+  },
+  "biology/biology_010.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Human-Skeleton.jpg",
+   "license": "CC0",
+   "artist": "Sklmsta",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Human-Skeleton.jpg",
+   "query": "human skeleton"
+  },
+  "food/food_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Small_Honey_Jar_with_Honeycomb.jpg/1920px-Small_Honey_Jar_with_Honeycomb.jpg",
+   "license": "CC0",
+   "artist": "Alabama Extension",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Small_Honey_Jar_with_Honeycomb.jpg",
+   "query": "honey jar"
+  },
+  "food/food_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Runny_hunny.jpg",
+   "license": "Public domain",
+   "artist": "Scott Bauer, USDA ARS",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Runny_hunny.jpg",
+   "query": "honey jar"
+  },
+  "food/food_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Cup_of_coffee_surrounded_by_beans.jpg/1920px-Cup_of_coffee_surrounded_by_beans.jpg",
+   "license": "Public domain",
+   "artist": "Zacharias Korsalka from Vienna, Austria",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Cup_of_coffee_surrounded_by_beans.jpg",
+   "query": "coffee beans"
+  },
+  "food/food_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Roasted_coffee_beans.jpg",
+   "license": "Public domain",
+   "artist": "MarkSweep",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Roasted_coffee_beans.jpg",
+   "query": "coffee beans"
+  },
+  "food/food_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Chili_peppers_-_January_2026_-_Sarah_Stierch.jpg/1920px-Chili_peppers_-_January_2026_-_Sarah_Stierch.jpg",
+   "license": "CC0",
+   "artist": "Missvain",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Chili_peppers_-_January_2026_-_Sarah_Stierch.jpg",
+   "query": "chili peppers"
+  },
+  "food/food_006.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/VitorJubini_MercadoDaVilaRubim_Vitoria_ES_%2839182859020%29_%28square_crop%29.jpg/1920px-VitorJubini_MercadoDaVilaRubim_Vitoria_ES_%2839182859020%29_%28square_crop%29.jpg",
+   "license": "Public domain",
+   "artist": "MTur Destinos",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:VitorJubini_MercadoDaVilaRubim_Vitoria_ES_(39182859020)_(square_crop).jpg",
+   "query": "chili peppers"
+  },
+  "food/food_007.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/20250511_Bread_baking.jpg/1920px-20250511_Bread_baking.jpg",
+   "license": "CC0",
+   "artist": "Rakoon",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:20250511_Bread_baking.jpg",
+   "query": "bread baking"
+  },
+  "food/food_008.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Bread-Baking_%28Charlotte_Mannheimer%29_-_Nationalmuseum_-_21782.tif/lossy-page1-1920px-Bread-Baking_%28Charlotte_Mannheimer%29_-_Nationalmuseum_-_21782.tif.jpg",
+   "license": "Public domain",
+   "artist": "Charlotte Mannheimer",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Bread-Baking_(Charlotte_Mannheimer)_-_Nationalmuseum_-_21782.tif",
+   "query": "bread baking"
+  },
+  "food/food_009.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Spices_of_Mercado_Municipal_de_S%C3%A3o_Paulo.jpg/1920px-Spices_of_Mercado_Municipal_de_S%C3%A3o_Paulo.jpg",
+   "license": "CC0",
+   "artist": "Wilfredor",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Spices_of_Mercado_Municipal_de_S%C3%A3o_Paulo.jpg",
+   "query": "spices market"
+  },
+  "food/food_010.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Spices_at_the_market%2C_Ramatuelle%2C_2004.jpg/1920px-Spices_at_the_market%2C_Ramatuelle%2C_2004.jpg",
+   "license": "CC0",
+   "artist": "DimiTalen",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Spices_at_the_market,_Ramatuelle,_2004.jpg",
+   "query": "spices market"
+  },
+  "food/food_011.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Piece_of_chocolate_cake_on_a_white_plate_decorated_with_chocolate_sauce.jpg/1920px-Piece_of_chocolate_cake_on_a_white_plate_decorated_with_chocolate_sauce.jpg",
+   "license": "CC0",
+   "artist": "Daria YakovlevaMinor edits made by Subsidiary account",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Piece_of_chocolate_cake_on_a_white_plate_decorated_with_chocolate_sauce.jpg",
+   "query": "chocolate"
+  },
+  "food/food_012.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Chocolate_manju.jpg/1920px-Chocolate_manju.jpg",
+   "license": "CC0",
+   "artist": "Syced",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Chocolate_manju.jpg",
+   "query": "chocolate"
+  },
+  "food/food_013.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/B%C3%BBche_de_No%C3%ABl_chocolat_framboise_maison.jpg/1920px-B%C3%BBche_de_No%C3%ABl_chocolat_framboise_maison.jpg",
+   "license": "CC0",
+   "artist": "Jebulon",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:B%C3%BBche_de_No%C3%ABl_chocolat_framboise_maison.jpg",
+   "query": "chocolate"
+  },
+  "geography/geography_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/CHOCOLATE_MOUNTAIN_AERIAL_GUNNERY_RANGE%2C_Calif_131001-M-CC151-289.jpg/1920px-CHOCOLATE_MOUNTAIN_AERIAL_GUNNERY_RANGE%2C_Calif_131001-M-CC151-289.jpg",
+   "license": "Public domain",
+   "artist": "Lance Cpl. Xzavior T. McNeal",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:CHOCOLATE_MOUNTAIN_AERIAL_GUNNERY_RANGE,_Calif_131001-M-CC151-289.jpg",
+   "query": "mountain range aerial"
+  },
+  "geography/geography_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/CHOCOLATE_MOUNTAIN_AERIAL_GUNNERY_RANGE%2C_Calif_131001-M-CC151-295.jpg/1920px-CHOCOLATE_MOUNTAIN_AERIAL_GUNNERY_RANGE%2C_Calif_131001-M-CC151-295.jpg",
+   "license": "Public domain",
+   "artist": "Lance Cpl. Xzavior T. McNeal",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:CHOCOLATE_MOUNTAIN_AERIAL_GUNNERY_RANGE,_Calif_131001-M-CC151-295.jpg",
+   "query": "mountain range aerial"
+  },
+  "geography/geography_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Utah_Dunes_Landscape_-_West_Desert_District.jpg/1920px-Utah_Dunes_Landscape_-_West_Desert_District.jpg",
+   "license": "Public domain",
+   "artist": "Bureau of Land Management - Utah/Bob Wick",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Utah_Dunes_Landscape_-_West_Desert_District.jpg",
+   "query": "desert dunes"
+  },
+  "geography/geography_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Plume_from_eruption_of_Chaiten_volcano%2C_Chile.jpg/1920px-Plume_from_eruption_of_Chaiten_volcano%2C_Chile.jpg",
+   "license": "Public domain",
+   "artist": "NASA",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Plume_from_eruption_of_Chaiten_volcano,_Chile.jpg",
+   "query": "volcano eruption"
+  },
+  "geography/geography_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Cast_sitting_victim_Pompeii.jpg/1920px-Cast_sitting_victim_Pompeii.jpg",
+   "license": "CC0",
+   "artist": "Jebulon",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Cast_sitting_victim_Pompeii.jpg",
+   "query": "volcano eruption"
+  },
+  "geography/geography_006.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/db/Al-Idrisi%27s_world_map.JPG",
+   "license": "Public domain",
+   "artist": "",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Al-Idrisi%27s_world_map.JPG",
+   "query": "world map old"
+  },
+  "geography/geography_007.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/1581_Bunting_clover_leaf_map.jpg/1920px-1581_Bunting_clover_leaf_map.jpg",
+   "license": "Public domain",
+   "artist": "Heinrich B\u00fcnting",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:1581_Bunting_clover_leaf_map.jpg",
+   "query": "world map old"
+  },
+  "geography/geography_008.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Turgot_map_of_Paris%2C_sheet_18-19_-_Norman_B._Leventhal_Map_Center.jpg/1920px-Turgot_map_of_Paris%2C_sheet_18-19_-_Norman_B._Leventhal_Map_Center.jpg",
+   "license": "Public domain",
+   "artist": "Louis Bretez / Claude Lucas",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Turgot_map_of_Paris,_sheet_18-19_-_Norman_B._Leventhal_Map_Center.jpg",
+   "query": "world map old"
+  },
+  "geography/geography_009.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Upsala_Glacier%2C_Argentina.jpg/1920px-Upsala_Glacier%2C_Argentina.jpg",
+   "license": "Public domain",
+   "artist": "This image was taken by the NASA Expedition 21 crew\n\nImage acquired with a Nikon D2Xs digital camera fitted with a 400 m",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Upsala_Glacier,_Argentina.jpg",
+   "query": "glacier"
+  },
+  "geography/geography_010.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Aerial_view_Schlapperebenbach_%28Na%C3%9Ffeld%2C_Gasteinertal%29_waterfall-1.jpg/1920px-Aerial_view_Schlapperebenbach_%28Na%C3%9Ffeld%2C_Gasteinertal%29_waterfall-1.jpg",
+   "license": "CC0",
+   "artist": "Dieringer63",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Aerial_view_Schlapperebenbach_(Na%C3%9Ffeld,_Gasteinertal)_waterfall-1.jpg",
+   "query": "waterfall aerial"
+  },
+  "geography/geography_011.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Aerial_view_Schlapperebenbach_%28Na%C3%9Ffeld%2C_Gasteinertal%29_waterfall-2.jpg/1920px-Aerial_view_Schlapperebenbach_%28Na%C3%9Ffeld%2C_Gasteinertal%29_waterfall-2.jpg",
+   "license": "CC0",
+   "artist": "Dieringer63",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Aerial_view_Schlapperebenbach_(Na%C3%9Ffeld,_Gasteinertal)_waterfall-2.jpg",
+   "query": "waterfall aerial"
+  },
+  "history/history_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Roman_Colosseum_3.jpg/1920px-Roman_Colosseum_3.jpg",
+   "license": "CC0",
+   "artist": "Kurt Kaiser",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Roman_Colosseum_3.jpg",
+   "query": "roman colosseum"
+  },
+  "history/history_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Colosseum_largeur_Rome_Italy.jpg/1920px-Colosseum_largeur_Rome_Italy.jpg",
+   "license": "CC0",
+   "artist": "Jebulon",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Colosseum_largeur_Rome_Italy.jpg",
+   "query": "roman colosseum"
+  },
+  "history/history_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Castle_medieval_siege.gif/1920px-Castle_medieval_siege.gif",
+   "license": "Public domain",
+   "artist": "",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Castle_medieval_siege.gif",
+   "query": "medieval castle"
+  },
+  "history/history_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/From_Temple_of_Olympian_Zeus_to_Lycabetus_Athens_Greece.jpg/1920px-From_Temple_of_Olympian_Zeus_to_Lycabetus_Athens_Greece.jpg",
+   "license": "CC0",
+   "artist": "Jebulon",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:From_Temple_of_Olympian_Zeus_to_Lycabetus_Athens_Greece.jpg",
+   "query": "ancient greek temple"
+  },
+  "history/history_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Viking_Bestla_%28ship%2C_2014%29_003.JPG/1920px-Viking_Bestla_%28ship%2C_2014%29_003.JPG",
+   "license": "CC0",
+   "artist": "Rolf Heinrich, K\u00f6ln",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Viking_Bestla_(ship,_2014)_003.JPG",
+   "query": "viking ship"
+  },
+  "history/history_006.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/SS_Viking_in_Steam_Packet_service..JPG/1920px-SS_Viking_in_Steam_Packet_service..JPG",
+   "license": "Public domain",
+   "artist": "Unknown authorUnknown author",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:SS_Viking_in_Steam_Packet_service..JPG",
+   "query": "viking ship"
+  },
+  "history/history_007.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Viking%2C_replica_of_the_Gokstad_Viking_ship%2C_at_the_Chicago_World_Fair_1893.jpg",
+   "license": "Public domain",
+   "artist": "",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Viking,_replica_of_the_Gokstad_Viking_ship,_at_the_Chicago_World_Fair_1893.jpg",
+   "query": "viking ship"
+  },
+  "history/history_008.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Great_Wall_of_China_July_2006.JPG/1920px-Great_Wall_of_China_July_2006.JPG",
+   "license": "CC0",
+   "artist": "Velatrix",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Great_Wall_of_China_July_2006.JPG",
+   "query": "great wall of china"
+  },
+  "ocean/ocean_009.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Haeckel_Discomedusae_8.jpg/1920px-Haeckel_Discomedusae_8.jpg",
+   "license": "Public domain",
+   "artist": "Original: Ernst Haeckel. Scan: Ragesoss. Cleanup: Ilmari Karonen.",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Haeckel_Discomedusae_8.jpg",
+   "query": "jellyfish"
+  },
+  "ocean/ocean_010.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Jellyfish_in_Hove_Lagoon_2023-05-28.jpg/1920px-Jellyfish_in_Hove_Lagoon_2023-05-28.jpg",
+   "license": "CC0",
+   "artist": "Andy Li",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Jellyfish_in_Hove_Lagoon_2023-05-28.jpg",
+   "query": "jellyfish"
+  },
+  "ocean/ocean_011.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Lion%27s_mane_jellyfish_in_Gullmarn_fjord_at_S%C3%A4mstad_3.jpg/1920px-Lion%27s_mane_jellyfish_in_Gullmarn_fjord_at_S%C3%A4mstad_3.jpg",
+   "license": "CC0",
+   "artist": "W.carter",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Lion%27s_mane_jellyfish_in_Gullmarn_fjord_at_S%C3%A4mstad_3.jpg",
+   "query": "jellyfish"
+  },
+  "ocean/ocean_012.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/0/0c/NOAA_divers_coral_reef_north_coast_Pagan_2022.png",
+   "license": "Public domain",
+   "artist": "NOAA Fisheries",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:NOAA_divers_coral_reef_north_coast_Pagan_2022.png",
+   "query": "coral reef"
+  },
+  "physics/physics_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/ISS-20_Thunderstorms_on_the_Brazilian_Horizon.jpg/1920px-ISS-20_Thunderstorms_on_the_Brazilian_Horizon.jpg",
+   "license": "Public domain",
+   "artist": "NASA Expedition 20 crew",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:ISS-20_Thunderstorms_on_the_Brazilian_Horizon.jpg",
+   "query": "lightning storm"
+  },
+  "physics/physics_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Lightning_in_Dallas_2015.jpg/1920px-Lightning_in_Dallas_2015.jpg",
+   "license": "Public domain",
+   "artist": "NOAA Photo Library",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Lightning_in_Dallas_2015.jpg",
+   "query": "lightning storm"
+  },
+  "physics/physics_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Dispersive_prism.png/1920px-Dispersive_prism.png",
+   "license": "CC0",
+   "artist": "Kelvinsong",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Dispersive_prism.png",
+   "query": "prism light spectrum"
+  },
+  "physics/physics_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Antikythera_Mechanism_Gears_%26_Inscriptions_%2828379344072%29.jpg/1920px-Antikythera_Mechanism_Gears_%26_Inscriptions_%2828379344072%29.jpg",
+   "license": "CC0",
+   "artist": "Gary Todd from Xinzheng, China",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Antikythera_Mechanism_Gears_%26_Inscriptions_(28379344072).jpg",
+   "query": "gears mechanism"
+  },
+  "physics/physics_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/VORTEX_Southeast_2017_media_day_-_33556907366.jpg/1920px-VORTEX_Southeast_2017_media_day_-_33556907366.jpg",
+   "license": "Public domain",
+   "artist": "NOAA NSSL",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:VORTEX_Southeast_2017_media_day_-_33556907366.jpg",
+   "query": "vortex water"
+  },
+  "physics/physics_006.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Magnet0873.png",
+   "license": "Public domain",
+   "artist": "Newton Henry Black",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Magnet0873.png",
+   "query": "magnet iron filings"
+  },
+  "physics/physics_007.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Pendulum_%28Chase_Bohannon%29.jpg/1920px-Pendulum_%28Chase_Bohannon%29.jpg",
+   "license": "CC0",
+   "artist": "Chase Bohannon",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Pendulum_(Chase_Bohannon).jpg",
+   "query": "pendulum"
+  },
+  "physics/physics_008.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Pendeldauer_%28Versuch%29.jpg/1920px-Pendeldauer_%28Versuch%29.jpg",
+   "license": "CC0",
+   "artist": "Rhetos",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Pendeldauer_(Versuch).jpg",
+   "query": "pendulum"
+  },
+  "psychology/psychology_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Human_brain_blue_circuit_white_background_artificial_intelligence_icon_%28Topaz_Bloom%29.jpeg/1920px-Human_brain_blue_circuit_white_background_artificial_intelligence_icon_%28Topaz_Bloom%29.jpeg",
+   "license": "Public domain",
+   "artist": "Dall E",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Human_brain_blue_circuit_white_background_artificial_intelligence_icon_(Topaz_Bloom).jpeg",
+   "query": "human brain model"
+  },
+  "psychology/psychology_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/2013-07-11-canada-edmunton-spruce-grove-corn-maze.jpg/1920px-2013-07-11-canada-edmunton-spruce-grove-corn-maze.jpg",
+   "license": "Public domain",
+   "artist": "Jesse Kraay",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:2013-07-11-canada-edmunton-spruce-grove-corn-maze.jpg",
+   "query": "maze aerial"
+  },
+  "shrimp_water/shrimp_water_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Kotuku_standing_in_shallow_water_with_shrimp_in_its_beak.jpg/1920px-Kotuku_standing_in_shallow_water_with_shrimp_in_its_beak.jpg",
+   "license": "Public domain",
+   "artist": "Pseudopanax at English Wikipedia",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Kotuku_standing_in_shallow_water_with_shrimp_in_its_beak.jpg",
+   "query": "shrimp water"
+  },
+  "shrimp_water/shrimp_water_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Kotuku_standing_in_shallow_water%2C_tossing_shrimp_back_in_its_beak.jpg/1920px-Kotuku_standing_in_shallow_water%2C_tossing_shrimp_back_in_its_beak.jpg",
+   "license": "Public domain",
+   "artist": "Pseudopanax at English Wikipedia",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Kotuku_standing_in_shallow_water,_tossing_shrimp_back_in_its_beak.jpg",
+   "query": "shrimp water"
+  },
+  "shrimp_water/shrimp_water_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Shrimp_Boat_on_Bayou_Lafourche_in_Golden_Meadows%2C_LA.jpg/1920px-Shrimp_Boat_on_Bayou_Lafourche_in_Golden_Meadows%2C_LA.jpg",
+   "license": "Public domain",
+   "artist": "abbeyprivate",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Shrimp_Boat_on_Bayou_Lafourche_in_Golden_Meadows,_LA.jpg",
+   "query": "shrimp water"
+  },
+  "shrimp_water/shrimp_water_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Stenopus_hispidus_412077309.jpg/1920px-Stenopus_hispidus_412077309.jpg",
+   "license": "CC BY 4.0",
+   "artist": "Ryan Donnelly",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Stenopus_hispidus_412077309.jpg",
+   "query": "shrimp animals"
+  },
+  "shrimp_water/shrimp_water_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Stenopus_hispidus_%28MNHN-IU-2013-2654%29_%28cropped%29.jpeg/1920px-Stenopus_hispidus_%28MNHN-IU-2013-2654%29_%28cropped%29.jpeg",
+   "license": "CC BY 4.0",
+   "artist": "Corbari L.",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Stenopus_hispidus_(MNHN-IU-2013-2654)_(cropped).jpeg",
+   "query": "shrimp animals"
+  },
+  "woolly_mammoths/woolly_mammoths_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Siegsdorfer_Mammut.jpg",
+   "license": "Public domain",
+   "artist": "Lou.gruber",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Siegsdorfer_Mammut.jpg",
+   "query": "woolly mammoths"
+  }
+ }
+}

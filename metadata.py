@@ -181,6 +181,23 @@ def _channel_bits():
     return handle, name, follow, prompt
 
 
+def _credits_for(video_path):
+    """Image attribution written beside the video by make_video, or ''.
+
+    CC BY images are legal to use on a monetized channel only if the author is
+    credited, and the description is where that credit has to live.
+    """
+    side = os.path.splitext(video_path)[0] + "_credits.txt"
+    if not os.path.exists(side):
+        return ""
+    try:
+        with open(side) as f:
+            block = f.read().strip()
+        return f"\n\n{block}" if block else ""
+    except OSError:
+        return ""
+
+
 def description_from(lines, links):
     first = lines[0].rstrip(".,;: ")
     handle, name, follow, prompt = _channel_bits()
@@ -233,7 +250,7 @@ def sync(quiet=False):
             "id": vid,
             "theme": item.get("theme", ""),
             "title": title_from(lines, seq),
-            "description": description_from(lines, links),
+            "description": description_from(lines, links) + _credits_for(f),
             "ig_caption": ig_caption_from(lines, seq, links),
             "pin_comment": pin_comment_from(lines, item.get("theme", ""), seq),
             "status": "ready",
