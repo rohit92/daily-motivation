@@ -100,7 +100,8 @@ class TestQuotaBudget(unittest.TestCase):
              mock.patch("upload_youtube.upload", side_effect=RuntimeError("boom")):
             SQ.run()
         q = SQ.load(SQ.QUEUE)
-        self.assertEqual(q["spent"][date.today().isoformat()],
+        # Keyed on Google's reset day (midnight Pacific), not the local date.
+        self.assertEqual(q["spent"][SQ.quota_day()],
                          2 * SQ.UPLOAD_UNITS)
         self.assertTrue(all(i["status"] == "failed" for i in q["items"]))
 
@@ -119,7 +120,7 @@ class TestQuotaBudget(unittest.TestCase):
              mock.patch("upload_youtube.upload", side_effect=boom):
             SQ.run()
         q = SQ.load(SQ.QUEUE)
-        self.assertEqual(q["spent"].get(date.today().isoformat(), 0), 0)
+        self.assertEqual(q["spent"].get(SQ.quota_day(), 0), 0)
 
     def test_run_stops_once_the_network_is_clearly_down(self):
         """Don't grind through 5 videos when the first two prove it's the wifi."""
@@ -153,6 +154,38 @@ class TestQuotaBudget(unittest.TestCase):
             {"channel": "facts", "file": "x.mp4", "publish_date": far,
              "status": "pending"}]})
         self.assertEqual(SQ.due(SQ.load(SQ.QUEUE)), [])
+
+
+class TestQuotaDay(unittest.TestCase):
+    """The ledger has to roll over when GOOGLE's counter does.
+
+    YouTube resets project quota at midnight Pacific, which in IST is the middle
+    of the next afternoon. Keying on the local date drifted the two apart every
+    day: the 7:00 AM IST run is still inside the previous Pacific day, so it was
+    charged to a fresh local bucket while spending quota the evening run had
+    already used. The live ledger showed it — 8000 under both 2026-07-29 and
+    2026-07-30, for uploads Google counted against a single day.
+    """
+
+    def test_quota_day_follows_pacific_not_local(self):
+        from datetime import datetime, timezone
+        try:
+            from zoneinfo import ZoneInfo
+        except ImportError:
+            self.skipTest("no zoneinfo")
+        want = datetime.now(ZoneInfo("America/Los_Angeles")).date().isoformat()
+        self.assertEqual(SQ.quota_day(), want)
+
+    def test_quota_day_is_never_ahead_of_the_local_date(self):
+        """Pacific is behind every timezone east of it, which is all of Asia."""
+        self.assertLessEqual(SQ.quota_day(), date.today().isoformat())
+
+    def test_spent_today_reads_the_pacific_bucket(self):
+        q = {"spent": {SQ.quota_day(): 4800, "1999-01-01": 9999}}
+        self.assertEqual(SQ.spent_today(q), 4800)
+
+    def test_an_empty_ledger_reports_nothing_spent(self):
+        self.assertEqual(SQ.spent_today({}), 0)
 
 
 class TestQuotaAccounting(unittest.TestCase):

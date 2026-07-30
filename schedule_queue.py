@@ -95,8 +95,30 @@ def blank():
     return {"daily_budget": DAILY_BUDGET, "spent": {}, "items": []}
 
 
+def quota_day():
+    """The date Google is currently counting against, not the local one.
+
+    YouTube resets project quota at midnight Pacific, which in IST lands in the
+    middle of the following afternoon. Keying the ledger on the local date meant
+    the two drifted apart every day: the 7:00 AM IST run is still inside the
+    PREVIOUS Pacific day, so its uploads were charged to a fresh local bucket
+    while actually spending quota the evening run had already used. Depending on
+    the hour that either blocked uploads that had budget, or let through uploads
+    that then failed with quotaExceeded.
+    """
+    from datetime import datetime, timezone
+    try:
+        from zoneinfo import ZoneInfo
+        return datetime.now(ZoneInfo("America/Los_Angeles")).date().isoformat()
+    except Exception:
+        # No tz database: approximate with a fixed -8 offset. Errs on the side
+        # of rolling the day over late, which under-spends rather than over.
+        from datetime import timedelta
+        return (datetime.now(timezone.utc) - timedelta(hours=8)).date().isoformat()
+
+
 def spent_today(q):
-    return q.get("spent", {}).get(date.today().isoformat(), 0)
+    return q.get("spent", {}).get(quota_day(), 0)
 
 
 def _entry(slug, name, v, kind):
@@ -264,7 +286,10 @@ def run(dry=False, limit=None, channel=None, now=False):
         return 0
 
     import upload_youtube as U
-    today = date.today().isoformat()
+    # The quota ledger is keyed on Google's reset day, NOT the local date —
+    # publish dates below stay local, because those are about when the channel
+    # posts, which has nothing to do with when Google's counter rolls over.
+    today = quota_day()
     budget = q.get("daily_budget", DAILY_BUDGET)
     spent = q.get("spent", {}).get(today, 0)
     # `now` sends the next queued video early. It keeps its planned release

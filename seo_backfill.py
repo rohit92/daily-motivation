@@ -55,7 +55,9 @@ def quota_left(reserve=DEFAULT_RESERVE):
         import schedule_queue as SQ
         q = SQ.load(SQ.QUEUE, {}) or {}
         budget = q.get("daily_budget", 8000)
-        spent = (q.get("spent") or {}).get(SQ.date.today().isoformat(), 0)
+        # SQ.quota_day(), not the local date: Google's counter rolls over at
+        # midnight Pacific and the ledger is keyed to that.
+        spent = (q.get("spent") or {}).get(SQ.quota_day(), 0)
         return max(0, budget - spent - reserve)
     except Exception:
         return 0            # can't tell → assume none, never gamble
@@ -68,7 +70,7 @@ def charge(units):
     try:
         import schedule_queue as SQ
         q = SQ.load(SQ.QUEUE, {}) or {}
-        today = SQ.date.today().isoformat()
+        today = SQ.quota_day()
         q.setdefault("spent", {})[today] = (q.get("spent") or {}).get(today, 0) + units
         SQ.save(q)
     except Exception:

@@ -160,13 +160,21 @@ _STOP = {"the", "a", "an", "and", "or", "but", "you", "your", "youre", "i", "im"
 
 
 def _title_terms(title):
-    """Two-word phrases from the title, minus hashtags and filler."""
-    import re
-    clean = re.sub(r"#\w+", " ", title or "")
-    clean = re.sub(r"[^\w\s]", " ", clean).lower()
-    words = [w for w in clean.split() if w not in _STOP and len(w) > 2]
-    return [" ".join(words[i:i + 2]) for i in range(0, min(len(words), 4), 2)
-            if len(words[i:i + 2]) == 2]
+    """Deliberately nothing.
+
+    This used to pair up consecutive words from the title to get tags matching
+    the video's exact phrasing. Blind bigrams out of a sentence are not search
+    phrases, and the real uploads showed it: "You didn't come this far to only
+    come this far" produced the tags `didn come` and `far only`, and "Your
+    English sounds choppy" produced `choppy missing`. Contraction stems survived
+    the length filter and stopword pairs survived the stopword filter.
+
+    A junk tag is worse than a missing one — it dilutes a budget capped at 500
+    characters and tells YouTube the video is about nothing. The brand, theme,
+    broad and format tags are all chosen on purpose and there are already 13-14
+    of them, so the exact-phrase idea is dropped rather than patched.
+    """
+    return []
 
 
 # Words too common inside a niche to identify a theme: "motivation" appears in

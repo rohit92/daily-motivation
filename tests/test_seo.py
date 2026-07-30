@@ -148,6 +148,42 @@ class TestThemeGuessing(unittest.TestCase):
                     self.assertIn(g, sc.BANK, f"{slug}: {g} is not a bank theme")
 
 
+class TestNoJunkTags(unittest.TestCase):
+    """Real uploads went out tagged `didn come`, `far only` and `choppy missing`.
+
+    Those came from pairing consecutive title words: contraction stems passed
+    the length filter and stopword pairs passed the stopword filter. A junk tag
+    eats a 500-character budget and tells YouTube the video is about nothing.
+    """
+
+    def test_contraction_fragments_never_become_tags(self):
+        tags = seo.tags_for(
+            "motivation", "comeback",
+            title="You didn't come this far to only come this far 🔥 #Shorts")
+        for junk in ("didn come", "far only", "didn", "come far"):
+            self.assertNotIn(junk, tags)
+
+    def test_stopword_pairs_never_become_tags(self):
+        tags = seo.tags_for("education", "connectors",
+                            title="Your English sounds choppy? You are missing this")
+        for junk in ("choppy missing", "english sounds", "sounds choppy"):
+            self.assertNotIn(junk, tags)
+
+    def test_every_tag_is_a_deliberate_one(self):
+        """No tag may come from anywhere but the brand/theme/broad/format sets."""
+        allowed = set(seo.FORMAT_TAGS) | set(seo.LONGFORM_FORMAT_TAGS)
+        for terms in seo.THEME_TERMS.values():
+            allowed |= {t.lower() for t in terms}
+        for terms in seo.BROAD_BY_NICHE.values():
+            allowed |= {t.lower() for t in terms}
+        for slug in ("motivation", "education", "facts"):
+            allowed |= {t.lower() for t in seo._brand_tags(slug)}
+        for slug, theme in (("motivation", "comeback"), ("education", "connectors"),
+                            ("facts", "geography")):
+            for tag in seo.tags_for(slug, theme, title="Some Long Clickbait Title Here"):
+                self.assertIn(tag, allowed, f"{slug}: unexpected tag {tag!r}")
+
+
 class TestChannelProfile(unittest.TestCase):
     def test_keywords_are_quoted_and_within_budget(self):
         for slug in ("motivation", "education", "facts"):
