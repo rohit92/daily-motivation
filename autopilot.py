@@ -162,8 +162,21 @@ def hands_free():
 
 
 def longform_due():
-    """Weekly long-form: due on Sundays unless one was built in the last 6 days."""
-    if date.today().weekday() != 6:
+    """Weekly long-form, built a few days BEFORE its weekend slot.
+
+    This used to fire only on Sunday — the same day plan() wanted to release it.
+    A long-form takes minutes to render and 1,600 quota units to upload, so
+    building it on release day left no room for anything to go wrong: a failed
+    render, an exhausted quota or a dead network meant no long-form that week,
+    with nothing queued to fall back on.
+
+    Building on Thursday by default puts a finished file in the calendar two
+    days before plan() schedules it for Saturday/Sunday, which is the same lead
+    the Shorts already get. Override with "longform_build_weekday" in
+    config.json (0=Monday … 6=Sunday).
+    """
+    want = (load(CONFIG, {}) or {}).get("longform_build_weekday", 3)   # Thursday
+    if date.today().weekday() != want:
         return False
     lf = (load(LIBRARY, {}) or {}).get("longform", {})
     for meta in lf.values():
