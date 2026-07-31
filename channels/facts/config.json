@@ -22,5 +22,5 @@
   "voice": "en-IN-PrabhatNeural",
   "animated_bg": true,
   "prepare_next_on_upload": true,
-  "short_max_lines": 5
+  "short_max_lines": 7
 }

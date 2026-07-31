@@ -1057,6 +1057,36 @@ def _fit_runtime(hooks, bodies, closers):
     return keep_hook + list(bodies)[:room] + keep_close
 
 
+def _bank_parts(item):
+    """(hooks, FULL body, closers) for a script, or None if it isn't from the bank.
+
+    Rebuilds from the bank rather than reading the stored lines, so refitting is
+    idempotent and — crucially — reversible. A previous run trimmed the body in
+    place, which meant raising a channel's budget later could not restore the
+    lines it had already cut. Facts needed exactly that: its own trend scan puts
+    the winning length at 36s, well above the 18s that set the first budget.
+    """
+    spec = BANK.get(item.get("theme"))
+    if not spec:
+        return None
+    lines = item["lines"]
+    hooks = next((h for h in spec["hooks"] if list(h) == lines[:len(h)]), None)
+    if not hooks:
+        return None
+    # The closer may have been cut to its first line, so match on that.
+    closers = next((c for c in spec["closers"]
+                    if list(c) == lines[-len(c):] or c[0] == lines[-1]), None)
+    if not closers:
+        return None
+    kept_body = lines[len(hooks):len(lines) - 1] \
+        if list(closers) != lines[-len(closers):] \
+        else lines[len(hooks):len(lines) - len(closers)]
+    # Recover the FULL body: the stored one may be a prefix of a bank body.
+    body = next((b for b in spec["bodies"]
+                 if list(b)[:len(kept_body)] == kept_body), kept_body)
+    return hooks, body, closers
+
+
 def refit_unused():
     """Apply the runtime budget to scripts composed before it existed.
 
@@ -1077,18 +1107,12 @@ def refit_unused():
     for item in content.get("items", []):
         if item["id"] in used:
             continue
-        spec = BANK.get(item.get("theme"))
-        if not spec:
-            continue
-        lines = item["lines"]
-        hooks = next((h for h in spec["hooks"] if list(h) == lines[:len(h)]), None)
-        closers = next((c for c in spec["closers"]
-                        if list(c) == lines[-len(c):]), None)
-        if not hooks or not closers:
+        parts = _bank_parts(item)
+        if not parts:
             continue                    # unrecognised shape — leave it be
-        body = lines[len(hooks):len(lines) - len(closers)]
+        hooks, body, closers = parts
         refit = _fit_runtime(hooks, body, closers)
-        if refit != lines:
+        if refit != item["lines"]:
             item["lines"] = refit
             changed += 1
     if changed:
