@@ -76,5 +76,61 @@ class TestRuntimeFit(unittest.TestCase):
         self.assertEqual(out[0], HOOKS[0])
 
 
+class TestRefitUnused(unittest.TestCase):
+    """The budget must reach scripts composed before it existed.
+
+    _fit_runtime only runs at compose time, so ~20 scripts already sitting in
+    content.json kept their seven lines and would have kept rendering at ~25s
+    for weeks. But a script whose video is already built and published must not
+    be touched — re-cutting it would make the library disagree with YouTube.
+    """
+
+    def _bank(self):
+        return {"t": {"hooks": [HOOKS], "bodies": [BODIES], "closers": [CLOSERS]}}
+
+    def _run(self, items, used_ids):
+        saved = {}
+
+        def fake_load(path, default=None):
+            if path == sc.CONTENT:
+                return {"items": items}
+            return {"used_ids": used_ids}
+
+        with mock.patch.object(sc, "BANK", self._bank()), \
+             mock.patch.object(sc, "load", side_effect=fake_load), \
+             mock.patch.object(sc, "save",
+                               side_effect=lambda p, d: saved.update({p: d})), \
+             mock.patch.object(sc, "_fit_runtime",
+                               side_effect=lambda h, b, c: list(h) + list(b)[:2] + list(c)[:1]):
+            n = sc.refit_unused()
+        return n, items
+
+    def test_an_unused_script_is_shortened(self):
+        items = [{"id": "c001", "theme": "t", "lines": HOOKS + BODIES + CLOSERS}]
+        n, items = self._run(items, used_ids=[])
+        self.assertEqual(n, 1)
+        self.assertEqual(len(items[0]["lines"]), 5)
+
+    def test_an_already_built_script_is_never_touched(self):
+        original = HOOKS + BODIES + CLOSERS
+        items = [{"id": "c001", "theme": "t", "lines": list(original)}]
+        n, items = self._run(items, used_ids=["c001"])
+        self.assertEqual(n, 0)
+        self.assertEqual(items[0]["lines"], original)
+
+    def test_an_unrecognised_shape_is_left_alone(self):
+        """Story scripts and hand-edited ones don't match the bank; skip them."""
+        odd = ["something", "entirely", "different"]
+        items = [{"id": "c001", "theme": "t", "lines": list(odd)}]
+        n, items = self._run(items, used_ids=[])
+        self.assertEqual(n, 0)
+        self.assertEqual(items[0]["lines"], odd)
+
+    def test_an_unknown_theme_is_left_alone(self):
+        items = [{"id": "c001", "theme": "nope", "lines": HOOKS + BODIES + CLOSERS}]
+        n, _ = self._run(items, used_ids=[])
+        self.assertEqual(n, 0)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

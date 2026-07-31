@@ -1057,6 +1057,45 @@ def _fit_runtime(hooks, bodies, closers):
     return keep_hook + list(bodies)[:room] + keep_close
 
 
+def refit_unused():
+    """Apply the runtime budget to scripts composed before it existed.
+
+    _fit_runtime only runs at compose time, so every script already sitting in
+    content.json keeps its original seven lines and keeps rendering at ~25s.
+    That is weeks of backlog on each channel.
+
+    The split is recovered by matching against the bank rather than assuming
+    fixed offsets: the head of the script is one of the theme's hooks and the
+    tail is one of its closers, so whatever sits between them is the body.
+    Scripts already built are left alone — re-cutting a published video's
+    script would make the library disagree with what is actually on YouTube.
+    """
+    content = load(CONTENT, {"items": []})
+    state = load(STATE, {})
+    used = set(state.get("used_ids", []))
+    changed = 0
+    for item in content.get("items", []):
+        if item["id"] in used:
+            continue
+        spec = BANK.get(item.get("theme"))
+        if not spec:
+            continue
+        lines = item["lines"]
+        hooks = next((h for h in spec["hooks"] if list(h) == lines[:len(h)]), None)
+        closers = next((c for c in spec["closers"]
+                        if list(c) == lines[-len(c):]), None)
+        if not hooks or not closers:
+            continue                    # unrecognised shape — leave it be
+        body = lines[len(hooks):len(lines) - len(closers)]
+        refit = _fit_runtime(hooks, body, closers)
+        if refit != lines:
+            item["lines"] = refit
+            changed += 1
+    if changed:
+        save(CONTENT, content)
+    return changed
+
+
 def hooks_from_combos(used_combos):
     """Recover which hooks a channel has already published, from the older
     used_combos ledger (keys look like 'theme:hbc', one digit per slot)."""

@@ -1959,6 +1959,54 @@
    "source": "wikimedia",
    "page": "https://commons.wikimedia.org/wiki/File:Vegan_carrot_%2B_orange_cake_-_Cafe_Coho_2025-11-21.jpg",
    "query": "carrots food"
+  },
+  "stars_sky/stars_sky_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Night_sky_with_moon_and_stars_over_cotton_field_in_Batesville%2C_Texas.jpg/1920px-Night_sky_with_moon_and_stars_over_cotton_field_in_Batesville%2C_Texas.jpg",
+   "license": "Public domain",
+   "artist": "U.S. Department of Agriculture",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Night_sky_with_moon_and_stars_over_cotton_field_in_Batesville,_Texas.jpg",
+   "query": "stars sky"
+  },
+  "stars_sky/stars_sky_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Webb-_Dwarf_stars_in_a_glittering_sky_%2854993343816%29.jpg/1920px-Webb-_Dwarf_stars_in_a_glittering_sky_%2854993343816%29.jpg",
+   "license": "CC BY 4.0",
+   "artist": "europeanspaceagency",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Webb-_Dwarf_stars_in_a_glittering_sky_(54993343816).jpg",
+   "query": "stars sky"
+  },
+  "stars_sky/stars_sky_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Sky_distribution_of_~14_000_observed_stars_%28eso0411a%29.jpg",
+   "license": "CC BY 4.0",
+   "artist": "ESO",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Sky_distribution_of_~14_000_observed_stars_(eso0411a).jpg",
+   "query": "stars sky"
+  },
+  "stars_sky/stars_sky_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Messier-42-10.12.2004-filtered.jpeg",
+   "license": "Attribution",
+   "artist": "Rochus Hess",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Messier-42-10.12.2004-filtered.jpeg",
+   "query": "stars space"
+  },
+  "stomach_lining/stomach_lining_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/66/Stomach_Location.png",
+   "license": "CC0",
+   "artist": "National Cancer INstitute",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Stomach_Location.png",
+   "query": "stomach lining"
+  },
+  "stomach_lining/stomach_lining_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Stomach_lining_tripe_Athens.jpg",
+   "license": "CC BY 2.0",
+   "artist": "Addictive Picasso",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Stomach_lining_tripe_Athens.jpg",
+   "query": "stomach lining"
   }
  }
 }
