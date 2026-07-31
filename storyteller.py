@@ -299,6 +299,32 @@ def bank_story():
 
 # ---------- 3+4. build video + derive native Shorts ----------
 
+def _hook_key(line):
+    """A first line reduced to what makes it the same script.
+
+    Matching on the rendered TITLE would miss these: the same hook goes out with
+    a rotating emoji, so "…watched him fall 🧠" and "…watched him fall 🔥" are
+    different strings and the same video.
+    """
+    import re
+    return re.sub(r"[^a-z0-9 ]", "", (line or "").lower()).strip()
+
+
+def _already_published(content):
+    """Opening lines already used by a script on this channel, cut or live."""
+    out = set()
+    for it in content.get("items", []):
+        if it.get("lines"):
+            out.add(_hook_key(it["lines"][0]))
+    lib = load(LIBRARY, {"videos": {}}) or {"videos": {}}
+    for v in (lib.get("videos") or {}).values():
+        # library titles carry the hook plus an emoji and hashtags
+        t = (v.get("title") or "").split("#")[0]
+        if t:
+            out.add(_hook_key(t))
+    return out
+
+
 def derive_shorts(script, n):
     """Turn the story's strongest beats into native vertical Shorts (built by
     the same engine as the daily videos — karaoke captions, end-cap, the lot).
@@ -308,15 +334,27 @@ def derive_shorts(script, n):
     picks = [chapters[0], chapters[-1]] + chapters[1:-1]
     content = load(CONTENT, {"items": []})
     existing = {it["id"] for it in content["items"]}
+    spoken = _already_published(content)
     made = []
     for i, ch in enumerate(picks[:n]):
+        lines = ch["lines"][:6]
+        if len(lines) < 3:
+            continue
+        # A new id is not a new video. Stories are regenerated weekly from the
+        # same source material, so the same beat comes back around — this cut
+        # the "Forty thousand people watched him fall" Short a THIRD time, word
+        # for word, under a fresh id each time. YouTube reads that as reused
+        # content, which is the one thing a channel chasing monetization cannot
+        # afford.
+        key = _hook_key(lines[0])
+        if key in spoken:
+            print(f"  ⊘ skipped: \"{lines[0][:45]}\" — already published")
+            continue
+        spoken.add(key)
         seq = 1
         while f"st{seq:03d}" in existing:
             seq += 1
         sid = f"st{seq:03d}"
-        lines = ch["lines"][:6]
-        if len(lines) < 3:
-            continue
         content["items"].append({"id": sid, "theme": "story", "lines": lines})
         existing.add(sid)
         save(CONTENT, content)
