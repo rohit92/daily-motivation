@@ -361,6 +361,34 @@ def synth_line(text, out_wav):
     return words
 
 
+def narrate(script_id, index, text, out_wav):
+    """The creator's own recording for this line, or TTS if there isn't one.
+
+    A synthetic voice teaching spoken English is a contradiction the audience
+    can hear, and it is the loudest signal that nobody made this video. When
+    voiceover.py has cut a real take for this line, it wins.
+
+    Returns per-word timings on the same contract as synth_line(): positions in
+    the UNPADDED timeline, or None for the caller to approximate.
+    """
+    try:
+        import voiceover
+        rec = voiceover.line_wav(CHANNEL, script_id, index)
+    except Exception:
+        rec = None
+    if not rec:
+        return synth_line(text, out_wav)
+
+    # Same normalise-and-pad step synth_line applies, so a video mixing recorded
+    # and synthesised lines keeps one consistent gap between them.
+    subprocess.run(
+        ["ffmpeg", "-y", "-i", rec, "-ac", "2",
+         "-af", f"aresample=44100,apad=pad_dur={GAP_SECONDS}", out_wav],
+        check=True, capture_output=True,
+    )
+    return voiceover.line_timings(CHANNEL, script_id, index)
+
+
 def duration(path):
     out = subprocess.run(
         ["ffprobe", "-v", "error", "-show_entries", "format=duration",
@@ -429,7 +457,11 @@ def build_endcap():
     wav = os.path.join(WORK_DIR, "endcap.wav")
     seg = os.path.join(WORK_DIR, "endcap.mp4")
     endcap_png(png)
-    synth_line(ENDCAP_LINE, wav)
+    # The endcap says the same sentence in every video, so it is recorded once
+    # and reused forever — "_endcap" is a pseudo script id in the voice folder.
+    # Worth wiring: a real voice for six lines followed by a synthetic subscribe
+    # ask is more jarring than TTS throughout would have been.
+    narrate("_endcap", 0, ENDCAP_LINE, wav)
     dur = duration(wav)
     subprocess.run(
         ["ffmpeg", "-y", "-loop", "1", "-t", f"{dur:.3f}", "-i", png, "-i", wav,
@@ -582,7 +614,7 @@ def build_video(item, content, seq, bg_pool):
     seg_states, seg_wins = [], []      # per line: [png paths], [(start,end)]
     for i, line in enumerate(lines):
         wav = os.path.join(WORK_DIR, f"seg_{i}.wav")
-        timings = synth_line(line, wav)
+        timings = narrate(item.get("id"), i, line, wav)
         dur = duration(wav)
         words, font, wlines, line_h = caption_layout(line)
         wins = word_windows(words, timings, dur)

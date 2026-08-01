@@ -22,5 +22,8 @@
   "voice": "en-IN-NeerjaNeural",
   "animated_bg": true,
   "prepare_next_on_upload": true,
-  "short_max_lines": 6
+  "short_max_lines": 6,
+  "theme_bias": {
+    "indian-english": 14.0
+  }
 }

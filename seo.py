@@ -72,8 +72,13 @@ THEME_TERMS = {
     "vocabulary": ["english vocabulary", "improve vocabulary", "english words"],
     "grammar": ["english grammar", "grammar mistakes", "common grammar errors"],
     "pronunciation": ["english pronunciation", "how to pronounce", "pronounce correctly"],
-    "confidence": ["speak english confidently", "english speaking confidence",
-                   "stop being shy in english"],
+    # The flagship series. These are the terms this audience actually types —
+    # "indian english mistakes" is searched by people who suspect they make
+    # them, which is exactly the intent that converts a view into a subscriber.
+    "indian-english": ["indian english mistakes", "indian english",
+                       "english for interview", "interview english",
+                       "common english mistakes indians make",
+                       "placement interview english"],
     "connectors": ["linking words english", "english connectors", "sentence connectors"],
     "smalltalk": ["small talk english", "how to make small talk", "english conversation"],
     "workplace": ["business english", "office english", "english for work"],

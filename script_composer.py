@@ -424,25 +424,75 @@ EDUCATION_BANK = {
             ["Practise the tricky one aloud.", "Muscle memory does the rest."],
         ],
     },
-    "confidence": {
-        "keywords": ["confidence", "speaking", "hesitate", "fear", "practice", "mindset"],
+    # The flagship series. Everything else in this bank teaches English in
+    # general; this teaches the specific habits that mark an Indian speaker out
+    # in an interview with a foreign recruiter. It replaced a "confidence" theme
+    # whose scripts ("You don't need perfect grammar") taught nothing and
+    # converted 604 views into zero subscribers — the same product as the
+    # motivation channel, in a teacher's costume.
+    #
+    # These are NOT "bad English". Indian English is a legitimate variety and
+    # saying otherwise to this audience would be both false and insulting. The
+    # framing every hook keeps: here is what changes when the listener is not
+    # Indian. That is the audience's actual goal — placements, global teams —
+    # and it is why they would subscribe for the next one.
+    "indian-english": {
+        "keywords": ["indian english", "interview english", "english mistakes",
+                     "speak english", "placement", "interview", "fluent"],
         "hooks": [
-            ["Afraid to speak English?", "This mindset changes everything."],
-            ["You don't need perfect grammar.", "You need to be understood."],
-            ["Stop translating in your head.", "Here's what to do instead."],
-            ["Fluency isn't speed.", "It's not stopping."],
+            ["In an interview, never open with 'Myself Rohit'.", "It's the first thing that marks you out."],
+            ["'I passed out in 2024'", "means you fainted."],
+            ["Stop writing 'please revert back'.", "It doesn't mean what you think."],
+            ["'Do the needful' confuses everyone", "outside India."],
+            ["'I am having a car' is the giveaway.", "One rule fixes it forever."],
+            ["'I am working here since two years.'", "Two mistakes in one sentence."],
+            ["'Prepone' is not a word", "outside India."],
+            ["'I'm out of station' sounds like a train.", "Here's what natives say."],
+            ["'Let's discuss about the project.'", "Delete one word and it's perfect."],
+            ["'Cousin brother' doesn't exist", "in English."],
+            ["'Kindly do it' sounds a hundred years old.", "One word makes you modern."],
+            ["Never say 'the backside of the building'.", "It means something else abroad."],
+            ["'I am giving my exam tomorrow.'", "Only teachers give exams."],
+            ["'What is your good name?'", "There is no bad name."],
+            ["'Sleep is coming' and 'open the light'", "are translated, not spoken."],
+            ["'He is my batchmate' means nothing", "to a foreign recruiter."],
         ],
         "bodies": [
-            ["Mistakes are proof you're trying.", "Every fluent speaker made thousands.", "Speak now, polish later."],
-            ["Think in simple English first.", "Short clear sentences win.", "Complexity comes with time."],
-            ["Nobody is judging your accent.", "They're listening to your idea.", "Say it and keep going."],
-            ["Learn phrases, not just words.", "Whole chunks come out faster.", "That's how natural speech feels."],
+            ["Say: 'I'm Rohit.'", "Or: 'My name is Rohit.'", "Two words, and you sound ready."],
+            ["To a foreign recruiter, that's alarming.", "Say: 'I graduated in 2024.'", "Same fact, no confusion."],
+            ["'Revert' means go back to an old state.", "Say: 'I'll get back to you.'", "Or simply: 'I'll reply by Friday.'"],
+            ["Nobody there knows what 'the needful' is.", "Say exactly what you want done.", "'Could you approve this today?'"],
+            ["Some verbs never take '-ing'.", "Have, know, like, want, need.", "Say: 'I have a car.'"],
+            ["'Since' needs a starting point: since 2023.", "'For' needs a length: for two years.", "Say: 'I've been working here for two years.'"],
+            ["Your foreign client will just pause.", "Say: 'Can we move the meeting up?'", "Or: 'Can we bring it forward?'"],
+            ["Say: 'I'm out of town.'", "Or: 'I'm away until Monday.'", "Short, clear, understood anywhere."],
+            ["'Discuss' already contains 'about'.", "Say: 'Let's discuss the project.'", "Same with order — never 'order for'."],
+            ["A cousin is a cousin. No gender needed.", "Say: 'my cousin'.", "If it matters: 'my cousin — he's an engineer'."],
+            ["'Kindly' belongs in old letters.", "Say 'please' instead.", "'Please send it by Friday.'"],
+            ["'Backside' means your bottom.", "Say: 'behind the building'.", "Or: 'at the back'."],
+            ["Students take them.", "Say: 'I'm taking my exam tomorrow.'", "The teacher gives, the student takes."],
+            ["It's a direct translation from Hindi.", "Say: 'What's your name?'", "Warmth comes from your tone, not extra words."],
+            ["Say: 'I'm getting sleepy.'", "Say: 'Turn on the light.'", "English turns lights on and off."],
+            ["Say: 'We studied together.'", "Or: 'He was in my class.'", "Plain words travel further."],
         ],
+        # A batch can only use each closer index once (see compose()), so the
+        # number of closers is a hard cap on how many of this theme ship per
+        # run. Four closers held the flagship series to 4 videos a batch no
+        # matter how it was weighted — and 16 lessons sharing 4 sign-offs
+        # sounded like a template anyway.
         "closers": [
-            ["Speak one English sentence today.", "Out loud, to anyone."],
-            ["Progress beats perfection.", "Start messy, get better."],
-            ["Follow for daily confidence.", "You're closer than you think."],
-            ["Say it before you feel ready.", "Ready comes from doing."],
+            ["Follow — one Indian English fix every day.", "Your interview English sharpens with each one."],
+            ["Save this before your next interview.", "Follow for tomorrow's fix."],
+            ["Which one do you say? Tell me below.", "Follow — a new fix daily."],
+            ["Placement season starts with how you speak.", "Follow for one fix a day."],
+            ["One fix a day. That's the whole channel.", "Follow and start tomorrow."],
+            ["Send this to a friend who says it.", "Follow for the next one."],
+            ["You'll never unhear this one.", "Follow — a new fix every day."],
+            ["Say the correct version out loud now.", "Follow for tomorrow's."],
+            ["That's one less thing to worry about.", "Follow — daily fixes."],
+            ["Your next interview just got easier.", "Follow for one a day."],
+            ["Practise it once before you scroll on.", "Follow for the next fix."],
+            ["Small change. Big difference abroad.", "Follow — one fix daily."],
         ],
     },
     "smalltalk": {
@@ -1022,6 +1072,14 @@ def theme_weights():
     perf = performance_weights()
     for theme in weights:
         weights[theme] *= perf.get(theme, 1.0)
+    # A flagship series has to actually dominate the upload schedule, or it
+    # isn't a series — it's an occasional theme, and there's no reason to
+    # subscribe for the next one. Trends and performance still re-rank
+    # everything; this just sets the starting line. Config, not a constant, so
+    # it can be retuned or dropped to 1.0 without touching code.
+    for theme, bias in (load(CONFIG, {}) or {}).get("theme_bias", {}).items():
+        if theme in weights:
+            weights[theme] *= float(bias)
     return weights
 
 
@@ -1207,37 +1265,63 @@ def compose(n, prefer=None):
     random.shuffle(pool)
     pool.sort(key=lambda x: -weights[x[0]] * random.random())
 
+    # Ids must dodge everything this channel has EVER used, not just what is in
+    # content.json right now. A published script that gets pruned out of the
+    # bank still owns its id: used_ids, the calendar and the library all key on
+    # it, so handing the same id to a new script silently points them at the
+    # wrong video.
     existing = {it["id"] for it in content["items"]}
-    seq = 1
-    while f"c{seq:03d}" in existing:
-        seq += 1
+    existing |= set(state.get("used_ids", []))
+
+    def next_id():
+        """Lowest free id — re-checked per allocation, not once per batch."""
+        n = 1
+        while f"c{n:03d}" in existing:
+            n += 1
+        return f"c{n:03d}"
 
     added = []
     themes_used = []
     batch_parts = set()   # (theme, part-kind, index) already used in this batch
-    for theme, h, b, c, key in pool:
-        if len(added) >= n:
+
+    # Re-scan from the front for every pick rather than making one forward pass.
+    #
+    # The pool is sorted by weight, so a heavily-weighted theme occupies one
+    # contiguous block at the head of the list. Under a single pass the
+    # "no 3 in a row" rule below would skip that entire block after two picks
+    # and the cursor would never return to it — capping the top theme at 2 per
+    # batch no matter how it was weighted. Weighting a theme up made the block
+    # tighter, which made the problem worse, not better.
+    remaining = list(pool)
+    while len(added) < n:
+        chosen = None
+        for pos, cand in enumerate(remaining):
+            theme, h, b, c, key = cand
+            # avoid 3 of the same theme in a row for variety
+            if themes_used[-2:] == [theme, theme]:
+                continue
+            # avoid repeating any hook/body/closer within one batch
+            parts = {(theme, "h", h), (theme, "b", b), (theme, "c", c)}
+            if parts & batch_parts:
+                continue
+            if hook_key(theme, h) in used_hooks:
+                continue             # claimed earlier in this same batch
+            chosen = (pos, cand, parts)
             break
-        # avoid 3 of the same theme in a row for variety
-        if themes_used[-2:] == [theme, theme]:
-            continue
-        # avoid repeating any hook/body/closer within one batch
-        parts = {(theme, "h", h), (theme, "b", b), (theme, "c", c)}
-        if parts & batch_parts:
-            continue
-        if hook_key(theme, h) in used_hooks:
-            continue                 # claimed earlier in this same batch
+        if chosen is None:
+            break                    # nothing eligible left
+        pos, (theme, h, b, c, key), parts = chosen
+        remaining.pop(pos)
         batch_parts |= parts
         used_hooks.add(hook_key(theme, h))
         spec = BANK[theme]
         lines = _fit_runtime(spec["hooks"][h], spec["bodies"][b], spec["closers"][c])
-        item = {"id": f"c{seq:03d}", "theme": theme, "lines": lines}
+        item = {"id": next_id(), "theme": theme, "lines": lines}
         content["items"].append(item)
         added.append(item)
         used.add(key)
         themes_used.append(theme)
         existing.add(item["id"])
-        seq += 1
 
     state["used_combos"] = sorted(used)
     state["used_hooks"] = sorted(used_hooks)

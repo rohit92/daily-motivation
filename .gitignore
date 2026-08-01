@@ -35,6 +35,13 @@ assets/images/**/*.png
 *.mkv
 *.mp3
 *.wav
+
+# Recorded narration. The audio itself is covered by *.wav above. These two are
+# rewritten by every `voiceover.py --sheet` run, so tracking them turns an
+# ordinary week's recording into a diff. voice.json IS kept: it records which
+# lines were matched and how confidently, which is the part worth keeping.
+channels/*/assets/voice/RECORD_THIS.txt
+channels/*/assets/voice/sheet.json
 # ...but keep small brand assets even if they are audio/img
 !assets/brand/**
 backups/

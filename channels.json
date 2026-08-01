@@ -12,9 +12,10 @@
         190,
         70
       ],
-      "active": true,
+      "active": false,
       "id": "UCcoV2hwXrCivIRT-eJaRUng",
-      "post_time_ist": "19:30"
+      "post_time_ist": "19:30",
+      "paused_reason": "Paused 2026-08-01: effort consolidated on education (Speak Fluent). Existing uploads stay public — they hold the accumulated watch hours. Set active=true to resume."
     },
     {
       "slug": "education",
@@ -44,9 +45,10 @@
         200,
         120
       ],
-      "active": true,
+      "active": false,
       "id": "UCgGW9ELX9Tc2Y1fO8TC86vA",
-      "post_time_ist": "20:30"
+      "post_time_ist": "20:30",
+      "paused_reason": "Paused 2026-08-01: effort consolidated on education (Speak Fluent). Existing uploads stay public — they hold the accumulated watch hours. Set active=true to resume."
     }
   ]
 }
