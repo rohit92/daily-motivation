@@ -13,6 +13,8 @@ import os
 import shutil
 import subprocess
 import sys
+
+import paths as _paths
 from datetime import date
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -140,18 +142,29 @@ def check_schedule():
     else:
         line(WARN, "no schedule.csv", "python3 make_schedule.py")
 
-    lib = os.path.join(HERE, "library.json")
-    vids = glob.glob(os.path.join(HERE, "output", "*.mp4"))
-    if os.path.exists(lib):
-        L = json.load(open(lib))["videos"]
-        missing = [os.path.basename(v) for v in vids if os.path.basename(v) not in L]
+    # library.json and output/ moved under channels/<slug>/ when the project
+    # went multichannel. Checking the old root paths meant this reported "no
+    # library.json — run metadata.py --sync" on every single run, against three
+    # libraries that were all present and correct. A health check that cries
+    # wolf every time is worse than no health check.
+    for ch in _paths.load_registry():
+        slug = ch["slug"]
+        P = _paths.paths(slug)
+        tag = slug if ch.get("active", True) else f"{slug}, paused"
+        if not os.path.exists(P["library"]):
+            line(WARN, f"no library.json ({tag})",
+                 f"python3 metadata.py --channel {slug} --sync")
+            continue
+        L = (json.load(open(P["library"])) or {}).get("videos", {})
+        vids = glob.glob(os.path.join(P["output"], "*.mp4"))
+        missing = [os.path.basename(v) for v in vids
+                   if os.path.basename(v) not in L]
         if missing:
-            line(WARN, f"{len(missing)} videos lack metadata", "python3 metadata.py --sync")
+            line(WARN, f"{len(missing)} video(s) lack metadata ({tag})",
+                 f"python3 metadata.py --channel {slug} --sync")
         else:
             ready = sum(1 for v in L.values() if v.get("status") == "ready")
-            line(OK, f"{len(L)} videos tracked, {ready} ready to upload")
-    else:
-        line(WARN, "no library.json", "python3 metadata.py --sync")
+            line(OK, f"{len(L)} tracked, {ready} ready ({tag})")
 
 
 def check_disk_and_links():
@@ -160,17 +173,22 @@ def check_disk_and_links():
     line(OK if free > 3 else WARN, f"{free} GB free disk",
          "" if free > 3 else "archive old uploaded videos from output/")
 
-    links = os.path.join(HERE, "links.json")
-    if os.path.exists(links):
-        L = json.load(open(links))
-        filled = [k for k, v in L.items() if v]
+    # Per-channel too, for the same reason as library.json above.
+    for ch in _paths.load_registry():
+        if not ch.get("active", True):
+            continue            # a paused channel's monetization links can wait
+        slug = ch["slug"]
+        links = _paths.paths(slug)["links"]
+        if not os.path.exists(links):
+            line(WARN, f"no links.json ({slug})",
+                 "create it with your product/affiliate links")
+            continue
+        filled = [k for k, v in (json.load(open(links)) or {}).items() if v]
         if filled:
-            line(OK, f"money links set: {', '.join(filled)}")
+            line(OK, f"money links set ({slug}): {', '.join(filled)}")
         else:
-            line(WARN, "links.json is empty",
+            line(WARN, f"links.json is empty ({slug})",
                  "add your Gumroad/Linktree/affiliate URLs so descriptions include them")
-    else:
-        line(WARN, "no links.json", "create it with your product/affiliate links")
 
 
 if __name__ == "__main__":
