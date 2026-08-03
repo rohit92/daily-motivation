@@ -16,6 +16,7 @@ workflow exists to avoid.
 import os
 import sys
 import unittest
+from unittest import mock
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -117,6 +118,44 @@ class TestEndcapStaysInSync(unittest.TestCase):
                             meta.get("brand_color"))
             self.assertEqual(M.ENDCAP_LINE, V.endcap_line(slug),
                              f"endcap wording drifted apart for {slug}")
+
+
+class TestNarrationGate(unittest.TestCase):
+    """require_voice must hold the slot rather than ship the series in TTS.
+
+    narrate() falls back to TTS per LINE, which is right when one line is
+    missing from a take. But the nightly autopilot renders one script a day
+    unattended, so without a gate it would quietly burn the entire flagship
+    series in the synthetic voice the recording exists to replace — and a
+    consumed script cannot be un-consumed. Holding a slot is recoverable.
+    """
+
+    def setUp(self):
+        import make_video as M
+        self.M = M
+
+    def test_a_script_with_no_recording_reports_every_line(self):
+        item = {"id": "no-such-script", "lines": ["a", "b", "c"]}
+        self.assertEqual(self.M.missing_narration("education", item), [1, 2, 3])
+
+    def test_line_numbers_are_1_based_for_humans(self):
+        item = {"id": "no-such-script", "lines": ["only one"]}
+        self.assertEqual(self.M.missing_narration("education", item), [1])
+
+    def test_a_fully_recorded_script_reports_nothing(self):
+        item = {"id": "rec", "lines": ["a", "b"]}
+        with mock.patch("voiceover.line_wav", return_value="/tmp/x.wav"):
+            self.assertEqual(self.M.missing_narration("education", item), [])
+
+    def test_a_partly_recorded_script_names_only_the_gaps(self):
+        item = {"id": "rec", "lines": ["a", "b", "c"]}
+        with mock.patch("voiceover.line_wav",
+                        side_effect=lambda c, i, n: "/tmp/x.wav" if n != 1 else None):
+            self.assertEqual(self.M.missing_narration("education", item), [2])
+
+    def test_an_empty_script_is_not_reported_as_missing(self):
+        self.assertEqual(self.M.missing_narration("education",
+                                                  {"id": "x", "lines": []}), [])
 
 
 class TestLookup(unittest.TestCase):

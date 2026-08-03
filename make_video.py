@@ -361,6 +361,19 @@ def synth_line(text, out_wav):
     return words
 
 
+def missing_narration(channel, item):
+    """1-based line numbers of this script that have no recorded narration.
+
+    Empty list means the script can be built entirely in the creator's voice.
+    """
+    try:
+        import voiceover
+    except Exception:
+        return list(range(1, len(item.get("lines") or []) + 1))
+    return [n + 1 for n in range(len(item.get("lines") or []))
+            if not voiceover.line_wav(channel, item.get("id"), n)]
+
+
 def narrate(script_id, index, text, out_wav):
     """The creator's own recording for this line, or TTS if there isn't one.
 
@@ -806,6 +819,45 @@ def main():
                      f"Use --force only if you really want a second cut.")
     else:
         items = pick_items(content, state, args.batch)
+
+    # A channel that has committed to a recorded voice must never quietly fall
+    # back to TTS. narrate() falls back per LINE, which is right when a single
+    # line is missing from a take — but it would also let the nightly autopilot
+    # render the entire flagship series in the synthetic voice the recording was
+    # meant to replace, one script a day, silently, until the bank ran out.
+    # Holding the slot is recoverable; spending the scripts is not.
+    if _load_cfg(CONFIG, "require_voice", False):
+        def unnarrated(it):
+            return missing_narration(CHANNEL, it)
+
+        if args.id:
+            miss = unnarrated(items[0])
+            if miss and not args.force:
+                sys.exit(
+                    f"{items[0]['id']} has no recording for line(s) "
+                    f"{', '.join(str(m) for m in miss)}.\n"
+                    f"This channel is set to require_voice, so building it now "
+                    f"would ship the script in TTS.\n"
+                    f"  python3 voiceover.py --channel {CHANNEL} --ingest <file>\n"
+                    f"Use --force to build it with the synthetic voice anyway.")
+        else:
+            ready = [it for it in items if not unnarrated(it)]
+            if not ready:
+                queued = len([i for i in content["items"]
+                              if i["id"] not in set(state.get("used_ids", []))])
+                print(f"⏸  Nothing built — {queued} script(s) queued and none "
+                      f"has narration yet.\n"
+                      f"   This channel requires a recorded voice, so it is "
+                      f"holding the slot rather than\n"
+                      f"   publishing the series in TTS. To release them:\n\n"
+                      f"     python3 voiceover.py --channel {CHANNEL} --sheet 7\n"
+                      f"     python3 voiceover.py --channel {CHANNEL} --ingest <recording>\n")
+                return
+            if len(ready) < len(items):
+                print(f"·  {len(items) - len(ready)} script(s) skipped — no "
+                      f"narration recorded for them yet.\n")
+            items = ready
+
     print(f"Generating {len(items)} video(s)...\n")
 
     for i, item in enumerate(items):
