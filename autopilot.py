@@ -40,9 +40,12 @@ OUTPUT = _P["output"]
 LOG = os.path.join(HERE, ".work", "autopilot.log")   # one shared run log
 PY = sys.executable
 
-# Child scripts that accept --channel.
+# Child scripts that accept --channel. A script missing from this set is run
+# against the DEFAULT channel no matter which slug the caller is looping on,
+# silently — script_composer.py was absent, so the nightly top-up filled
+# motivation's queue three times and never touched the other two.
 _CHANNEL_AWARE = {"channel_stats.py", "pilot.py", "upload_youtube.py",
-                  "storyteller.py", "make_longform.py"}
+                  "storyteller.py", "make_longform.py", "script_composer.py"}
 
 
 def set_channel(channel):
@@ -333,6 +336,56 @@ def backfill_seo():
         log(f"· SEO backfill skipped ({type(e).__name__}: {str(e)[:80]})")
 
 
+def verify(channels):
+    """The end-of-day pass: top the queues up, then check the books.
+
+    These are the chores that were being done by hand. They need no judgment
+    when nothing is wrong, and when something IS wrong the useful thing is to
+    surface it the same evening rather than discover it days later — a channel
+    went dark for two days in August and nothing in the nightly run said so,
+    because nothing in the nightly run was looking.
+
+    Report-only by design. reconcile --fix rewrites the library from what
+    YouTube currently believes, which is not a thing to do unattended at 19:30.
+    """
+    problems = []
+
+    for slug in channels:
+        set_channel(slug)
+        # Keep roughly a week of scripts ahead of the renderer. Cheap, offline,
+        # and a no-op when the queue is already deep enough.
+        run(f"[{slug}] top up scripts", "script_composer.py", "--ensure", "7")
+
+    for slug in channels:
+        set_channel(slug)
+        p = subprocess.run([PY, os.path.join(HERE, "reconcile.py"),
+                            "--channel", slug],
+                           cwd=HERE, env={**ENV, **_proxy_env()},
+                           capture_output=True, text=True)
+        bad = [ln.strip() for ln in (p.stdout or "").splitlines()
+               if ln.lstrip().startswith(("⚠", "✗"))]
+        if bad:
+            problems.extend(f"[{slug}] {b}" for b in bad)
+        log(f"{'✓' if not bad else '⚠'} [{slug}] reconcile: "
+            f"{len(bad) or 'no'} discrepanc" + ("y" if len(bad) == 1 else "ies"))
+
+    # A channel with nothing queued AND nothing rendered posts nothing tomorrow.
+    # That is the failure that hid for two days, so it is checked explicitly.
+    for slug in channels:
+        P = _paths.paths(slug)
+        used = set((load(P["state"], {}) or {}).get("used_ids", []))
+        left = len([i for i in (load(P["content"], {}) or {}).get("items", [])
+                    if i["id"] not in used])
+        if left == 0:
+            problems.append(f"[{slug}] no scripts left to render")
+
+    if problems:
+        for p_ in problems:
+            log(f"   ! {p_}")
+        notify(f"{len(problems)} issue(s) need a look", "Autopilot")
+    return problems
+
+
 def main():
     """Loop the autopilot over every ACTIVE channel (morning prepares each;
     evening uploads each, guarded one-per-day-per-channel). A single --channel
@@ -363,6 +416,15 @@ def main():
             run_channel(evening)
         except Exception as e:
             log(f"[{slug}] ✗ autopilot error: {e}")
+
+    # Evening only: the morning run has the whole day to fix itself, so a
+    # discrepancy found at 7:00 is usually just work not done yet.
+    if evening and not a.channel:
+        try:
+            verify(channels)
+        except Exception as e:
+            log(f"✗ verify pass: {e}")
+
     trim_log()
     log("=== autopilot done ===\n")
 
