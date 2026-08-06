@@ -23,8 +23,32 @@ pipeline picks them up and posts them.
 import argparse
 import json
 import os
+import re
 import sys
 from datetime import date
+
+# metadata.py builds a title as: hook + a rotating emoji + a rotating set of
+# hashtags. Both rotate per render, so the SAME script uploaded twice produces
+# two different title strings — "…watched him fall 🧠 #Shorts #motivation" and
+# "…watched him fall 🔥 #Shorts #discipline". Matching on the raw string made
+# healthy_sibling() miss the live copy, conclude the script had never been
+# posted, and re-queue it. That is how the same Short went out twice.
+#
+# Comparing on the words alone is deliberately looser than exact matching. The
+# one place that could turn a near-miss into a wrong answer — adopting a
+# video_id for a legacy entry — already requires exactly one candidate, so a
+# collision makes it decline rather than guess.
+_HASHTAG = re.compile(r"#\w+")
+_NONWORD = re.compile(r"[^a-z0-9 ]+")
+
+
+def title_key(title):
+    """Comparable form of a title: words only, no emoji, no hashtags, no case."""
+    t = _HASHTAG.sub(" ", (title or "").lower())
+    t = " ".join(_NONWORD.sub(" ", t).split())
+    # A title that is nothing BUT emoji and hashtags would collapse to "" and
+    # bucket with every other such title. Keep those distinct by their raw text.
+    return t or (title or "").strip().lower()
 
 import paths as _paths
 
@@ -103,7 +127,7 @@ def reconcile_channel(slug, fix=False):
 
     by_title = {}
     for vid, v in live.items():
-        by_title.setdefault(v["title"], []).append(vid)
+        by_title.setdefault(title_key(v["title"]), []).append(vid)
 
     def healthy_sibling(name, entry):
         """Another library entry built from the SAME script that IS live and
@@ -116,7 +140,7 @@ def reconcile_channel(slug, fix=False):
             ov = o.get("video_id")
             if ov and (live.get(ov) or {}).get("healthy"):
                 return other, ov
-            cands = by_title.get(o.get("title", ""), [])
+            cands = by_title.get(title_key(o.get("title", "")), [])
             for c in cands:
                 if live[c]["healthy"]:
                     return other, c
@@ -151,7 +175,7 @@ def reconcile_channel(slug, fix=False):
         if not vid:
             # Legacy entry: no id was recorded. Adopt one only when exactly one
             # live video carries this exact title AND no sibling took it first.
-            cands = [c for c in by_title.get(entry.get("title", ""), [])
+            cands = [c for c in by_title.get(title_key(entry.get("title", "")), [])
                      if c not in claimed]
             if len(cands) == 1:
                 vid = cands[0]
