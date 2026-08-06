@@ -2007,6 +2007,62 @@
    "source": "wikimedia",
    "page": "https://commons.wikimedia.org/wiki/File:Stomach_lining_tripe_Athens.jpg",
    "query": "stomach lining"
+  },
+  "woolly_mammoths/woolly_mammoths_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Woolly_mammoth_model_Royal_BC_Museum_in_Victoria.jpg/1920px-Woolly_mammoth_model_Royal_BC_Museum_in_Victoria.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 2.0",
+   "artist": "Thomas Quine",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Woolly_mammoth_model_Royal_BC_Museum_in_Victoria.jpg",
+   "query": "woolly mammoths"
+  },
+  "woolly_mammoths/woolly_mammoths_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Woolly_mammoth_reconstruction%2C_from_Abel%2C_O._%281919%29._Die_St%C3%A4mme_der_Wirbeltiere.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "license": "Public domain",
+   "artist": "Othenio Abel",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Woolly_mammoth_reconstruction,_from_Abel,_O._(1919)._Die_St%C3%A4mme_der_Wirbeltiere.jpg",
+   "query": "woolly mammoths"
+  },
+  "woolly_mammoths/woolly_mammoths_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/1955._Balsam_woolly_adelgid_%28Chermes_sp.%29_woolly_exudation_on_subalpine_fir_%28Abies_lasiocarpa%29._Government_Camp%2C_Oregon._%2839220561495%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "license": "Public domain",
+   "artist": "R6, State &amp; Private Forestry, Forest Health Protection",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:1955._Balsam_woolly_adelgid_(Chermes_sp.)_woolly_exudation_on_subalpine_fir_(Abies_lasiocarpa)._Government_Camp,_Oregon._(39220561495).jpg",
+   "query": "woolly history"
+  },
+  "light_sun/light_sun_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Sun_light_into_leaf3.jpg/1920px-Sun_light_into_leaf3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 4.0",
+   "artist": "FrankBanalis",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Sun_light_into_leaf3.jpg",
+   "query": "light sun"
+  },
+  "light_sun/light_sun_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Sun_light_into_leaf.jpg/1920px-Sun_light_into_leaf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 4.0",
+   "artist": "FrankBanalis",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Sun_light_into_leaf.jpg",
+   "query": "light sun"
+  },
+  "light_sun/light_sun_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Sun_light_into_leaf5.jpg/1920px-Sun_light_into_leaf5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 4.0",
+   "artist": "FrankBanalis",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Sun_light_into_leaf5.jpg",
+   "query": "light sun"
+  },
+  "light_sun/light_sun_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Sultan_Omar_Ali_Saifuddin_Mosque_02.jpg/1920px-Sultan_Omar_Ali_Saifuddin_Mosque_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 2.0",
+   "artist": "sam garza from Los Angeles, USA",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Sultan_Omar_Ali_Saifuddin_Mosque_02.jpg",
+   "query": "light"
   }
  }
 }

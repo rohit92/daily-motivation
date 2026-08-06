@@ -153,13 +153,26 @@ def pick_items(content, state, count):
     # share it produce two videos that look identical in the feed. Scripts
     # composed before script_composer enforced unique hooks can still collide,
     # so filter them out here too — this is the last gate before a render.
+    # A script too short to fill the format renders a stub. The AI-script path
+    # (since disabled) left 3-line entries like "Motivation is key to success /
+    # Make it happen today" in the bank; one rendered a 10.9s Short against a
+    # channel whose trend median is 18s. Too short to teach, too generic to
+    # remember, and it still costs a full 1,600 quota units to upload.
+    floor = int(_load_cfg(CONFIG, "min_script_lines", 4))
+
     spoken = {hook(by_id[i]) for i in used if i in by_id}
-    queue = []
+    queue, stunted = [], []
     for it in content["items"]:
         if it["id"] in used or hook(it) in spoken:
             continue
+        if len(it.get("lines") or []) < floor:
+            stunted.append(it["id"])
+            continue
         spoken.add(hook(it))
         queue.append(it)
+    if stunted:
+        print(f"·  {len(stunted)} script(s) skipped as too short "
+              f"(under {floor} lines): {', '.join(stunted[:5])}\n")
     if not queue:
         sys.exit("No scripts left with an unused hook. Add new hooks to the "
                  "bank in script_composer.py (see --stats for the count).")

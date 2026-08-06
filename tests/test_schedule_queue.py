@@ -235,10 +235,14 @@ class TestHookUniqueness(unittest.TestCase):
 
     def test_pick_items_skips_a_repeated_opening_line(self):
         """Legacy content.json can hold two scripts with the same hook."""
+        # 5 lines each: pick_items now also drops scripts too short to fill the
+        # format, and these fixtures exist to exercise hook uniqueness, not the
+        # length floor. Three-line stubs would be rejected before the hook
+        # check ever ran.
         content = {"items": [
-            {"id": "c001", "lines": ["Same hook.", "a", "b"]},
-            {"id": "c002", "lines": ["Same hook.", "c", "d"]},
-            {"id": "c003", "lines": ["Different hook.", "e", "f"]},
+            {"id": "c001", "lines": ["Same hook.", "a", "b", "c", "d"]},
+            {"id": "c002", "lines": ["Same hook.", "c", "d", "e", "f"]},
+            {"id": "c003", "lines": ["Different hook.", "e", "f", "g", "h"]},
         ]}
         picked = make_video.pick_items(content, {"used_ids": []}, 3)
         self.assertEqual([i["id"] for i in picked], ["c001", "c003"])

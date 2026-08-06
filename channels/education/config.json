@@ -26,5 +26,5 @@
   "theme_bias": {
     "indian-english": 14.0
   },
-  "require_voice": true
+  "require_voice": false
 }
