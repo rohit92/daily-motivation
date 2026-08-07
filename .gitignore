@@ -42,6 +42,12 @@ assets/images/**/*.png
 # lines were matched and how confidently, which is the part worth keeping.
 channels/*/assets/voice/RECORD_THIS.txt
 channels/*/assets/voice/sheet.json
+
+# The pilot rewrites today.json every morning with the day's pick. It is
+# derived state — what actually shipped is recorded in library.json and
+# schedule.json — so tracking it just adds a create/delete pair to the diff
+# every single day, which is how it ended up committed and untracked by turns.
+channels/*/today.json
 # ...but keep small brand assets even if they are audio/img
 !assets/brand/**
 backups/
