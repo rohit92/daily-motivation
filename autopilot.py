@@ -115,14 +115,44 @@ def notify(msg, title="Mindset Refuel"):
         pass
 
 
+# How long a child may run before it is treated as wedged. Every one of these
+# talks to the network — Google, edge-tts, ollama, Wikimedia — and none of that
+# is guaranteed to answer. See run() for why a missing timeout is not a small
+# problem.
+_TIMEOUTS = {
+    "make_longform.py": 3600,     # a 6-minute video, rendered frame by frame
+    "storyteller.py": 3600,
+    "pilot.py": 1800,             # composes, renders and writes metadata
+    "make_video.py": 1800,
+}
+_DEFAULT_TIMEOUT = 900
+
+
 def run(label, script, *args):
     log(f"▸ {label}")
     extra = ["--channel", CHANNEL] if script in _CHANNEL_AWARE else []
-    # Resolved per run, not at import: launchd fires this at 7:00 and 19:30, and
-    # the machine may be on campus for one and at home for the other.
-    p = subprocess.run([PY, os.path.join(HERE, script), *args, *extra],
-                       cwd=HERE, env={**ENV, **_proxy_env()},
-                       capture_output=True, text=True)
+    limit = _TIMEOUTS.get(script, _DEFAULT_TIMEOUT)
+    try:
+        # Resolved per run, not at import: launchd fires this at 7:00 and 19:30,
+        # and the machine may be on campus for one and at home for the other.
+        #
+        # The timeout is not defensive padding, it is the difference between one
+        # bad night and a dead channel. launchd will not start a second instance
+        # while the first is alive, so a child that blocks forever does not just
+        # lose its own step — it silently cancels every scheduled run after it.
+        # pilot.py once sat in a socket read for 38 hours and took three
+        # consecutive runs down with it; nothing published and nothing warned,
+        # because the process was still technically "running".
+        p = subprocess.run([PY, os.path.join(HERE, script), *args, *extra],
+                           cwd=HERE, env={**ENV, **_proxy_env()},
+                           capture_output=True, text=True, timeout=limit)
+    except subprocess.TimeoutExpired as e:
+        # subprocess.run has already killed the child by the time this is raised.
+        for t in (e.stdout or e.stderr or b"").decode(errors="replace").strip().splitlines()[-3:]:
+            log(f"    {t}")
+        log(f"✗ {label} — TIMED OUT after {limit}s and was killed")
+        notify(f"{label} timed out — check the log", "Autopilot")
+        return False
     tail = (p.stdout or p.stderr or "").strip().splitlines()[-4:]
     for t in tail:
         log(f"    {t}")
@@ -378,6 +408,20 @@ def verify(channels):
                     if i["id"] not in used])
         if left == 0:
             problems.append(f"[{slug}] no scripts left to render")
+
+    # One dated row per channel per day. Every growth claim made about these
+    # channels so far came from comparing two readings taken whenever someone
+    # happened to look, which is how "73.4 -> 77.3 views/day" got reported as
+    # growth when it was noise. Recording it nightly is the only way the
+    # question gets an answer that does not depend on the timing of the look.
+    try:
+        import growth
+        if growth.snapshot() is None:
+            log("· growth: metrics unavailable, no row recorded")
+        else:
+            log(f"✓ growth: recorded {len(channels)} channel(s)")
+    except Exception as e:
+        log(f"· growth: snapshot failed ({type(e).__name__}: {e})")
 
     if problems:
         for p_ in problems:
