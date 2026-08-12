@@ -16,6 +16,7 @@ pick_items() is the last gate before a render, so the floor belongs there.
 import os
 import sys
 import unittest
+from unittest import mock
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -61,6 +62,38 @@ class TestScriptFloor(unittest.TestCase):
         """The stunted entry must be skipped, not end the scan."""
         got = self.picked(content(("tiny", 2), ("good", 6)))
         self.assertIn("good", got)
+
+
+class TestOrphanedRenders(unittest.TestCase):
+    """A script whose video already exists must never be picked again.
+
+    build_video() writes the file and only then appends to used_ids. A process
+    killed between the two leaves the script looking unused while its video is
+    on disk and on the calendar — which happened for real when a wedged
+    pilot.py was killed after rendering 65_c031.mp4. The next render reused
+    sequence 65 and was one pick away from shipping the same script twice,
+    which YouTube reads as reused content.
+    """
+
+    def picked(self, content, rendered):
+        with mock.patch.object(M, "rendered_ids", return_value=set(rendered)):
+            return [i["id"] for i in M.pick_items(content, {"used_ids": []}, 10)]
+
+    def test_a_rendered_script_is_not_picked_again(self):
+        got = self.picked(content(("c031", 6), ("fresh", 6)), {"c031"})
+        self.assertNotIn("c031", got)
+        self.assertIn("fresh", got)
+
+    def test_state_and_library_are_combined_not_replaced(self):
+        """used_ids still counts even when the library knows nothing."""
+        c = content(("a", 6), ("b", 6))
+        with mock.patch.object(M, "rendered_ids", return_value=set()):
+            got = [i["id"] for i in M.pick_items(c, {"used_ids": ["a"]}, 10)]
+        self.assertEqual(got, ["b"])
+
+    def test_an_unreadable_library_does_not_block_rendering(self):
+        """Losing the library should degrade to the old behaviour, not stop work."""
+        self.assertEqual(M.rendered_ids("no-such-channel"), set())
 
 
 if __name__ == "__main__":

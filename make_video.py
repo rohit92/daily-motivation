@@ -62,6 +62,10 @@ _P = _paths.paths(None)
 CONTENT = _P["content"]
 STATE = _P["state"]
 CONFIG = _P["config"]
+# main() rebinds this per run. It needs a module-level default too: pick_items()
+# and narrate() both read it, and they are reachable from importers and tests
+# that never call main() — without this they die on NameError.
+CHANNEL = _paths.DEFAULT_CHANNEL
 OUTPUT_DIR = _P["output"]
 LOGO = os.path.join(_P["brand"], "logo.png")
 
@@ -141,8 +145,28 @@ def save_json(path, data):
         json.dump(data, f, indent=2)
 
 
+def rendered_ids(channel):
+    """Script ids that already have a video file, per the library.
+
+    build_video() writes the file and only THEN appends to used_ids, so a
+    process killed between the two leaves a script that looks unused while its
+    video sits on disk and on the calendar. That is exactly what happened when
+    a wedged pilot.py was killed after rendering 65_c031.mp4: c031 stayed
+    "unused", the sequence counter never advanced, and the next render both
+    reused sequence 65 and stood ready to ship a second copy of the same
+    script. A rendered script is a used script, whatever state.json missed.
+    """
+    try:
+        lib = _paths.paths(channel)["library"]
+        with open(lib, encoding="utf-8") as f:
+            vids = (json.load(f) or {}).get("videos", {}) or {}
+        return {v.get("id") for v in vids.values() if v.get("id")}
+    except Exception:
+        return set()
+
+
 def pick_items(content, state, count):
-    used = set(state.get("used_ids", []))
+    used = set(state.get("used_ids", [])) | rendered_ids(CHANNEL)
     by_id = {it["id"]: it for it in content["items"]}
 
     def hook(it):
