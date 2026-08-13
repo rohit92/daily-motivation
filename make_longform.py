@@ -786,11 +786,26 @@ def main():
              "--thumb", os.path.join(OUT_DIR, meta["thumb"]),
              "--comment", meta["pin_comment"], "--longform",
              "--channel", CHANNEL],
-            cwd=HERE)
+            cwd=HERE, capture_output=True, text=True)
+        print(r.stdout or "", end="")
+        print(r.stderr or "", end="")
         if r.returncode == 0:
             lib = load(LIBRARY, {"videos": {}})
             if meta["file"] in lib.get("longform", {}):
-                lib["longform"][meta["file"]]["status"] = "uploaded"
+                e = lib["longform"][meta["file"]]
+                e["status"] = "uploaded"
+                # Record the id, not just the status. The calendar path
+                # (schedule_queue.mark_done) always wrote both; this path wrote
+                # only the status, so a long-form uploaded by the nightly run
+                # went live and then became invisible — reconcile could not
+                # match it to the channel and stats could not attribute its
+                # views, which matters most for the format that earns the most
+                # watch time per view.
+                import upload_youtube as _U
+                vid = _U.uploaded_id(r.stdout or "")
+                if vid:
+                    e["video_id"] = vid
+                e["uploaded_at"] = date.today().isoformat()
                 save(LIBRARY, lib)
 
 

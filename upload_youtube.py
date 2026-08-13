@@ -32,7 +32,25 @@ import sys
 import time
 from datetime import date
 
+import re
+
 import paths as _paths
+
+# The line printed on success, in both shapes it can take.
+_UPLOADED_URL = re.compile(
+    r"✓ Uploaded:\s*https?://(?:www\.)?youtube\.com/(?:shorts/|watch\?v=)([\w-]{11})")
+
+
+def uploaded_id(stdout):
+    """The video id from a completed upload's output, or "".
+
+    Callers that shell out to this module used to infer success from the exit
+    code alone and record only a status. A long-form uploaded that way went
+    live and then could not be matched back to the channel, because nothing
+    ever wrote down which video it became.
+    """
+    m = _UPLOADED_URL.search(stdout or "")
+    return m.group(1) if m else ""
 
 # Network failures that mean "try that chunk again", not "give up". IOError
 # covers socket errors, timeouts and urllib URLError (all OSError subclasses);

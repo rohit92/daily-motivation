@@ -394,11 +394,21 @@ def make(minutes, shorts, upload=False):
              "--file", out, "--title", meta["title"], "--desc", meta["description"],
              "--thumb", os.path.join(LONGFORM_DIR, meta["thumb"]),
              "--comment", meta["pin_comment"], "--longform",
-             "--channel", CHANNEL], cwd=HERE)
+             "--channel", CHANNEL], cwd=HERE, capture_output=True, text=True)
+        print(r.stdout or "", end="")
+        print(r.stderr or "", end="")
         if r.returncode == 0:
             lib = load(LIBRARY, {"videos": {}})
             if meta["file"] in lib.get("longform", {}):
-                lib["longform"][meta["file"]]["status"] = "uploaded"
+                e = lib["longform"][meta["file"]]
+                e["status"] = "uploaded"
+                # Same reason as make_longform: record which video it became,
+                # or the story goes live and is untrackable afterwards.
+                import upload_youtube as _U
+                vid = _U.uploaded_id(r.stdout or "")
+                if vid:
+                    e["video_id"] = vid
+                e["uploaded_at"] = date.today().isoformat()
                 save(LIBRARY, lib)
     return out, meta
 
