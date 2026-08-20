@@ -43,6 +43,43 @@ _NICHE = _paths.channel_meta("motivation").get("niche", "motivation")
 # within its theme). Hooks grab in the first line. Closers end with a command.
 
 MOTIVATION_BANK = {
+    # Added alongside the facts expansion — this bank was down to 17 unused
+    # hooks, roughly 27 more videos, which is short of a month unattended.
+    "time": {
+        "keywords": ["time", "wasting time", "later", "someday", "years", "clock"],
+        "hooks": [
+            ["You keep saying 'later'.", "Later is where dreams go to die."],
+            ["Two years pass either way.", "The only question is what you have to show."],
+            ["You don't lack time.", "You lack a decision."],
+            ["The best time was five years ago.", "The second best is this evening."],
+            ["Everyone gets the same 24 hours.", "Almost nobody spends them the same."],
+            ["'Someday' is not a day of the week.", "Check a calendar."],
+            ["You waited for motivation.", "It waited for you to move first."],
+            ["A year is 365 chances.", "You have already spent some."],
+            ["Busy is not the same as productive.", "One of them moves you."],
+            ["You're not behind schedule.", "You're on someone else's."],
+        ],
+        "bodies": [
+            ["Later feels safe because it costs nothing today.", "It charges interest.", "Do the first small piece now."],
+            ["Two years of trying and two years of waiting", "cost exactly the same time.", "Only one leaves you different."],
+            ["Nobody 'finds' time. It is already spent.", "You take it from something else.", "Decide what loses today."],
+            ["Nothing you do brings back five years.", "Everything you do shapes the next five.", "Start with tonight."],
+            ["The difference is not hours. It is what fills them.", "Track one day honestly.", "You will find your answer."],
+            ["Someday has no date, so it never arrives.", "Give the thing a day and a time.", "A plan with a date is a commitment."],
+            ["Motivation follows action, not the reverse.", "Move badly for ten minutes.", "The feeling catches up."],
+            ["Days you did nothing still counted.", "So will the rest.", "Spend the remaining ones deliberately."],
+            ["Busy protects you from the hard thing.", "It looks like work and feels like progress.", "Ask what actually moved."],
+            ["Comparison hands you a timeline you never agreed to.", "Yours started somewhere else.", "Run your own clock."],
+        ],
+        "closers": [
+            ["Do one small thing before you sleep.", "That's the whole difference."],
+            ["Pick the day. Write it down.", "Follow for one of these daily."],
+            ["Start badly tonight.", "Follow for a push every day."],
+            ["Ten minutes. Right now.", "Follow — one a day."],
+            ["Your future self is watching this too.", "Follow and begin."],
+            ["Stop reading. Go start.", "Follow for tomorrow's."],
+        ],
+    },
     "discipline": {
         "keywords": ["discipline", "disciplined", "habit", "habits", "hard", "work", "grind"],
         "hooks": [
@@ -693,6 +730,45 @@ EDUCATION_BANK = {
 # Niche: Science & history "Did you know" facts. Every fact below was verified
 # against mainstream reference sources before shipping. Same shape as the others.
 FACTS_BANK = {
+    # Added when the bank ran down to 15 unused hooks, which capped this channel
+    # at ~22 more videos — not enough to leave it running unattended for a
+    # month. Everyday objects, because a fact about something already in the
+    # viewer's hand needs no setup, and setup is what loses the first 3 seconds.
+    "everyday": {
+        "keywords": ["everyday facts", "did you know", "amazing facts", "weird facts"],
+        "hooks": [
+            ["Honey never spoils.", "Ever."],
+            ["Sharks are older than trees.", "By a long way."],
+            ["An octopus has three hearts.", "And blue blood."],
+            ["A cloud weighs more than a million pounds.", "And it still floats."],
+            ["Lobsters taste with their feet.", "Not their mouths."],
+            ["Antarctica is a desert.", "The largest one on Earth."],
+            ["Wombat droppings are cube-shaped.", "On purpose."],
+            ["The Eiffel Tower is taller in summer.", "Measurably."],
+            ["There are more possible chess games", "than atoms in the observable universe."],
+            ["Peanuts are not nuts.", "They never were."],
+        ],
+        "bodies": [
+            ["Archaeologists found 3,000-year-old honey in Egyptian tombs.", "Still edible.", "Low water, high acidity — bacteria cannot grow in it."],
+            ["Sharks have been around about 400 million years.", "The first trees showed up around 350 million.", "They watched forests get invented."],
+            ["One pumps blood around the body.", "Two pump it through the gills.", "Copper, not iron, is what makes the blood blue."],
+            ["A typical cumulus holds about 500 tonnes of water.", "Roughly a hundred elephants.", "It floats because the air below it is denser still."],
+            ["Their legs are covered in chemical sensors.", "They walk over food to taste it first.", "The mouth only decides swallow or spit."],
+            ["A desert is defined by rainfall, not heat.", "Antarctica gets almost none.", "It is 5.5 million square miles of it."],
+            ["Their intestines have grooves that mould the waste.", "Cubes do not roll away.", "They stack them to mark territory."],
+            ["Iron expands when it heats up.", "In summer the tower grows about 15 centimetres.", "And leans slightly away from the sun."],
+            ["The number of games is around 10 to the power of 120.", "Atoms in the observable universe: about 10 to the 80.", "Chess is bigger than the universe it is played in."],
+            ["Nuts grow on trees.", "Peanuts grow underground, like peas and beans.", "They are legumes wearing a nut costume."],
+        ],
+        "closers": [
+            ["Follow for one of these a day.", "Your brain will thank you."],
+            ["Save this for your next conversation.", "Follow for more."],
+            ["Which one surprised you? Comment below.", "Follow — a new one daily."],
+            ["Send this to someone who won't believe it.", "Follow for tomorrow's."],
+            ["One fact a day. That's the whole channel.", "Follow and start tomorrow."],
+            ["You'll never unlearn that one.", "Follow for more."],
+        ],
+    },
     "biology": {
         "keywords": ["body", "biology", "human", "brain", "organ", "science", "didyouknow"],
         "hooks": [

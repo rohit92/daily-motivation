@@ -2439,6 +2439,806 @@
    "source": "wikimedia",
    "page": "https://commons.wikimedia.org/wiki/File:How_the_Eagle_Landed_%E2%80%94_the_Grumman_Construction_Log_(7610058658).jpg",
    "query": "computer landed"
+  },
+  "drop_everest/drop_everest_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Foot-prints_of_travel%3B_or%2C_Journeyings_in_many_lands_%281889%29_%2814797751953%29.jpg/1920px-Foot-prints_of_travel%3B_or%2C_Journeyings_in_many_lands_%281889%29_%2814797751953%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "No restrictions",
+   "artist": "Internet Archive Book Images",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Foot-prints_of_travel;_or,_Journeyings_in_many_lands_(1889)_(14797751953).jpg",
+   "query": "drop everest"
+  },
+  "drop_everest/drop_everest_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Dudh_Kosi_River_Nepal_%2834806234584%29.jpg/1920px-Dudh_Kosi_River_Nepal_%2834806234584%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 2.0",
+   "artist": "Lenny K Photography from Sydney, Australia",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Dudh_Kosi_River_Nepal_(34806234584).jpg",
+   "query": "drop everest"
+  },
+  "drop_everest/drop_everest_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/X-2_After_Drop_from_B-50_Mothership_-_GPN-2000-000396.jpg/1920px-X-2_After_Drop_from_B-50_Mothership_-_GPN-2000-000396.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "NACA",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:X-2_After_Drop_from_B-50_Mothership_-_GPN-2000-000396.jpg",
+   "query": "drop everest"
+  },
+  "drop_everest/drop_everest_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/USS_New_York_Anchor_Drop_Testing_%288402214%29.jpg/1920px-USS_New_York_Anchor_Drop_Testing_%288402214%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "U.S. Navy photo by Petty Officer 2nd Class Jesse Turner",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:USS_New_York_Anchor_Drop_Testing_(8402214).jpg",
+   "query": "drop ocean"
+  },
+  "drop_everest/drop_everest_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/USS_New_York_Anchor_Drop_Testing_%288402210%29.jpg/1920px-USS_New_York_Anchor_Drop_Testing_%288402210%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "U.S. Navy photo by Petty Officer 2nd Class Jesse Turner",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:USS_New_York_Anchor_Drop_Testing_(8402210).jpg",
+   "query": "drop ocean"
+  },
+  "drop_everest/drop_everest_006.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/George_Washington_Sailors_Perform_Anchor_Drop_%288212821%29.jpg/1920px-George_Washington_Sailors_Perform_Anchor_Drop_%288212821%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "U.S. Navy photo by Seaman Apprentice Geoffrey Ottinger",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:George_Washington_Sailors_Perform_Anchor_Drop_(8212821).jpg",
+   "query": "drop ocean"
+  },
+  "drop_everest/drop_everest_007.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/The_Abyss_Turbo_Drop_in_Ocean_Park_2009.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "license": "CC BY 4.0",
+   "artist": "Wpcpey",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:The_Abyss_Turbo_Drop_in_Ocean_Park_2009.jpg",
+   "query": "drop ocean"
+  },
+  "too_cold/too_cold_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/2/20/Too_Cold_Scorpio_CHIKARA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "license": "CC BY 2.0",
+   "artist": "shstrng",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Too_Cold_Scorpio_CHIKARA.jpg",
+   "query": "too cold"
+  },
+  "too_cold/too_cold_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Too_cold_for_these_%288392188257%29.jpg/1920px-Too_cold_for_these_%288392188257%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 2.0",
+   "artist": "Lyndon Hatherall from Wales",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Too_cold_for_these_(8392188257).jpg",
+   "query": "too cold"
+  },
+  "too_cold/too_cold_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Too_hot_to_handle_ESA19642327.gif/1920px-Too_hot_to_handle_ESA19642327.gif?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Attribution",
+   "artist": "European Space Agency",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Too_hot_to_handle_ESA19642327.gif",
+   "query": "too weather"
+  },
+  "too_cold/too_cold_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Never_too_young_%2816725881372%29.jpg/1920px-Never_too_young_%2816725881372%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "USFWS/Southeast",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Never_too_young_(16725881372).jpg",
+   "query": "too weather"
+  },
+  "too_cold/too_cold_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/9/96/Nem_volt_valami_j%C3%B3_id%C5%91_%28The_weather_wasn%27t_too_good%29_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "license": "CC BY 3.0",
+   "artist": "Gyula P\u00e9ter",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Nem_volt_valami_j%C3%B3_id%C5%91_(The_weather_wasn%27t_too_good)_-_panoramio.jpg",
+   "query": "too weather"
+  },
+  "taller_morning/taller_morning_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Ipomoea_purpurea_in_the_rain%2C_2022%2C_09-04%2C_Beechview.jpg/1920px-Ipomoea_purpurea_in_the_rain%2C_2022%2C_09-04%2C_Beechview.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC0",
+   "artist": "Cbaile19",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Ipomoea_purpurea_in_the_rain,_2022,_09-04,_Beechview.jpg",
+   "query": "taller morning"
+  },
+  "taller_morning/taller_morning_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Ipomoea_purpurea%2C_2022-09-02%2C_Beechview%2C_pale_blue_form_01.jpg/1920px-Ipomoea_purpurea%2C_2022-09-02%2C_Beechview%2C_pale_blue_form_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC0",
+   "artist": "Cbaile19",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Ipomoea_purpurea,_2022-09-02,_Beechview,_pale_blue_form_01.jpg",
+   "query": "taller morning"
+  },
+  "brain_deletes/brain_deletes_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Global_Brain_%28Weltgehirn%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "license": "CC0",
+   "artist": "Rhetos",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Global_Brain_(Weltgehirn).jpg",
+   "query": "brain deletes"
+  },
+  "brain_deletes/brain_deletes_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/94320_hebrew_university_goodman_neuroscience_building_PikiWiki_Israel.jpg/1920px-94320_hebrew_university_goodman_neuroscience_building_PikiWiki_Israel.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 2.5",
+   "artist": "\u05e9\u05d0\u05d5\u05dc\u05d4 \u05d4\u05d9\u05d9\u05d8\u05e0\u05e8",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:94320_hebrew_university_goodman_neuroscience_building_PikiWiki_Israel.jpg",
+   "query": "brain deletes"
+  },
+  "brain_deletes/brain_deletes_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/PikiWiki_Israel_42290_Graffiti_In_Tel_Aviv.jpg/1920px-PikiWiki_Israel_42290_Graffiti_In_Tel_Aviv.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 2.5",
+   "artist": "Harvey Sapir",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_42290_Graffiti_In_Tel_Aviv.jpg",
+   "query": "brain deletes"
+  },
+  "cannot_tickle/cannot_tickle_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/St._Louis_Tickle-_Rag_Time_Two-Step_-_DPLA_-_21b15ee397f3d60d28835c23f3ce5e06_%28page_5%29.jpg/1920px-St._Louis_Tickle-_Rag_Time_Two-Step_-_DPLA_-_21b15ee397f3d60d28835c23f3ce5e06_%28page_5%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "Bennett, Theron C., 1879-1937",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:St._Louis_Tickle-_Rag_Time_Two-Step_-_DPLA_-_21b15ee397f3d60d28835c23f3ce5e06_(page_5).jpg",
+   "query": "cannot tickle"
+  },
+  "cannot_tickle/cannot_tickle_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/St._Louis_Tickle-_Rag_Time_Two-Step_-_DPLA_-_21b15ee397f3d60d28835c23f3ce5e06_%28page_3%29.jpg/1920px-St._Louis_Tickle-_Rag_Time_Two-Step_-_DPLA_-_21b15ee397f3d60d28835c23f3ce5e06_%28page_3%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "Bennett, Theron C., 1879-1937",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:St._Louis_Tickle-_Rag_Time_Two-Step_-_DPLA_-_21b15ee397f3d60d28835c23f3ce5e06_(page_3).jpg",
+   "query": "cannot tickle"
+  },
+  "cannot_tickle/cannot_tickle_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/St._Louis_Tickle-_Rag_Time_Two-Step_-_DPLA_-_21b15ee397f3d60d28835c23f3ce5e06_%28page_2%29.jpg/1920px-St._Louis_Tickle-_Rag_Time_Two-Step_-_DPLA_-_21b15ee397f3d60d28835c23f3ce5e06_%28page_2%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "Bennett, Theron C., 1879-1937",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:St._Louis_Tickle-_Rag_Time_Two-Step_-_DPLA_-_21b15ee397f3d60d28835c23f3ce5e06_(page_2).jpg",
+   "query": "cannot tickle"
+  },
+  "cannot_tickle/cannot_tickle_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/St._Louis_Tickle-_Rag_Time_Two-Step_-_DPLA_-_21b15ee397f3d60d28835c23f3ce5e06_%28page_1%29.jpg/1920px-St._Louis_Tickle-_Rag_Time_Two-Step_-_DPLA_-_21b15ee397f3d60d28835c23f3ce5e06_%28page_1%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "Bennett, Theron C., 1879-1937",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:St._Louis_Tickle-_Rag_Time_Two-Step_-_DPLA_-_21b15ee397f3d60d28835c23f3ce5e06_(page_1).jpg",
+   "query": "cannot tickle"
+  },
+  "brain_burns/brain_burns_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Anteros_formosus%2C_m%2C_peru%2C_Cosnipata_Valley%2C_brain_harris%2C_detail_2016-02-23-10.04_%2825252740556%29.jpg/1920px-Anteros_formosus%2C_m%2C_peru%2C_Cosnipata_Valley%2C_brain_harris%2C_detail_2016-02-23-10.04_%2825252740556%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "USGS Bee Inventory and Monitoring Lab from Beltsville, Maryland, USA",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Anteros_formosus,_m,_peru,_Cosnipata_Valley,_brain_harris,_detail_2016-02-23-10.04_(25252740556).jpg",
+   "query": "brain burns"
+  },
+  "brain_burns/brain_burns_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Anteros_formosus%2C_m%2C_peru%2C_Cosnipata_Valley%2C_brain_harris%2C_super_detail_2016-02-23-10.37_%2825252852186%29.jpg/1920px-Anteros_formosus%2C_m%2C_peru%2C_Cosnipata_Valley%2C_brain_harris%2C_super_detail_2016-02-23-10.37_%2825252852186%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "USGS Bee Inventory and Monitoring Lab from Beltsville, Maryland, USA",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Anteros_formosus,_m,_peru,_Cosnipata_Valley,_brain_harris,_super_detail_2016-02-23-10.37_(25252852186).jpg",
+   "query": "brain burns"
+  },
+  "brain_burns/brain_burns_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Anteros_formosus%2C_m%2C_peru%2C_Cosnipata_Valley%2C_brain_harris_2016-02-23-09.45_%2824648313914%29.jpg/1920px-Anteros_formosus%2C_m%2C_peru%2C_Cosnipata_Valley%2C_brain_harris_2016-02-23-09.45_%2824648313914%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "USGS Bee Inventory and Monitoring Lab from Beltsville, Maryland, USA",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Anteros_formosus,_m,_peru,_Cosnipata_Valley,_brain_harris_2016-02-23-09.45_(24648313914).jpg",
+   "query": "brain burns"
+  },
+  "wombats_produce/wombats_produce_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/A_hand-book_to_the_marsupialia_and_monotremata_%281896%29_%2814775421081%29.jpg/1920px-A_hand-book_to_the_marsupialia_and_monotremata_%281896%29_%2814775421081%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "No restrictions",
+   "artist": "Internet Archive Book Images",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:A_hand-book_to_the_marsupialia_and_monotremata_(1896)_(14775421081).jpg",
+   "query": "wombats produce"
+  },
+  "wombats_produce/wombats_produce_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Fimbristylis_dichotoma_rhizome1_DC_-_Flickr_-_Macleay_Grass_Man.jpg/1920px-Fimbristylis_dichotoma_rhizome1_DC_-_Flickr_-_Macleay_Grass_Man.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 2.0",
+   "artist": "Harry Rose from Dungog, Australia",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Fimbristylis_dichotoma_rhizome1_DC_-_Flickr_-_Macleay_Grass_Man.jpg",
+   "query": "wombats produce"
+  },
+  "teaspoon_black/teaspoon_black_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Teaspoon%2C_presentation_%28AM_1932.597-3%29.jpg/1920px-Teaspoon%2C_presentation_%28AM_1932.597-3%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 4.0",
+   "artist": "",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Teaspoon,_presentation_(AM_1932.597-3).jpg",
+   "query": "teaspoon black"
+  },
+  "teaspoon_black/teaspoon_black_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Teaspoon%2C_presentation_%28AM_1932.597-5%29.jpg/1920px-Teaspoon%2C_presentation_%28AM_1932.597-5%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 4.0",
+   "artist": "",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Teaspoon,_presentation_(AM_1932.597-5).jpg",
+   "query": "teaspoon black"
+  },
+  "better_maps/better_maps_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Better_Call_Saul_automobile_at_the_Wheels_Museum%2C_Albuquerque.jpg/1920px-Better_Call_Saul_automobile_at_the_Wheels_Museum%2C_Albuquerque.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 4.0",
+   "artist": "Kenneth C. Zirkel",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Better_Call_Saul_automobile_at_the_Wheels_Museum,_Albuquerque.jpg",
+   "query": "better maps"
+  },
+  "better_maps/better_maps_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Better_Call_Saul_by_Mike_Kniec.jpg/1920px-Better_Call_Saul_by_Mike_Kniec.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 2.0",
+   "artist": "Mike Kniec",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Better_Call_Saul_by_Mike_Kniec.jpg",
+   "query": "better maps"
+  },
+  "better_maps/better_maps_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Internet_Better_Tuscany.jpg/1920px-Internet_Better_Tuscany.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 2.0",
+   "artist": "BTO",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Internet_Better_Tuscany.jpg",
+   "query": "better maps"
+  },
+  "shipwrecks_underwater/shipwrecks_underwater_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Underwater_Parasol_%28220482423%29.jpeg/1920px-Underwater_Parasol_%28220482423%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 3.0",
+   "artist": "Tilonaut",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Underwater_Parasol_(220482423).jpeg",
+   "query": "shipwrecks underwater"
+  },
+  "shipwrecks_underwater/shipwrecks_underwater_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Black_Sea_Underwater_Archeologiclal_Expedition_of_NAS.jpg/1920px-Black_Sea_Underwater_Archeologiclal_Expedition_of_NAS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 4.0",
+   "artist": "Oleksandr (Alex) Zakletsky",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Black_Sea_Underwater_Archeologiclal_Expedition_of_NAS.jpg",
+   "query": "shipwrecks underwater"
+  },
+  "shipwrecks_underwater/shipwrecks_underwater_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/The_tragedy_of_the_seas%3B_or%2C_Sorrow_on_the_ocean%2C_lake%2C_and_river%2C_from_shipwreck%2C_plague%2C_fire_and_famine_%281848%29_%2814576930828%29.jpg/1920px-The_tragedy_of_the_seas%3B_or%2C_Sorrow_on_the_ocean%2C_lake%2C_and_river%2C_from_shipwreck%2C_plague%2C_fire_and_famine_%281848%29_%2814576930828%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "No restrictions",
+   "artist": "Internet Archive Book Images",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:The_tragedy_of_the_seas;_or,_Sorrow_on_the_ocean,_lake,_and_river,_from_shipwreck,_plague,_fire_and_famine_(1848)_(14576930828).jpg",
+   "query": "shipwrecks ocean"
+  },
+  "shipwrecks_underwater/shipwrecks_underwater_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Oregon_BLM_Shipwrecks_06_%285124684074%29.jpg/1920px-Oregon_BLM_Shipwrecks_06_%285124684074%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "BLM Oregon &amp; Washington",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Oregon_BLM_Shipwrecks_06_(5124684074).jpg",
+   "query": "shipwrecks ocean"
+  },
+  "shipwrecks_underwater/shipwrecks_underwater_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Titanic_wreck_bow.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "license": "Public domain",
+   "artist": "Courtesy of NOAA/Institute for Exploration/University of Rhode Island (NOAA/IFE/URI).",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Titanic_wreck_bow.jpg",
+   "query": "shipwrecks"
+  },
+  "giraffes_sleep/giraffes_sleep_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Daring_deeds_in_the_tropics._A_thrilling_narrative_of_remarkable_adventures%2C_terrible_experiences%2C_amazing_achievements_and_important_discoveries_of_great_travelers_in_southern_climes_%281894%29_%2814763797562%29.jpg/1920px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "No restrictions",
+   "artist": "Internet Archive Book Images",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Daring_deeds_in_the_tropics._A_thrilling_narrative_of_remarkable_adventures,_terrible_experiences,_amazing_achievements_and_important_discoveries_of_great_travelers_in_southern_climes_(1894)_(14763797562).jpg",
+   "query": "giraffes sleep"
+  },
+  "giraffes_sleep/giraffes_sleep_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Webster_cartoon_mocking_William_Howard_Taft_%28March_10%2C_1910%29.jpg/1920px-Webster_cartoon_mocking_William_Howard_Taft_%28March_10%2C_1910%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "H. T. Webster",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Webster_cartoon_mocking_William_Howard_Taft_(March_10,_1910).jpg",
+   "query": "giraffes sleep"
+  },
+  "giraffes_sleep/giraffes_sleep_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/The_story_of_the_life_of_MacKay_of_Uganda_told_for_boys_by_his_sister_%281891%29_%2814779142171%29.jpg/1920px-The_story_of_the_life_of_MacKay_of_Uganda_told_for_boys_by_his_sister_%281891%29_%2814779142171%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "No restrictions",
+   "artist": "Harrison, Alexina (Mackay), Mrs;\n\nJ. W. H",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:The_story_of_the_life_of_MacKay_of_Uganda_told_for_boys_by_his_sister_(1891)_(14779142171).jpg",
+   "query": "giraffes sleep"
+  },
+  "honey_never/honey_never_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Honey_moon_-_valse_pour_piano_-_par_Maurice_Barbier_-_btv1b90717978_%2809_of_10%29.jpg/1920px-Honey_moon_-_valse_pour_piano_-_par_Maurice_Barbier_-_btv1b90717978_%2809_of_10%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "Barbier, Maurice (18..-19..\u00a0; compositeur). Compositeur",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Honey_moon_-_valse_pour_piano_-_par_Maurice_Barbier_-_btv1b90717978_(09_of_10).jpg",
+   "query": "honey never"
+  },
+  "honey_never/honey_never_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/The_honey_bee-_a_manual_of_instruction_in_apiculture_%281899%29_%2814784667492%29.jpg/1920px-The_honey_bee-_a_manual_of_instruction_in_apiculture_%281899%29_%2814784667492%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "No restrictions",
+   "artist": "Internet Archive Book Images",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:The_honey_bee-_a_manual_of_instruction_in_apiculture_(1899)_(14784667492).jpg",
+   "query": "honey never"
+  },
+  "honey_never/honey_never_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/European_honey_bee_extracts_nectar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "license": "Public domain",
+   "artist": "John Severns (Severnjc)",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:European_honey_bee_extracts_nectar.jpg",
+   "query": "honey"
+  },
+  "honey_never/honey_never_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Runny_hunny.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "license": "Public domain",
+   "artist": "Scott Bauer, USDA ARS",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Runny_hunny.jpg",
+   "query": "honey"
+  },
+  "cannot_sneeze/cannot_sneeze_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Naval_Officer_Sneezing_in_Front_of_Car_-_DPLA_-_b0c8003e0f9693a477f8708c0baa6020.tiff/lossy-page1-1920px-Naval_Officer_Sneezing_in_Front_of_Car_-_DPLA_-_b0c8003e0f9693a477f8708c0baa6020.tiff.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "Department of the Interior. Solid Fuels Administration For War. 4/19/1943-6/30/1947",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Naval_Officer_Sneezing_in_Front_of_Car_-_DPLA_-_b0c8003e0f9693a477f8708c0baa6020.tiff",
+   "query": "cannot sneeze"
+  },
+  "cannot_sneeze/cannot_sneeze_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Cover_Up_Coughs_and_Sneezes_-_A_Bad_Cold_May_be_Flu%21_See_Your_Doctor_-_DPLA_-_7a3785a2d758aefa0e5acf2f4e173343.jpg/1920px-Cover_Up_Coughs_and_Sneezes_-_A_Bad_Cold_May_be_Flu%21_See_Your_Doctor_-_DPLA_-_7a3785a2d758aefa0e5acf2f4e173343.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "Office for Emergency Management. Office of War Information. Domestic Operations Branch. Bureau of Special Services. 3/9/",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Cover_Up_Coughs_and_Sneezes_-_A_Bad_Cold_May_be_Flu!_See_Your_Doctor_-_DPLA_-_7a3785a2d758aefa0e5acf2f4e173343.jpg",
+   "query": "cannot sneeze"
+  },
+  "cannot_sneeze/cannot_sneeze_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/%22Cover_Coughs%2C_Cover_Sneezes%21%22_-_DPLA_-_cc1c8afb28c8f7e5abdbb1127fee6dc5.jpg/1920px-%22Cover_Coughs%2C_Cover_Sneezes%21%22_-_DPLA_-_cc1c8afb28c8f7e5abdbb1127fee6dc5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "Office for Emergency Management. Office of War Information. Domestic Operations Branch. Bureau of Special Services. 3/9/",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:%22Cover_Coughs,_Cover_Sneezes!%22_-_DPLA_-_cc1c8afb28c8f7e5abdbb1127fee6dc5.jpg",
+   "query": "cannot sneeze"
+  },
+  "cannot_sneeze/cannot_sneeze_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Chinese_woodcut%3B_Pathology_of_%27obstructive_throat_wind%27_Wellcome_L0038868.jpg/1920px-Chinese_woodcut%3B_Pathology_of_%27obstructive_throat_wind%27_Wellcome_L0038868.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 4.0",
+   "artist": "",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Chinese_woodcut;_Pathology_of_%27obstructive_throat_wind%27_Wellcome_L0038868.jpg",
+   "query": "cannot sneeze"
+  },
+  "cannot_sneeze/cannot_sneeze_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/No%2C_she_cannot_be_dirty_LCCN2010718112.jpg/1920px-No%2C_she_cannot_be_dirty_LCCN2010718112.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "Smith, Jessie Willcox, 1863-1935, artist",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:No,_she_cannot_be_dirty_LCCN2010718112.jpg",
+   "query": "cannot sleep"
+  },
+  "glass_slow_moving/glass_slow_moving_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Coloured_glass_-_Interior_of_one_of_the_Queen_Victoria_Building%27s_entrances_%2828815625400%29.jpg/1920px-Coloured_glass_-_Interior_of_one_of_the_Queen_Victoria_Building%27s_entrances_%2828815625400%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 2.0",
+   "artist": "Jorge L\u00e1scar from Melbourne, Australia",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Coloured_glass_-_Interior_of_one_of_the_Queen_Victoria_Building%27s_entrances_(28815625400).jpg",
+   "query": "glass slow-moving"
+  },
+  "glass_slow_moving/glass_slow_moving_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Crockery_and_glass_journal_%281875%29_%2814763486984%29.jpg/1920px-Crockery_and_glass_journal_%281875%29_%2814763486984%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "No restrictions",
+   "artist": "Internet Archive Book Images",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Crockery_and_glass_journal_(1875)_(14763486984).jpg",
+   "query": "glass slow-moving"
+  },
+  "glass_slow_moving/glass_slow_moving_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/67/Orange_juice_1_edit1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "license": "Public domain",
+   "artist": "Agency of the United States Department of Agriculture\nEdited Version by: Arad",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Orange_juice_1_edit1.jpg",
+   "query": "glass physics"
+  },
+  "raindrops_teardrop/raindrops_teardrop_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Raindrops_on_a_Joshua_tree_%2851181563794%29.jpg/1920px-Raindrops_on_a_Joshua_tree_%2851181563794%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "Joshua Tree National Park",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Raindrops_on_a_Joshua_tree_(51181563794).jpg",
+   "query": "raindrops weather"
+  },
+  "raindrops_teardrop/raindrops_teardrop_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Is_it_Dew_or_is_it_Raindrops_or_are_they_the_same_thing.jpg/1920px-Is_it_Dew_or_is_it_Raindrops_or_are_they_the_same_thing.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "Doggo19292",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Is_it_Dew_or_is_it_Raindrops_or_are_they_the_same_thing.jpg",
+   "query": "raindrops weather"
+  },
+  "raindrops_teardrop/raindrops_teardrop_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Raindrops_on_Yellowstone_Lake_%28fd295688-d27b-4b82-bccf-71fb2c08173d%29.jpg/1920px-Raindrops_on_Yellowstone_Lake_%28fd295688-d27b-4b82-bccf-71fb2c08173d%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "NPS/Jim Peaco",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Raindrops_on_Yellowstone_Lake_(fd295688-d27b-4b82-bccf-71fb2c08173d).jpg",
+   "query": "raindrops weather"
+  },
+  "dolphins_never/dolphins_never_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Dolphin_schooner.jpg/1920px-Dolphin_schooner.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "Unknown authorUnknown author",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Dolphin_schooner.jpg",
+   "query": "dolphins never"
+  },
+  "dolphins_never/dolphins_never_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Dolphin_a_Continental_Navy_cutter_tied_up_to_the_quay_at_Lorient%2C_France%2C_in_February_1777._%2850904601997%29.jpg/1920px-Dolphin_a_Continental_Navy_cutter_tied_up_to_the_quay_at_Lorient%2C_France%2C_in_February_1777._%2850904601997%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "tormentor4555",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Dolphin_a_Continental_Navy_cutter_tied_up_to_the_quay_at_Lorient,_France,_in_February_1777._(50904601997).jpg",
+   "query": "dolphins never"
+  },
+  "webcam_pointed/webcam_pointed_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/GER_%E2%80%94_BY_%E2%80%94_Oberbayern_%E2%80%94_Lkr._Miesbach_%E2%80%94_Gem._Markt_Schliersee_%E2%80%94_Spitzingsee_%28Obere_Firstalm_%C2%B7_Webcam%29_Mattes_2022-06-19.jpg/1920px-GER_%E2%80%94_BY_%E2%80%94_Oberbayern_%E2%80%94_Lkr._Miesbach_%E2%80%94_Gem._Markt_Schliersee_%E2%80%94_Spitzingsee_%28Obere_Firstalm_%C2%B7_Webcam%29_Mattes_2022-06-19.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 3.0 de",
+   "artist": "User:Mattes",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:GER_%E2%80%94_BY_%E2%80%94_Oberbayern_%E2%80%94_Lkr._Miesbach_%E2%80%94_Gem._Markt_Schliersee_%E2%80%94_Spitzingsee_(Obere_Firstalm_%C2%B7_Webcam)_Mattes_2022-06-19.jpg",
+   "query": "webcam technology"
+  },
+  "webcam_pointed/webcam_pointed_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/NgVLA_Prototype_webcam.jpg/1920px-NgVLA_Prototype_webcam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 4.0",
+   "artist": "NRAO/NSF/AUI",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:NgVLA_Prototype_webcam.jpg",
+   "query": "webcam technology"
+  },
+  "jellyfish_effectively/jellyfish_effectively_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Bathykorus_bouilloni.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "license": "Public domain",
+   "artist": "Kevin Raskoff",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Bathykorus_bouilloni.jpg",
+   "query": "jellyfish effectively"
+  },
+  "jellyfish_effectively/jellyfish_effectively_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Lion%27s_mane_jellyfish_in_Gullmarn_fjord_at_S%C3%A4mstad_3.jpg/1920px-Lion%27s_mane_jellyfish_in_Gullmarn_fjord_at_S%C3%A4mstad_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC0",
+   "artist": "W.carter",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Lion%27s_mane_jellyfish_in_Gullmarn_fjord_at_S%C3%A4mstad_3.jpg",
+   "query": "jellyfish animals"
+  },
+  "jellyfish_effectively/jellyfish_effectively_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Jellyfish_%28169720237%29.jpeg/1920px-Jellyfish_%28169720237%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 3.0",
+   "artist": "Takuya Matsuyama",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Jellyfish_(169720237).jpeg",
+   "query": "jellyfish animals"
+  },
+  "lightning_hotter/lightning_hotter_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/F-35C_Lightning_of_VFA-101_is_refueld_at_Eglin_AFB_2013.jpg/1920px-F-35C_Lightning_of_VFA-101_is_refueld_at_Eglin_AFB_2013.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "U.S. Air Force photo by Samuel King",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:F-35C_Lightning_of_VFA-101_is_refueld_at_Eglin_AFB_2013.jpg",
+   "query": "lightning hotter"
+  },
+  "lightning_hotter/lightning_hotter_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Lightning_causation.jpg/1920px-Lightning_causation.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 4.0",
+   "artist": "SaumyaVilhekar",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Lightning_causation.jpg",
+   "query": "lightning hotter"
+  },
+  "lightning_hotter/lightning_hotter_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Port_and_lighthouse_overnight_storm_with_lightning_in_Port-la-Nouvelle.jpg/1920px-Port_and_lighthouse_overnight_storm_with_lightning_in_Port-la-Nouvelle.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 2.0",
+   "artist": "Maxime Raynal from France",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Port_and_lighthouse_overnight_storm_with_lightning_in_Port-la-Nouvelle.jpg",
+   "query": "lightning weather"
+  },
+  "hot_water/hot_water_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Practical_steam_and_hot_water_heating_and_ventilation_%281908%29_%2814578675949%29.jpg/1920px-Practical_steam_and_hot_water_heating_and_ventilation_%281908%29_%2814578675949%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "No restrictions",
+   "artist": "King, Alfred G. (Alfred Grant), b. 1866",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Practical_steam_and_hot_water_heating_and_ventilation_(1908)_(14578675949).jpg",
+   "query": "hot water"
+  },
+  "hot_water/hot_water_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Practical_steam_and_hot_water_heating_and_ventilation_%281908%29_%2814578649860%29.jpg/1920px-Practical_steam_and_hot_water_heating_and_ventilation_%281908%29_%2814578649860%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "No restrictions",
+   "artist": "King, Alfred G. (Alfred Grant), b. 1866",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Practical_steam_and_hot_water_heating_and_ventilation_(1908)_(14578649860).jpg",
+   "query": "hot water"
+  },
+  "hot_water/hot_water_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Practical_steam_and_hot_water_heating_and_ventilation_%281908%29_%2814578898487%29.jpg/1920px-Practical_steam_and_hot_water_heating_and_ventilation_%281908%29_%2814578898487%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "No restrictions",
+   "artist": "King, Alfred G. (Alfred Grant), b. 1866",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Practical_steam_and_hot_water_heating_and_ventilation_(1908)_(14578898487).jpg",
+   "query": "hot water"
+  },
+  "sharks_older/sharks_older_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Nintendo-64-InterAct-SharkPad-Pro.jpg/1920px-Nintendo-64-InterAct-SharkPad-Pro.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "Evan-Amos",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Nintendo-64-InterAct-SharkPad-Pro.jpg",
+   "query": "sharks everyday"
+  },
+  "sharks_older/sharks_older_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Nintendo-64-InterAct-GameShark-v2.1.jpg/1920px-Nintendo-64-InterAct-GameShark-v2.1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "Evan-Amos",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Nintendo-64-InterAct-GameShark-v2.1.jpg",
+   "query": "sharks everyday"
+  },
+  "sharks_older/sharks_older_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/5/56/White_shark.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "license": "CC BY 2.5",
+   "artist": "Pterantula (Terry Goss) at en.wikipedia",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:White_shark.jpg",
+   "query": "sharks"
+  },
+  "sharks_older/sharks_older_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/31/Great_white_shark_south_africa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "license": "CC BY 2.0",
+   "artist": "Hermanus Backpackers",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Great_white_shark_south_africa.jpg",
+   "query": "sharks"
+  },
+  "sharks_older/sharks_older_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Shark_Yekaterinburg_2023.jpg/1920px-Shark_Yekaterinburg_2023.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC0",
+   "artist": "MSDN.WhiteKnight",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Shark_Yekaterinburg_2023.jpg",
+   "query": "sharks"
+  },
+  "sharks_older/sharks_older_006.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Illustration_of_skates_rays_and_sharks_vision_-_Australian_Museum_2022-_cropped.jpg/1920px-Illustration_of_skates_rays_and_sharks_vision_-_Australian_Museum_2022-_cropped.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC0",
+   "artist": "Xyxyzyz",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Illustration_of_skates_rays_and_sharks_vision_-_Australian_Museum_2022-_cropped.jpg",
+   "query": "sharks"
+  },
+  "sharks_older/sharks_older_007.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Shark_Seas%2C_S.E.A._Aquarium%2C_Singapore%2C_20240206_1408_6551.jpg/1920px-Shark_Seas%2C_S.E.A._Aquarium%2C_Singapore%2C_20240206_1408_6551.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 4.0",
+   "artist": "Jakub Ha\u0142un",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Shark_Seas,_S.E.A._Aquarium,_Singapore,_20240206_1408_6551.jpg",
+   "query": "sharks"
+  },
+  "wombat_droppings/wombat_droppings_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Lake_Wombat_MRD_02.jpg/1920px-Lake_Wombat_MRD_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 4.0",
+   "artist": "Mike Dickison",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Lake_Wombat_MRD_02.jpg",
+   "query": "wombat"
+  },
+  "wombat_droppings/wombat_droppings_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Lake_Wombat_MRD_07.jpg/1920px-Lake_Wombat_MRD_07.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 4.0",
+   "artist": "Mike Dickison",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Lake_Wombat_MRD_07.jpg",
+   "query": "wombat"
+  },
+  "wombat_droppings/wombat_droppings_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Lake_Wombat_MRD_01.jpg/1920px-Lake_Wombat_MRD_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 4.0",
+   "artist": "Mike Dickison",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Lake_Wombat_MRD_01.jpg",
+   "query": "wombat"
+  },
+  "wombat_droppings/wombat_droppings_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Wombat_Anglican_Church_002.JPG/1920px-Wombat_Anglican_Church_002.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 3.0",
+   "artist": "Mattinbgn",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Wombat_Anglican_Church_002.JPG",
+   "query": "wombat"
+  },
+  "mount_everest/mount_everest_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Mount_Everest%2C_Himalayas.jpg/1920px-Mount_Everest%2C_Himalayas.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 4.0",
+   "artist": "Vyacheslav Argenberg",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Mount_Everest,_Himalayas.jpg",
+   "query": "mount everest"
+  },
+  "mount_everest/mount_everest_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Helicopter_at_Mount_Everest.jpg/1920px-Helicopter_at_Mount_Everest.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 4.0",
+   "artist": "Dailyhelifly",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Helicopter_at_Mount_Everest.jpg",
+   "query": "mount everest"
+  },
+  "mount_everest/mount_everest_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Everest_West_Ridge%2C_Mount_Everest%2C_Himalayas.jpg/1920px-Everest_West_Ridge%2C_Mount_Everest%2C_Himalayas.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 4.0",
+   "artist": "Vyacheslav Argenberg",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Everest_West_Ridge,_Mount_Everest,_Himalayas.jpg",
+   "query": "mount everest"
+  },
+  "mount_everest/mount_everest_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Everest-3D-Map-Type-EN.jpg/1920px-Everest-3D-Map-Type-EN.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC0",
+   "artist": "Tom Patterson",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Everest-3D-Map-Type-EN.jpg",
+   "query": "mount everest"
+  },
+  "oxford_university/oxford_university_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Oxford_University_Palestinian_graduation_die-in_protest%2C_18_May_2024_28.jpg/1920px-Oxford_University_Palestinian_graduation_die-in_protest%2C_18_May_2024_28.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC0",
+   "artist": "Kiri of Karitane",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Oxford_University_Palestinian_graduation_die-in_protest,_18_May_2024_28.jpg",
+   "query": "oxford university"
+  },
+  "oxford_university/oxford_university_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Oxford_University_Palestinian_graduation_die-in_protest%2C_18_May_2024_03.jpg/1920px-Oxford_University_Palestinian_graduation_die-in_protest%2C_18_May_2024_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC0",
+   "artist": "Kiri of Karitane",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Oxford_University_Palestinian_graduation_die-in_protest,_18_May_2024_03.jpg",
+   "query": "oxford university"
+  },
+  "oxford_university/oxford_university_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Oxford_University_Palestinian_graduation_die-in_protest%2C_18_May_2024_27.jpg/1920px-Oxford_University_Palestinian_graduation_die-in_protest%2C_18_May_2024_27.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC0",
+   "artist": "Kiri of Karitane",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Oxford_University_Palestinian_graduation_die-in_protest,_18_May_2024_27.jpg",
+   "query": "oxford university"
+  },
+  "oxford_university/oxford_university_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Oxford_University_Palestinian_graduation_die-in_protest%2C_18_May_2024_19.jpg/1920px-Oxford_University_Palestinian_graduation_die-in_protest%2C_18_May_2024_19.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC0",
+   "artist": "Kiri of Karitane",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Oxford_University_Palestinian_graduation_die-in_protest,_18_May_2024_19.jpg",
+   "query": "oxford university"
+  },
+  "oxford_university/oxford_university_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Oxford_University_Palestinian_graduation_die-in_protest%2C_18_May_2024_20.jpg/1920px-Oxford_University_Palestinian_graduation_die-in_protest%2C_18_May_2024_20.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC0",
+   "artist": "Kiri of Karitane",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Oxford_University_Palestinian_graduation_die-in_protest,_18_May_2024_20.jpg",
+   "query": "oxford university"
+  },
+  "computer_bug/computer_bug_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/First_Computer_Bug%2C_1947.jpg/1920px-First_Computer_Bug%2C_1947.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "Courtesy of the Naval Surface Warfare Center, Dahlgren, VA., 1988.",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:First_Computer_Bug,_1947.jpg",
+   "query": "computer bug"
+  },
+  "computer_bug/computer_bug_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Commons_bug_WhatIsThat.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "license": "CC BY 3.0",
+   "artist": "Silver Spoon",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Commons_bug_WhatIsThat.png",
+   "query": "computer bug"
+  },
+  "computer_bug/computer_bug_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Steve_Jobs_and_Macintosh_computer%2C_January_1984%2C_by_Bernard_Gotfryd_-_edited.jpg/1920px-Steve_Jobs_and_Macintosh_computer%2C_January_1984%2C_by_Bernard_Gotfryd_-_edited.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "Photo: Bernard Gotfryd - Edited from tif by Cart",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Steve_Jobs_and_Macintosh_computer,_January_1984,_by_Bernard_Gotfryd_-_edited.jpg",
+   "query": "computer technology"
+  },
+  "computer_bug/computer_bug_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Computer_%28magazine%29_-_Dec_1975_Byte_advert.jpg/1920px-Computer_%28magazine%29_-_Dec_1975_Byte_advert.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "IEEE Computer Society",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Computer_(magazine)_-_Dec_1975_Byte_advert.jpg",
+   "query": "computer"
+  },
+  "eiffel_tower/eiffel_tower_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Eiffel_Tower%2C_full-view_looking_toward_the_Trocadero%2C_Exposition_Universal%2C_1900%2C_Paris%2C_France.jpg/1920px-Eiffel_Tower%2C_full-view_looking_toward_the_Trocadero%2C_Exposition_Universal%2C_1900%2C_Paris%2C_France.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "Public domain",
+   "artist": "Unknown authorUnknown author",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Eiffel_Tower,_full-view_looking_toward_the_Trocadero,_Exposition_Universal,_1900,_Paris,_France.jpg",
+   "query": "eiffel tower"
+  },
+  "eiffel_tower/eiffel_tower_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Sous_la_Tour_Eiffel_1.jpg/1920px-Sous_la_Tour_Eiffel_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC0",
+   "artist": "Jebulon",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Sous_la_Tour_Eiffel_1.jpg",
+   "query": "eiffel tower"
+  },
+  "octopus_hearts/octopus_hearts_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Three_Times_the_Love_%E2%99%A5%E2%99%A5%E2%99%A5_%2848955284726%29.jpg/1920px-Three_Times_the_Love_%E2%99%A5%E2%99%A5%E2%99%A5_%2848955284726%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 2.0",
+   "artist": "LASZLO ILYES from Cleveland, Ohio, USA",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Three_Times_the_Love_%E2%99%A5%E2%99%A5%E2%99%A5_(48955284726).jpg",
+   "query": "octopus hearts"
+  },
+  "octopus_hearts/octopus_hearts_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Physeter_macrocephalus_%28sperm_whale%29_%28Wrightsville_Beach%2C_North_Carolina%2C_USA%29_8_%2830539470163%29.jpg/1920px-Physeter_macrocephalus_%28sperm_whale%29_%28Wrightsville_Beach%2C_North_Carolina%2C_USA%29_8_%2830539470163%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 2.0",
+   "artist": "James St. John",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Physeter_macrocephalus_(sperm_whale)_(Wrightsville_Beach,_North_Carolina,_USA)_8_(30539470163).jpg",
+   "query": "octopus hearts"
+  },
+  "antarctica_desert/antarctica_desert_001.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Antarctica_2013_Journey_to_the_Crystal_Desert_%288370632940%29.jpg/1920px-Antarctica_2013_Journey_to_the_Crystal_Desert_%288370632940%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 2.0",
+   "artist": "Christopher Michel",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Antarctica_2013_Journey_to_the_Crystal_Desert_(8370632940).jpg",
+   "query": "antarctica desert"
+  },
+  "antarctica_desert/antarctica_desert_002.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Antarctica_2013_Journey_to_the_Crystal_Desert_%288369540147%29.jpg/1920px-Antarctica_2013_Journey_to_the_Crystal_Desert_%288369540147%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 2.0",
+   "artist": "Christopher Michel",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Antarctica_2013_Journey_to_the_Crystal_Desert_(8369540147).jpg",
+   "query": "antarctica desert"
+  },
+  "antarctica_desert/antarctica_desert_003.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Antarctica_2013_Journey_to_the_Crystal_Desert_%288370600188%29.jpg/1920px-Antarctica_2013_Journey_to_the_Crystal_Desert_%288370600188%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "license": "CC BY 2.0",
+   "artist": "Christopher Michel",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Antarctica_2013_Journey_to_the_Crystal_Desert_(8370600188).jpg",
+   "query": "antarctica desert"
+  },
+  "antarctica_desert/antarctica_desert_004.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/71/Antarctica_2013_Journey_to_the_Crystal_Desert_%288369557381%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "license": "CC BY 2.0",
+   "artist": "Christopher Michel",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Antarctica_2013_Journey_to_the_Crystal_Desert_(8369557381).jpg",
+   "query": "antarctica desert"
+  },
+  "antarctica_desert/antarctica_desert_005.jpg": {
+   "url": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Antarctica_2013_Journey_to_the_Crystal_Desert_%288369576169%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "license": "CC BY 2.0",
+   "artist": "Christopher Michel",
+   "source": "wikimedia",
+   "page": "https://commons.wikimedia.org/wiki/File:Antarctica_2013_Journey_to_the_Crystal_Desert_(8369576169).jpg",
+   "query": "antarctica desert"
   }
  }
 }

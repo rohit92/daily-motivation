@@ -121,9 +121,15 @@ def report(days=7, out=print):
                 continue
             sh = row.get("shorts_90d")
             delta = "" if prev is None or sh is None else f"{sh - prev:+d}"
+            # Round on the way out. monetize reports views/day as a raw
+            # float, so a value like 144.93333333333334 blew past its column
+            # and ran into the neighbouring one, which made the table unreadable
+            # on exactly the days someone would be scanning it for a trend.
+            def num(x, dp=1):
+                return "-" if x is None else f"{float(x):.{dp}f}"
             out(f"    {d:12}{str(row.get('subs')):>6}{str(sh):>12}{delta:>8}"
-                f"{str(row.get('views_per_day')):>11}"
-                f"{str(row.get('watch_hours')):>8}")
+                f"{num(row.get('views_per_day')):>11}"
+                f"{num(row.get('watch_hours')):>8}")
             if sh is not None:
                 prev = sh
 

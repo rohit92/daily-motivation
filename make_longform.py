@@ -199,8 +199,20 @@ def llm_script(minutes, theme):
         data = json.loads(m.group(0))
     except json.JSONDecodeError:
         return None
+    if not isinstance(data, dict):
+        return None
     chapters = []
+    # A model is free to return whatever shape it likes, and this one
+    # occasionally returns "chapters" as a list of LISTS rather than a list of
+    # objects — at which point ch.get() raises AttributeError and the whole
+    # build dies. It killed one long-form of nine on 20 August and succeeded on
+    # a retry, which is the worst failure mode: intermittent, and invisible
+    # until a month of unattended runs has quietly skipped some. Skip anything
+    # that is not a dict; too few usable chapters already falls back to the
+    # hand-written bank below.
     for ch in data.get("chapters", []):
+        if not isinstance(ch, dict):
+            continue
         lines = [str(x).strip() for x in ch.get("lines", []) if str(x).strip()]
         title = str(ch.get("title", "")).strip()
         if title and len(lines) >= 4:
@@ -315,6 +327,8 @@ def _llm_more_chapters(script, n, story):
         return []
     out, have = [], {l for c in script["chapters"] for l in c["lines"]}
     for ch in data.get("chapters", []):
+        if not isinstance(ch, dict):
+            continue                 # see the note above: shape is not guaranteed
         lines = []
         for x in ch.get("lines", []):
             x = str(x).strip()
@@ -714,7 +728,33 @@ def build(minutes, theme, music_on=True, script=None, kind="longform"):
     }
     nm = NICHE_META.get(niche, NICHE_META["motivation"])
 
-    title = script.get("title") or (nm["t2"] if mins >= 2 else nm["t1"])
+    # The generic fallback is the same string every time, so a channel whose
+    # scripts come from the bank rather than the AI (facts writes no title of
+    # its own) published every long-form under "5 Minutes of Mind-Blowing
+    # Facts". Four different videos, one headline — they read as re-uploads and
+    # compete with each other in search. Lead with what this one is actually
+    # about; the first chapter is content-derived and therefore distinct.
+    title = script.get("title")
+    if not title:
+        base = nm["t2"] if mins >= 2 else nm["t1"]
+        skip = ("", "intro", "introduction", "outro", "one last thing")
+        topics = [str(c.get("title", "")).strip()
+                  for c in (script.get("chapters") or [])
+                  if str(c.get("title", "")).strip().lower() not in skip]
+        # Keep the hook, add what makes THIS one different. Leading with a bare
+        # chapter name ("Physics | Mind Blown") is distinct but a worse title
+        # than the duplicate was; the base line is what earns the click.
+        # Fit the topic list to what is left of the 100-char budget once the
+        # brand suffix is added, dropping whole topics rather than truncating
+        # one mid-word.
+        title = base
+        for n in (3, 2, 1):
+            if len(topics) >= n:
+                cand = f"{base}: {', '.join(topics[:n])}"
+                if len(cand) <= 72:
+                    title = cand
+                    break
+    title = title[:100]
     brand = f"{BRAND_NAME} Stories" if story else BRAND_NAME
     title = f"{title} | {brand}"[:95]
     links = load(LINKS, {}) or {}

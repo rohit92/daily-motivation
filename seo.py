@@ -79,6 +79,12 @@ THEME_TERMS = {
                        "english for interview", "interview english",
                        "common english mistakes indians make",
                        "placement interview english"],
+    # Themes added when the motivation and facts banks ran low. Without search
+    # terms here every video composed from them would ship with brand tags only.
+    "time": ["stop wasting time", "time management motivation", "start today",
+             "procrastination motivation", "motivation to start"],
+    "everyday": ["everyday facts", "did you know facts", "amazing facts",
+                 "surprising facts", "weird facts", "fun facts"],
     "connectors": ["linking words english", "english connectors", "sentence connectors"],
     "smalltalk": ["small talk english", "how to make small talk", "english conversation"],
     "workplace": ["business english", "office english", "english for work"],

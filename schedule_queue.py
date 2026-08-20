@@ -27,6 +27,7 @@ WHY THIS EXISTS
   python3 schedule_queue.py --run --dry-run             # show what WOULD upload
 """
 import argparse
+import hashlib
 import json
 import os
 import sys
@@ -164,7 +165,45 @@ def ready_longform(slug):
     """
     P = _paths.paths(slug)
     lib = load(P["library"], {}) or {}
+
+    # Fingerprint every long-form by its narration, and never offer one whose
+    # script already went out. storyteller.py --make run three times in a row
+    # produced three byte-identical stories on 20 August; one was already live
+    # as BkKRswcd270 and the other two were queued behind it. Duration and
+    # filename both looked fine — only the words gave it away. YouTube reads
+    # near-identical uploads as reused content, which is the one thing a
+    # channel chasing monetization cannot afford.
+    def _script_key(name):
+        side = os.path.join(P["long_form"],
+                            os.path.splitext(name)[0] + "_script.json")
+        try:
+            d = load(side, None) or {}
+            lines = [l for c in d.get("chapters", []) for l in c.get("lines", [])]
+            if not lines:
+                return None
+            return hashlib.md5("|".join(lines).encode("utf-8")).hexdigest()
+        except Exception:
+            return None       # unreadable sidecar must not block a good video
+
+    def _title_key(t):
+        try:
+            import reconcile
+            return reconcile.title_key(t)
+        except Exception:
+            return (t or "").strip().lower()
+
+    shipped, shipped_titles = set(), set()
+    for name, v in (lib.get("longform") or {}).items():
+        if v.get("status") == "uploaded":
+            k = _script_key(name)
+            if k:
+                shipped.add(k)
+            tk = _title_key(v.get("title", ""))
+            if tk:
+                shipped_titles.add(tk)
+
     out = []
+    seen, seen_titles = set(), set()
     for name, v in (lib.get("longform") or {}).items():
         if v.get("status") != "ready":
             continue
@@ -173,6 +212,21 @@ def ready_longform(slug):
             continue
         if float(v.get("duration_sec") or 0) < MIN_LONGFORM_SEC:
             continue
+        key = _script_key(name)
+        if key and (key in shipped or key in seen):
+            continue          # same narration as something live or already offered
+        if key:
+            seen.add(key)
+        # The hash is exact, so one extra chapter defeats it. A retelling of the
+        # same story keeps the same headline, and the headline is what the
+        # audience actually sees repeat — motivation's storyteller produced four
+        # versions of the Derek Redmond story, one already live, and only the
+        # title gave the last one away.
+        tkey = _title_key(v.get("title", ""))
+        if tkey and (tkey in shipped_titles or tkey in seen_titles):
+            continue
+        if tkey:
+            seen_titles.add(tkey)
         out.append((v.get("created", ""), name, _entry(slug, name, v, "longform")))
     return [e for _, _, e in sorted(out, reverse=True)]
 
