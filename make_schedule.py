@@ -44,7 +44,7 @@ MILESTONES = {
     300: "Month 10: audit which themes win; drop the weak ones from the composer",
     330: "Month 11: consider a 2nd higher-RPM channel (finance/tech)",
     365: "YEAR 1 DONE. Review total income, re-plan year 2. Consider re-subscribing "
-         "to Claude for a fresh script bank + new features.",
+         "to refresh the script bank and plan new features.",
 }
 
 

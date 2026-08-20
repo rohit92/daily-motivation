@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-scheduler.py — make the system run by itself every morning (no Claude, no you).
+scheduler.py — make the system run by itself every morning.
 
 Installs a macOS launchd agent that runs autopilot.py daily at 7:00 AM:
 sync stats → prepare today's video → (Sundays) build the weekly long-form.

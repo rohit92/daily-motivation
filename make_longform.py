@@ -139,7 +139,7 @@ def save(path, data):
     json.dump(data, open(path, "w"), indent=2)
 
 
-# ---------- script (Ollama / Claude → your own script bank) ----------
+# ---------- script (local or hosted model → your own script bank) ----------
 
 # What the AI is writing, per niche. Every prompt in this file used to say
 # "motivation channel" outright, so a facts long-form that needed padding came

@@ -96,9 +96,9 @@ def check_content():
         if combos > 60:
             line(OK, f"{combos} fresh script combos available (~{combos//30} months)")
         elif combos > 0:
-            line(WARN, f"only {combos} combos left", "ask Claude for a new script bank soon")
+            line(WARN, f"only {combos} combos left", "refresh the script bank soon")
         else:
-            line(BAD, "script bank exhausted", "ask Claude for a fresh bank")
+            line(BAD, "script bank exhausted", "add a fresh script bank")
     except Exception as e:
         line(BAD, f"composer not runnable: {e}")
 

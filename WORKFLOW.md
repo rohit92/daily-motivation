@@ -1,7 +1,7 @@
 # ⚙️ Mindset Refuel — The Automation System & Workflow
 
-A defined, repeatable pipeline. Claude's tools do the making and the analysis;
-you do only what a human must: **upload, publish, engage.**
+A defined, repeatable pipeline. The system handles generation and analysis;
+you do only what requires human judgment: **upload, publish, engage.**
 
 ```
                         ┌───────────────────────────────────────────┐
@@ -26,8 +26,9 @@ you do only what a human must: **upload, publish, engage.**
 - `trend_scan.py` → what's trending in motivation this week (via YouTube API).
 - `channel_stats.py` → pulls *your* real view counts from your channel into the
   library (dashboard: **Sync my stats**). This is the self-analysis from your account.
-- `ai_brain.py --analyze` → Claude reads both and tells you what to make next
-  (dashboard: **AI Coach**). Free offline summary if no Anthropic key.
+- `ai_brain.py --analyze` → summarizes both and recommends the next content
+  direction (dashboard: **AI Coach**). A rule-based offline summary is available
+  without an optional hosted-model key.
 
 **2. CREATE — the system builds finished, on-trend videos (automatic)**
 Press **Generate** once. Behind it:

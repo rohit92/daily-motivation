@@ -1103,7 +1103,7 @@ def home():
     ap_ck = "checked" if os.path.exists(AUTOPILOT_PLIST) else ""
     toggles += (f"<div class='toggle'><div class='lab'>Morning autopilot"
                 f"<small>Builds today's video at 7 AM by itself (+ Sunday long-form). "
-                f"Works without Claude — it's all local.</small></div>"
+                f"Works without a hosted model — it can run locally.</small></div>"
                 f"<label class='sw'><input type='checkbox' {ap_ck} "
                 f"onchange=\"setAutopilot(this.checked)\"><span></span></label></div>")
     priv = cfg.get("upload_privacy", "public")

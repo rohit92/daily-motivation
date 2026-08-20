@@ -2,7 +2,7 @@
 """
 ask.py — your help bot. Ask it anything about running the channel or the system.
 
-Uses a free local model (Ollama) or Claude if available; otherwise answers from a
+Uses a free local model (Ollama) or an optional hosted model; otherwise answers from a
 built-in FAQ. Always works, always free.
 
   python3 ask.py "how do I upload a video?"
