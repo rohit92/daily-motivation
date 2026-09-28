@@ -1,5 +1,22 @@
 # Daily Motivation — Faceless Shorts Generator
 
+> **What this is now:** a multi-channel pipeline that turns short scripts into
+> 1080×1920 Shorts — neural voiceover with **per-word caption timing**
+> (edge-tts WordBoundary events, falling back to the edge CLI and then offline
+> Piper), licence-tracked backgrounds, ffmpeg rendering — and publishes them
+> through the YouTube Data API (OAuth, resumable 4 MB chunked uploads with
+> exponential backoff, scheduled `publishAt`). Three channels run from one
+> codebase with isolated per-channel state (`channels.json` + `channels/<slug>/`),
+> a Flask dashboard, and a macOS launchd autopilot.
+>
+> **Tests:** `python -m unittest discover -s tests` — ~200 tests, run in about a
+> second because the YouTube API, network and ffmpeg are mocked.
+>
+> **Not in this public repository:** OAuth credentials and tokens, generated
+> media, per-channel content/state/analytics data, scraped trend reports,
+> business documents and paid digital products. `client_secret.json.example`
+> shows the expected credential file.
+
 Generates ready-to-upload vertical (1080×1920) motivational Shorts, ~15–20s each:
 a natural voiceover, on-screen captions that change with each spoken line, and
 license-free background images with a slow Ken Burns zoom.
