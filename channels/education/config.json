@@ -2,7 +2,7 @@
   "channel_handle": "@speak_fluent_language",
   "channel_id": "UCDqbNH3COyGSS5B5HbRsnFQ",
   "region": "US",
-  "ai_model": "claude-opus-4-8",
+  "ai_model": "default",
   "ollama_model": "llama3.2:3b",
   "ai_scripts": false,
   "character": false,

@@ -98,9 +98,9 @@ def _ollama(system, user, max_tokens, model):
 def llm(system, user, max_tokens=1500):
     """Return (text, engine_name) using the best available free-or-paid backend."""
     cfg = load(CONFIG, {})
-    t = _anthropic(system, user, max_tokens, cfg.get("ai_model", "claude-opus-4-8"))
+    t = _anthropic(system, user, max_tokens, cfg.get("ai_model", "default"))
     if t:
-        return t, "Claude API"
+        return t, "Anthropic API"
     t = _ollama(system, user, max_tokens, cfg.get("ollama_model", "llama3.2:3b"))
     if t:
         return t, "Ollama (local, free)"
@@ -108,7 +108,7 @@ def llm(system, user, max_tokens=1500):
 
 
 def _anthropic_chat(system, history, max_tokens, model):
-    """Multi-turn Claude call. history = [{role:'user'|'assistant', content}]."""
+    """Multi-turn chat call. history = [{role:'user'|'assistant', content}]."""
     try:
         import anthropic
     except ImportError:
@@ -250,9 +250,9 @@ def coach_reply(history):
     history = [{role:'user'|'assistant', content}]. Returns (text, engine)."""
     cfg = load(CONFIG, {})
     system = COACH_SYSTEM + "\n\n--- Your channel's real data ---\n" + _context()
-    t = _anthropic_chat(system, history, 600, cfg.get("ai_model", "claude-opus-4-8"))
+    t = _anthropic_chat(system, history, 600, cfg.get("ai_model", "default"))
     if t:
-        return t.strip(), "Claude API"
+        return t.strip(), "Anthropic API"
     t = _ollama_chat(system, history, 600, cfg.get("ollama_model", "llama3.2:3b"))
     if t:
         return t.strip(), "Ollama (local, free)"
@@ -294,8 +294,8 @@ def draft_reply(comment, video_title=""):
 
 def engine_status():
     cfg = load(CONFIG, {})
-    if _anthropic("x", "hi", 5, cfg.get("ai_model", "claude-opus-4-8")):
-        return "Claude API"
+    if _anthropic("x", "hi", 5, cfg.get("ai_model", "default")):
+        return "Anthropic API"
     if _ollama_up():
         return "Ollama (local, free)"
     return "rule-based coach (free)"

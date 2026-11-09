@@ -2,7 +2,7 @@
   "channel_handle": "@mind_blown-t2h",
   "channel_id": "UCgGW9ELX9Tc2Y1fO8TC86vA",
   "region": "US",
-  "ai_model": "claude-opus-4-8",
+  "ai_model": "default",
   "ollama_model": "llama3.2:3b",
   "ai_scripts": false,
   "character": false,

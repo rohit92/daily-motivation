@@ -2,7 +2,7 @@
   "channel_handle": "@mindsetrefuel",
   "channel_id": "UCcoV2hwXrCivIRT-eJaRUng",
   "region": "US",
-  "ai_model": "claude-opus-4-8",
+  "ai_model": "default",
   "ollama_model": "llama3.2:3b",
   "ai_scripts": false,
   "character": false,
